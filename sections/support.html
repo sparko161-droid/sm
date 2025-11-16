@@ -88,6 +88,106 @@
         </p>
       </article>
     </div>
+
+    <div class="card salary-calculator" data-l1-calculator>
+      <div class="card-title">💰 Калькулятор зарплаты L1</div>
+      <div class="card-sub">Заполни показатели и сразу увидишь расчёт оклада, премий и НДФЛ</div>
+      <div class="calc-grid">
+        <form class="calc-form">
+          <div class="calc-field">
+            <span>Грейд</span>
+            <div class="grade-options">
+              <label class="grade-chip">
+                <input type="radio" name="grade" value="1" checked />
+                <span>1</span>
+              </label>
+              <label class="grade-chip">
+                <input type="radio" name="grade" value="2" />
+                <span>2</span>
+              </label>
+              <label class="grade-chip">
+                <input type="radio" name="grade" value="3" />
+                <span>3</span>
+              </label>
+            </div>
+          </div>
+
+          <label class="calc-field" for="closedInput">
+            <span>Закрыто заявок</span>
+            <input id="closedInput" name="closed" type="number" min="0" step="1" value="0" inputmode="numeric" />
+            <small class="calc-hint-text">Ставка меняется ступенчато и зависит от грейда</small>
+          </label>
+
+          <label class="calc-field" for="createdInput">
+            <span>Создано заявок</span>
+            <input id="createdInput" name="created" type="number" min="0" step="1" value="0" inputmode="numeric" />
+            <small class="calc-hint-text">От показателя зависит премия за создание и надбавка</small>
+          </label>
+
+          <label class="calc-field" for="missedInput">
+            <span>% пропущенных звонков</span>
+            <input id="missedInput" name="missed" type="number" min="0" step="0.1" value="0" inputmode="decimal" />
+            <small class="calc-hint-text">≤1,5% даёт +2 ₽ за заявку, 1,5–2% — +1 ₽, ≥2% — без надбавки</small>
+          </label>
+
+          <label class="calc-field" for="overdueInput">
+            <span>% просроченных задач (только для 3 грейда)</span>
+            <input id="overdueInput" name="overdue" type="number" min="0" step="0.1" value="0" inputmode="decimal" />
+            <small class="calc-hint-text">≤1% +3 ₽, 1–1,5% +2 ₽, 1,5–2% +1 ₽ к ставке за закрытие</small>
+          </label>
+        </form>
+
+        <div class="calc-results">
+          <div class="calc-result-highlight">
+            <div class="calc-highlight-label">К выдаче после НДФЛ</div>
+            <div class="calc-highlight-value" data-output="netValue">20 010 ₽</div>
+            <div class="calc-highlight-hint" data-output="grossHint">Из 23 000 ₽ до вычета</div>
+          </div>
+
+          <div class="calc-result-line">
+            <div>
+              <div class="calc-label">Базовый оклад</div>
+              <div class="calc-hint" data-output="baseHint">Грейд 1</div>
+            </div>
+            <div class="calc-value" data-output="baseValue">23 000 ₽</div>
+          </div>
+
+          <div class="calc-result-line">
+            <div>
+              <div class="calc-label">Премия за закрытие</div>
+              <div class="calc-hint" data-output="closedHint">0 заявок × 0 ₽</div>
+            </div>
+            <div class="calc-value" data-output="closedValue">0 ₽</div>
+          </div>
+
+          <div class="calc-result-line">
+            <div>
+              <div class="calc-label">Премия за создание</div>
+              <div class="calc-hint" data-output="createdHint">0 заявок × 0 ₽</div>
+            </div>
+            <div class="calc-value" data-output="createdValue">0 ₽</div>
+          </div>
+
+          <div class="calc-divider"></div>
+
+          <div class="calc-result-line">
+            <div>
+              <div class="calc-label">Итого до вычета</div>
+            </div>
+            <div class="calc-value" data-output="grossValue">23 000 ₽</div>
+          </div>
+
+          <div class="calc-result-line">
+            <div>
+              <div class="calc-label">НДФЛ 13%</div>
+              <div class="calc-hint" data-output="taxHint">от 23 000 ₽</div>
+            </div>
+            <div class="calc-value" data-output="taxValue">2 990 ₽</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button type="button" class="btn step-next" data-step-target="l1-escalation">
       ▶ Пошагово: как эскалировать задачу в L2
     </button>
