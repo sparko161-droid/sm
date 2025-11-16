@@ -8,6 +8,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const ensureStepperModal = () => {
+    let backdrop = document.querySelector('.modal-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'modal-backdrop';
+      backdrop.innerHTML = `
+        <div class="modal" role="dialog" aria-modal="true">
+          <div class="modal-title">Шаг подсказки</div>
+          <div class="modal-step-index"></div>
+          <div class="modal-step-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn modal-prev">Назад</button>
+            <button type="button" class="btn modal-next">Дальше</button>
+            <button type="button" class="btn modal-close">Закрыть</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(backdrop);
+
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) {
+          backdrop.classList.remove('visible');
+        }
+      });
+      const closeBtn = backdrop.querySelector('.modal-close');
+      closeBtn.addEventListener('click', () => backdrop.classList.remove('visible'));
+    }
+    return backdrop;
+  };
+
   const initSupportFilters = () => {
     const container = content;
     if (!container) return;
@@ -37,35 +67,73 @@ document.addEventListener('DOMContentLoaded', () => {
     applyFilter('all');
   };
 
-  const initStepper = () => {
-    const lists = Array.from(content.querySelectorAll('[data-step-list]'));
-    if (!lists.length) return;
+  const initStepperModal = () => {
+    const container = content;
+    if (!container) return;
+    const triggers = Array.from(container.querySelectorAll('[data-step-target]'));
+    if (!triggers.length) return;
 
-    lists.forEach(list => {
-      const id = list.getAttribute('data-step-list');
-      const btn = content.querySelector('[data-step-target="' + id + '"]');
-      if (!btn) return;
-      const items = Array.from(list.querySelectorAll('li'));
-      let index = 0;
+    const backdrop = ensureStepperModal();
+    const modal = backdrop.querySelector('.modal');
+    const titleEl = modal.querySelector('.modal-title');
+    const idxEl = modal.querySelector('.modal-step-index');
+    const bodyEl = modal.querySelector('.modal-step-body');
+    const btnPrev = modal.querySelector('.modal-prev');
+    const btnNext = modal.querySelector('.modal-next');
 
-      const update = () => {
-        items.forEach((li, i) => {
-          li.classList.toggle('active', i === index);
-        });
-      };
+    let current = {
+      steps: [],
+      index: 0,
+      label: ''
+    };
 
+    const render = () => {
+      if (!current.steps.length) return;
+      const step = current.steps[current.index];
+      idxEl.textContent = `Шаг ${current.index + 1} из ${current.steps.length}`;
+      bodyEl.innerHTML = step;
+      titleEl.textContent = current.label || 'Подсказка';
+    };
+
+    btnPrev.onclick = () => {
+      if (!current.steps.length) return;
+      current.index = (current.index - 1 + current.steps.length) % current.steps.length;
+      render();
+    };
+
+    btnNext.onclick = () => {
+      if (!current.steps.length) return;
+      current.index = (current.index + 1) % current.steps.length;
+      render();
+    };
+
+    triggers.forEach(btn => {
       btn.addEventListener('click', () => {
-        index = (index + 1) % items.length;
-        update();
+        const id = btn.getAttribute('data-step-target');
+        const list = container.querySelector('[data-step-list="' + id + '"]');
+        if (!list) return;
+        const items = Array.from(list.querySelectorAll('li')).map(li => {
+          const span = li.querySelector('span:nth-child(2)');
+          return span ? span.innerHTML : li.innerHTML;
+        });
+        if (!items.length) return;
+
+        current.steps = items;
+        current.index = 0;
+        current.label = btn.textContent.replace(/▶\s*/,'').trim();
+        render();
+        backdrop.classList.add('visible');
       });
     });
   };
 
   const initAccordions = () => {
-    const toggles = Array.from(content.querySelectorAll('[data-accordion-target]'));
+    const container = content;
+    if (!container) return;
+    const toggles = Array.from(container.querySelectorAll('[data-accordion-target]'));
     toggles.forEach(toggle => {
       const target = toggle.getAttribute('data-accordion-target');
-      const panel = content.querySelector('[data-accordion="' + target + '"]');
+      const panel = container.querySelector('[data-accordion="' + target + '"]');
       if (!panel) return;
       toggle.addEventListener('click', () => {
         panel.classList.toggle('open');
@@ -81,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setActive(name);
         if (name === 'support') {
           initSupportFilters();
-          initStepper();
+          initStepperModal();
           initAccordions();
         }
       })

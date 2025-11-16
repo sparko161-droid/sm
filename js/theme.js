@@ -1,20 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const body = document.body;
-  const btn = document.getElementById('themeToggle');
+// theme.js
+(function() {
+  const key = 'sm-support-theme';
+  const root = document.body;
 
-  const applyTheme = (theme) => {
-    body.classList.remove('dark-theme', 'light-theme');
-    body.classList.add(theme + '-theme');
-    localStorage.setItem('portalTheme', theme);
-  };
-
-  const saved = localStorage.getItem('portalTheme') || 'dark';
-  applyTheme(saved);
-
-  if (btn) {
-    btn.addEventListener('click', () => {
-      const next = body.classList.contains('dark-theme') ? 'light' : 'dark';
-      applyTheme(next);
-    });
+  function applyTheme(value) {
+    if (value === 'light') {
+      root.classList.remove('dark-theme');
+      root.classList.add('light-theme');
+    } else {
+      root.classList.remove('light-theme');
+      root.classList.add('dark-theme');
+      value = 'dark';
+    }
+    localStorage.setItem(key, value);
+    const btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.textContent = value === 'light' ? '🌙' : '☀️';
+    }
   }
-});
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem(key);
+    applyTheme(saved || 'dark');
+
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const current = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        applyTheme(current === 'light' ? 'dark' : 'light');
+      });
+    }
+  });
+})();

@@ -2,33 +2,42 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Стандарт Мастер — Внутренний портал</title>
+  <title>Стандарт Мастер · Портал поддержки</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/styles.css" />
-  <script defer src="js/theme.js"></script>
-  <script defer src="js/navigation.js"></script>
 </head>
 <body class="dark-theme">
-  <header class="header">
-    <div class="header-inner">
-      <div class="logo-text">
-        <h1>Корпоративный портал Стандарт Мастер</h1>
-        <p>Внутренняя база знаний, регламенты и мотивация</p>
+  <div class="app">
+    <header class="topbar">
+      <div class="logo">
+        <span class="logo-mark">SM</span>
+        <div class="logo-text">
+          <div class="logo-title">Стандарт Мастер</div>
+          <div class="logo-sub">портал службы поддержки</div>
+        </div>
       </div>
-      <div class="header-actions">
-        <button id="themeToggle" type="button" class="btn btn-ghost">🌓 Тема</button>
+      <div class="topbar-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">☀️</button>
       </div>
-    </div>
-    <nav class="main-nav">
-      <button class="nav-link active" data-section="support">Отдел поддержки</button>
-    </nav>
-  </header>
+    </header>
 
-  <main id="content" class="content">
-  </main>
+    <main class="layout">
+      <aside class="sidebar">
+        <nav class="main-nav">
+          <button class="nav-link active" data-section="support">Отдел поддержки</button>
+        </nav>
+      </aside>
 
-  <footer class="footer">
-    <p>© Стандарт Мастер · внутренний портал</p>
-  </footer>
+      <section class="content">
+        <div id="content" class="content-inner">
+          Загрузка...
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/calc.js"></script>
 </body>
 </html>
