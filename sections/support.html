@@ -149,27 +149,12 @@
       </div>
     </div>
 
-    <button type="button" class="btn step-next" data-step-target="l1-escalation">
-      ▶ Пошагово: как эскалировать задачу в L2
-    </button>
-    <ul class="step-list" data-step-list="l1-escalation">
-      <li class="active">
-        <span class="step-index">1</span>
-        <span>Проверь, что исчерпал все регламенты L1 и задача действительно выходит за их рамки.</span>
-      </li>
-      <li>
-        <span class="step-index">2</span>
-        <span>Убедись, что в тикете есть скрины, шаги, точка, терминал и время возникновения проблемы.</span>
-      </li>
-      <li>
-        <span class="step-index">3</span>
-        <span>Коротко опиши, что уже проверил и к каким выводам пришёл на уровне L1.</span>
-      </li>
-      <li>
-        <span class="step-index">4</span>
-        <span>Сформулируй просьбу к L2: что именно нужно проверить или решить.</span>
-      </li>
-    </ul>
+    <div class="quiz-launchers">
+      <button type="button" class="btn quiz-trigger" data-quiz="l1-escalation">
+        🧭 Мини-тест: эскалация в L2
+      </button>
+      <p class="quiz-hint">Потренируйся, как корректно передать кейс инженерам L2.</p>
+    </div>
 
       <h4>📋 Чек-лист приёма обращения (L1_DO_1–3)</h4>
     <div class="grid">
@@ -203,25 +188,12 @@
         </ul>
       </article>
     
-    <button type="button" class="btn step-next" data-step-target="l1-intro-steps">▶ Пройти шаги L1 по порядку</button>
-    <ul class="step-list" data-step-list="l1-intro-steps">
-      <li class="active">
-        <span class="step-index">1</span>
-        <span>Уточни у клиента, кто он, с какой точки и что именно сейчас не получается.</span>
-      </li>
-      <li>
-        <span class="step-index">2</span>
-        <span>Попроси скриншот или фото ошибки, если на экране есть сообщение.</span>
-      </li>
-      <li>
-        <span class="step-index">3</span>
-        <span>Зафиксируй, где и когда это произошло (терминал, раздел, время).</span>
-      </li>
-      <li>
-        <span class="step-index">4</span>
-        <span>Уточни, что уже пробовали сделать до звонка (перезапуск, смена, фильтры).</span>
-      </li>
-    </ul>
+    <div class="quiz-launchers">
+      <button type="button" class="btn quiz-trigger" data-quiz="l1-intro">
+        📞 Мини-тест: первый контакт с клиентом
+      </button>
+      <p class="quiz-hint">Разберись, что спрашивать и как вести себя в первые секунды разговора.</p>
+    </div>
 
     <h4>Как оформить тикет в Pyrus (L1_DO_4)</h4>
     <div class="grid">
@@ -509,27 +481,27 @@
         </ul>
       </article>
     </div>
-    <button type="button" class="btn step-next" data-step-target="l2-escalation">
-      ▶ Пошагово: как передать кейс на L3
-    </button>
-    <ul class="step-list" data-step-list="l2-escalation">
-      <li class="active">
-        <span class="step-index">1</span>
-        <span>Собери все артефакты: логи, скрины, примеры чеков/документов, ссылки на связанные задачи.</span>
-      </li>
-      <li>
-        <span class="step-index">2</span>
-        <span>Опиши, какие гипотезы уже проверены и какие результаты дали.</span>
-      </li>
-      <li>
-        <span class="step-index">3</span>
-        <span>Сформулируй, в чём именно сложность: редкость, системность, архитектурность задачи.</span>
-      </li>
-      <li>
-        <span class="step-index">4</span>
-        <span>Чётко напиши, какой помощи ждёшь от L3: анализ архитектуры, RCA, рекомендаций по изменениям.</span>
-      </li>
-    </ul>
+    <div class="quiz-launchers">
+      <button type="button" class="btn quiz-trigger" data-quiz="l2-escalation">
+        🧠 Мини-тест: как отправить кейс на L3
+      </button>
+      <p class="quiz-hint">Проверь себя: что нужно подготовить для экспертов и как описать проблему.</p>
+    </div>
+
+    <div class="quiz-modal" data-quiz-backdrop hidden>
+      <div class="quiz-dialog">
+        <button type="button" class="quiz-close" data-quiz-close aria-label="Закрыть тест">✕</button>
+        <div class="quiz-label">Интерактивный мини-тест</div>
+        <h4 class="quiz-title" data-quiz-title>Тест</h4>
+        <div class="quiz-progress" data-quiz-progress></div>
+        <p class="quiz-question" data-quiz-question></p>
+        <div class="quiz-options" data-quiz-options></div>
+        <div class="quiz-feedback" data-quiz-feedback></div>
+        <div class="quiz-actions">
+          <button type="button" class="btn quiz-next" data-quiz-next disabled>Следующий вопрос →</button>
+        </div>
+      </div>
+    </div>
 
     <h4>Основные функции L3 (L3_DO)</h4>
     <div class="grid">

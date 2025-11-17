@@ -37,26 +37,212 @@ document.addEventListener('DOMContentLoaded', () => {
     applyFilter('all');
   };
 
-  const initStepper = () => {
-    const lists = Array.from(content.querySelectorAll('[data-step-list]'));
-    if (!lists.length) return;
+  const quizBank = {
+    'l1-intro': {
+      title: 'Старт общения с клиентом',
+      questions: [
+        {
+          prompt: 'Ты взял трубку / отвечаешь в чате клиенту — что нужно сделать первым делом? 😊',
+          options: [
+            { text: '«Вечер в хату, часик в радость»', correct: false, note: '❌ Нет, это точно не наш tone of voice.' },
+            { text: 'Поприветствовать, назвать компанию и своё имя', correct: true, note: '✅ Да! «Добрый день, компания Стандарт Мастер, меня зовут ...»' },
+            { text: 'Возмутиться, зачем снова звонят', correct: false, note: '❌ Негатив раздражает клиента и мешает работе.' },
+          ],
+        },
+        {
+          prompt: 'Какой первый факт нужно уточнить, чтобы понимать контекст обращения? 📍',
+          options: [
+            { text: 'Любимый цвет клиента', correct: false, note: '🤔 Забавно, но бесполезно.' },
+            { text: 'Кто и с какой точки/объекта обращается', correct: true, note: '✅ Верно: ФИО + точка помогают найти данные.' },
+            { text: 'Что клиент ел на завтрак', correct: false, note: '🥐 Не влияет на диагностику.' },
+          ],
+        },
+        {
+          prompt: 'Клиент говорит «не работает». Твои действия? 🛠️',
+          options: [
+            { text: 'Попросить скрин/фото ошибки и шаги, где это случилось', correct: true, note: '✅ Да, нужны факты: скрины, раздел, время.' },
+            { text: 'Догадаться по интуиции и сразу эскалировать', correct: false, note: '❌ Эскалация без данных замедляет решение.' },
+            { text: 'Сказать, что всё само починится', correct: false, note: '❌ Так доверие не строится.' },
+          ],
+        },
+        {
+          prompt: 'Что уточнить перед завершением первичного сбора? 🔄',
+          options: [
+            { text: 'Что уже пробовали сделать (перезапуск, смена, фильтры)', correct: true, note: '✅ Это убережёт от повторения бесполезных шагов.' },
+            { text: 'Расспросить о погоде', correct: false, note: '🌦️ Погода не влияет на тикет.' },
+            { text: 'Пожелать удачи и завершить без вопросов', correct: false, note: '❌ Нельзя заканчивать без фактов.' },
+          ],
+        },
+      ],
+    },
+    'l1-escalation': {
+      title: 'Передача кейса с L1 на L2',
+      questions: [
+        {
+          prompt: 'Когда вообще пора звать L2? 🚀',
+          options: [
+            { text: 'Когда исчерпал регламенты L1 и задача явно сложнее', correct: true, note: '✅ Именно тогда эскалация оправдана.' },
+            { text: 'Когда клиент попросил скидку', correct: false, note: '❌ Скидки не про эскалацию.' },
+            { text: 'Когда не хочется разбираться', correct: false, note: '❌ Нельзя отдавать без попытки по L1.' },
+          ],
+        },
+        {
+          prompt: 'Что обязательно должно быть в тикете для L2? 🖼️',
+          options: [
+            { text: 'Скриншоты/фото, шаги, время и точка проблемы', correct: true, note: '✅ Это база для быстрого старта L2.' },
+            { text: 'Смайлики и мемы', correct: false, note: '😅 Можно, но не вместо фактов.' },
+            { text: 'Только заголовок «помогите»', correct: false, note: '❌ Без деталей задача зависнет.' },
+          ],
+        },
+        {
+          prompt: 'Как оформить свою работу до эскалации? ✍️',
+          options: [
+            { text: 'Коротко перечислить, что проверил и к чему пришёл', correct: true, note: '✅ L2 понимает, что уже сделано.' },
+            { text: 'Ничего не писать, пусть сами догадаются', correct: false, note: '❌ Это потеря времени команды.' },
+            { text: 'Сделать загадочную подсказку', correct: false, note: '🤔 Нет, нужны прямые факты.' },
+          ],
+        },
+        {
+          prompt: 'Что добавить в конце обращения к L2? 🎯',
+          options: [
+            { text: 'Чёткий запрос: что нужно проверить или починить', correct: true, note: '✅ Тогда инженер понимает задачу.' },
+            { text: 'Оставить пустым', correct: false, note: '❌ Непонятно, чего ждём.' },
+            { text: 'Написать стихотворение', correct: false, note: '📜 Поэзия — хорошо, но не для тикета.' },
+          ],
+        },
+      ],
+    },
+    'l2-escalation': {
+      title: 'Передача кейса на L3',
+      questions: [
+        {
+          prompt: 'Что собрать перед звонком к экспертам L3? 🧳',
+          options: [
+            { text: 'Логи, скрины, примеры чеков/документов, ссылки на связанные задачи', correct: true, note: '✅ Чем больше артефактов, тем быстрее разбор.' },
+            { text: 'Только название задачи', correct: false, note: '❌ Без деталей L3 не сможет помочь.' },
+            { text: 'Ничего — пусть сами спросят', correct: false, note: '❌ Так теряем время.' },
+          ],
+        },
+        {
+          prompt: 'Что написать про проверенные гипотезы? 🧪',
+          options: [
+            { text: 'Перечислить, что пробовали и какой результат получили', correct: true, note: '✅ Экономим время и избегаем повторов.' },
+            { text: 'Скрыть, чтобы удивить L3', correct: false, note: '❌ Нельзя утаивать факты.' },
+            { text: 'Придумать новую гипотезу на ходу', correct: false, note: '🤔 Лучше честно указать реальные шаги.' },
+          ],
+        },
+        {
+          prompt: 'Как описать сложность задачи? 🌪️',
+          options: [
+            { text: 'Указать, что она редкая/системная/архитектурная и чем рискуем', correct: true, note: '✅ L3 понимает приоритет и риск.' },
+            { text: 'Сказать «ну просто сложно»', correct: false, note: '❌ Нужны конкретные критерии.' },
+            { text: 'Вообще не объяснять', correct: false, note: '❌ Тогда непонятно, зачем эскалация.' },
+          ],
+        },
+        {
+          prompt: 'Что попросить у L3 в финале обращения? 🎁',
+          options: [
+            { text: 'Чётко сформулировать, какой помощи ждёшь: RCA, анализ архитектуры, рекомендации', correct: true, note: '✅ Конкретика = быстрый результат.' },
+            { text: 'Пожелать удачи и исчезнуть', correct: false, note: '❌ Нужно остаться на связи.' },
+            { text: 'Спросить, как дела', correct: false, note: '😊 Вежливо, но не про задачу.' },
+          ],
+        },
+      ],
+    },
+  };
 
-    lists.forEach(list => {
-      const id = list.getAttribute('data-step-list');
-      const btn = content.querySelector('[data-step-target="' + id + '"]');
-      if (!btn) return;
-      const items = Array.from(list.querySelectorAll('li'));
-      let index = 0;
+  const initQuizzes = () => {
+    const triggers = Array.from(content.querySelectorAll('[data-quiz]'));
+    const backdrop = content.querySelector('[data-quiz-backdrop]');
+    if (!triggers.length || !backdrop) return;
 
-      const update = () => {
-        items.forEach((li, i) => {
-          li.classList.toggle('active', i === index);
+    const dialog = backdrop.querySelector('.quiz-dialog');
+    const titleEl = backdrop.querySelector('[data-quiz-title]');
+    const progressEl = backdrop.querySelector('[data-quiz-progress]');
+    const questionEl = backdrop.querySelector('[data-quiz-question]');
+    const optionsEl = backdrop.querySelector('[data-quiz-options]');
+    const feedbackEl = backdrop.querySelector('[data-quiz-feedback]');
+    const nextBtn = backdrop.querySelector('[data-quiz-next]');
+
+    let currentQuiz = null;
+    let currentIndex = 0;
+
+    const close = () => {
+      backdrop.hidden = true;
+      backdrop.classList.remove('open');
+      currentQuiz = null;
+      currentIndex = 0;
+    };
+
+    const renderQuestion = () => {
+      if (!currentQuiz) return;
+      const question = currentQuiz.questions[currentIndex];
+      if (!question) return close();
+
+      if (titleEl) titleEl.textContent = currentQuiz.title;
+      if (progressEl) progressEl.textContent = `Вопрос ${currentIndex + 1} из ${currentQuiz.questions.length}`;
+      if (questionEl) questionEl.textContent = question.prompt;
+      if (feedbackEl) feedbackEl.textContent = '';
+      if (nextBtn) {
+        nextBtn.disabled = true;
+        nextBtn.textContent = currentIndex === currentQuiz.questions.length - 1 ? 'Завершить тест' : 'Следующий вопрос →';
+      }
+
+      if (optionsEl) {
+        optionsEl.innerHTML = '';
+        question.options.forEach((option) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'quiz-option';
+          btn.textContent = option.text;
+          btn.addEventListener('click', () => {
+            const buttons = Array.from(optionsEl.querySelectorAll('button'));
+            buttons.forEach((b) => {
+              b.disabled = true;
+              if (b === btn) {
+                b.classList.add(option.correct ? 'correct' : 'wrong');
+              }
+            });
+            if (feedbackEl) feedbackEl.textContent = option.note || (option.correct ? 'Верно!' : 'Почти, попробуй иначе.');
+            if (nextBtn) nextBtn.disabled = false;
+          });
+          optionsEl.appendChild(btn);
         });
-      };
+      }
+    };
 
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (!currentQuiz) return;
+        const lastQuestion = currentIndex === currentQuiz.questions.length - 1;
+        if (lastQuestion) {
+          close();
+          return;
+        }
+        currentIndex += 1;
+        renderQuestion();
+      });
+    }
+
+    const closeBtn = backdrop.querySelector('[data-quiz-close]');
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', (event) => {
+      if (event.target === backdrop) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
+
+    triggers.forEach((btn) => {
       btn.addEventListener('click', () => {
-        index = (index + 1) % items.length;
-        update();
+        const key = btn.getAttribute('data-quiz');
+        const quiz = quizBank[key];
+        if (!quiz) return;
+        currentQuiz = quiz;
+        currentIndex = 0;
+        backdrop.hidden = false;
+        backdrop.classList.add('open');
+        renderQuestion();
       });
     });
   };
@@ -372,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setActive(name);
         if (name === 'support') {
           initSupportFilters();
-          initStepper();
+          initQuizzes();
           initAccordions();
           initL1Calculator();
           initL2Calculator();
