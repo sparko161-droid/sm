@@ -231,7 +231,7 @@ body.dark-theme .badge {
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.9fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 14px;
 }
 
