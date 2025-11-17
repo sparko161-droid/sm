@@ -397,6 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updatesTotal: card.querySelector('[data-output="updates-total"]'),
       totalGross: card.querySelector('[data-output="l2-total-gross"]'),
       totalNet: card.querySelector('[data-output="l2-total-net"]'),
+      bonusTotal: card.querySelector('[data-output="l2-bonus-total"]'),
     };
 
     const updatesTable = card.querySelector('[data-updates-table] tbody');
@@ -483,12 +484,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const transferIncome = transfer * 500;
 
       const updatesIncome = recalcUpdates();
-      const totalGross = baseSalary + ticketsIncome + updatesIncome + secondShiftsIncome + onsiteGsmbonus + summerIncome + transferIncome;
+      const bonuses = ticketsIncome + updatesIncome + secondShiftsIncome + onsiteGsmbonus + summerIncome + transferIncome;
+      const totalGross = baseSalary + bonuses;
       const ndfl = baseSalary * ndflRate;
       const totalNet = totalGross - ndfl;
 
       if (outputs.totalGross) outputs.totalGross.textContent = `${formatMoney(totalGross)} ₽`;
       if (outputs.totalNet) outputs.totalNet.textContent = `${formatMoney(totalNet)} ₽`;
+      if (outputs.bonusTotal) outputs.bonusTotal.textContent = `${formatMoney(bonuses)} ₽`;
 
       if (outputs.result) {
         outputs.result.textContent = `ЗП L2: ${formatMoney(totalGross)} ₽ до вычета, ${formatMoney(totalNet)} ₽ после вычета (НДФЛ ${formatMoney(ndfl)} ₽ с оклада)`;
@@ -510,7 +513,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const addons =
           `<div class="rate-line"><span class="rate-label">ГСМ за выезды: </span>${formatMoney(onsiteGsmbonus)} ₽</div>` +
           `<div class="rate-line"><span class="rate-label">Выставление летника / ЧЗ: </span>${formatMoney(summerIncome)} ₽</div>` +
-          `<div class="rate-line"><span class="rate-label">Перенос в клад: </span>${formatMoney(transferIncome)} ₽</div>`;
+          `<div class="rate-line"><span class="rate-label">Перенос в клад: </span>${formatMoney(transferIncome)} ₽</div>` +
+          `<div class="rate-line"><span class="rate-label">Итого премии и доплат: </span><strong>${formatMoney(bonuses)} ₽</strong></div>`;
 
         outputs.breakdown.innerHTML += addons;
       }
