@@ -77,3 +77,35 @@ body.dark-theme .step-list li.active .step-index {
   margin-top: 6px;
   white-space: pre-line;
 }
+
+.template-block {
+  border: 1px dashed var(--border-soft);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background: var(--card-bg);
+}
+
+.template-block-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.template-copy {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.template-copy:hover {
+  color: var(--text);
+}
+
+.template-text {
+  font-size: 13px;
+  white-space: pre-line;
+}

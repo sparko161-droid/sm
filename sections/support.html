@@ -14,6 +14,7 @@
       <button class="subnav-pill" data-line-filter="l2">L2 инженеры</button>
       <button class="subnav-pill" data-line-filter="l3">L3 эксперты</button>
       <button class="subnav-pill" data-line-filter="cases">Кейсы</button>
+      <button class="subnav-pill" data-line-filter="templates">Шаблоны сообщений</button>
     </div>
 
     <div class="callout">
@@ -1545,6 +1546,273 @@
     <button type="button" class="btn quiz-trigger" data-quiz="case-integration-fail">🔗 Тест: интеграция</button>
     <button type="button" class="btn quiz-trigger" data-quiz="case-front-crash">⚙️ Тест: падение фронта</button>
     <p class="quiz-hint">Пройди мини-сценарии: выбери правильные действия, приоритеты и эскалации.</p>
+  </div>
+</section>
+
+<!-- Шаблоны сообщений (Communication Library) -->
+<section class="support-line" data-line="templates">
+  <h3>📝 Шаблоны сообщений для работы с клиентами</h3>
+  <p class="tagline">Единый стиль общения для L1–L3: готовые фразы, мягкие отказы, запросы данных и ответы по учёту/технике.</p>
+
+  <div class="callout">
+    <strong>Как пользоваться:</strong> выбери фильтр по линии или типу задач, скопируй подходящий шаблон и адаптируй под клиента.
+  </div>
+
+  <div class="subnav-lines">
+    <button class="subnav-pill active" data-template-filter="all">Все</button>
+    <button class="subnav-pill" data-template-filter="l1">L1</button>
+    <button class="subnav-pill" data-template-filter="l2">L2</button>
+    <button class="subnav-pill" data-template-filter="l3">L3</button>
+    <button class="subnav-pill" data-template-filter="accounting">Учёт</button>
+    <button class="subnav-pill" data-template-filter="tech">Техника</button>
+    <button class="subnav-pill" data-template-filter="integration">Интеграции</button>
+    <button class="subnav-pill" data-template-filter="conflict">Конфликты</button>
+  </div>
+
+  <div class="card-grid">
+    <article class="card" data-template-tags="l1 l2 l3">
+      <div class="card-title">Что внутри</div>
+      <p class="card-body">Быстрые шаблоны для L1–L3, запросы данных, мягкие отказы и готовые ответы по учёту/технике.</p>
+    </article>
+    <article class="card" data-template-tags="l1 l2 l3">
+      <div class="card-title">Зачем</div>
+      <p class="card-body">Экономия времени на переписку, единый tone of voice и меньше возвратов тикетов «на дооформление».</p>
+    </article>
+    <article class="card" data-template-tags="l1 l2 l3 conflict">
+      <div class="card-title">Фишка</div>
+      <p class="card-body">Каждый блок можно скопировать одной кнопкой. Используй фильтры, чтобы не листать лишнее.</p>
+    </article>
+  </div>
+
+  <h4>Быстрые ответы L1</h4>
+  <div class="grid">
+    <article class="card" data-template-tags="l1">
+      <div class="card-title">Запрос данных и идентификация</div>
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>📥 Нужны детали</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l1-data">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l1-data">
+Чтобы разобраться, подскажите, пожалуйста:
+— точку/объект и терминал
+— что делали и что получилось
+— время, когда увидели ошибку
+— приложите, если возможно, скрин/фото
+        </div>
+      </div>
+
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>⏳ Взял в работу</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l1-hold">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l1-hold">
+Добрый день! Приняли задачу в работу. Сейчас проверяем настройки и логи, вернусь с обновлением в течение 10–15 минут.
+Если появится новое наблюдение — напишите сюда, чтобы ничего не потерять.
+        </div>
+      </div>
+
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>✅ Завершение обращения</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l1-done">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l1-done">
+Мы проверили ситуацию — сейчас всё работает корректно. Если увидите повторение или появятся вопросы, пишите — поможем. Хорошего дня! 😊
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-template-tags="l1 l2 conflict">
+      <div class="card-title">Если клиент на эмоциях</div>
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>🤝 Признать и зафиксировать следующий шаг</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l1-conflict">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l1-conflict">
+Понимаю, что ситуация неприятная. Мы уже разбираем проблему: сейчас уточняем детали и проверяем логи. Дам обновление в течение 10–15 минут.
+Если будет удобно — пришлите скрин/видео, это ускорит решение.
+        </div>
+      </div>
+
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>🧭 Уточнить приоритет через SLA</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l1-sla">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l1-sla">
+Ваша задача в работе. По SLA задачи такого приоритета решаем в течение 1–3 часов. Я сообщу, как только будут новости или понадобится уточнение.
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h4>Ответы L2 по учёту и технике</h4>
+  <div class="grid">
+    <article class="card" data-template-tags="l2 accounting">
+      <div class="card-title">Учёт: ТТК, себестоимость, инвентаризации</div>
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>🥘 Себестоимость / ТТК</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l2-cost">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l2-cost">
+Проверили себестоимость блюда. Причина расхождения — некорректный приход/движение/ТТК.
+Обновили данные и пересчитали себестоимость — сейчас показатели корректны.
+Если планируется изменение цен, рекомендуем заранее обновить ТТК и проверить остатки.
+        </div>
+      </div>
+
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>📦 Инвентаризация</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l2-stock">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l2-stock">
+Нашли расхождение между фактическими и учётными остатками: источник — корректировка / лишний документ.
+Исправили данные, инвентаризация пересчитана. Проверьте, пожалуйста, отчёт — значения должны совпадать.
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-template-tags="l2 tech integration">
+      <div class="card-title">Техника и интеграции</div>
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>🧾 Запрос логов/артефактов</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l2-logs">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l2-logs">
+Чтобы понять причину ошибки, пришлите, пожалуйста:
+— Front.log и CashServer.log за время инцидента
+— скрин/видео момента ошибки
+— номер кассы/терминала и пример чека
+        </div>
+      </div>
+
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>🔗 Интеграции</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l2-integration">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l2-integration">
+Проверили интеграцию: проблема была в ключе API / доступности сервиса / настройках прав.
+Обновили параметры — выгрузка идёт корректно. Если в течение дня заметите сбои — напишите, перепроверим логи.
+        </div>
+      </div>
+
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>🆕 Обновление/проверка фронта</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l2-update">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l2-update">
+Мы обновили клиент и проверили запуск — работает стабильно. Если в течение дня появятся ошибки, сообщите — посмотрим логи и вернёмся с решением.
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h4>L3 и экспертные ответы</h4>
+  <div class="grid">
+    <article class="card" data-template-tags="l3">
+      <div class="card-title">RCA и системные инциденты</div>
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>🧠 Шаблон RCA-ответа</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l3-rca">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l3-rca">
+Ситуация: ...
+Корневая причина: ...
+Что сделали сейчас: ...
+Как избежать повторения: ... (регламенты/настройки/мониторинг)
+Что нужно проверить клиенту: ...
+        </div>
+      </div>
+
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>📤 Возврат результата вниз</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-l3-handback">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-l3-handback">
+Провели разбор: причина в комбинации скидки и плагина.
+Исправили конфигурацию и обновили регламент. Проверьте, пожалуйста, работу на чек-кейсах из описания.
+Если заметите повтор — пришлите примеры, добавим в мониторинг и дополним тест-кейсы.
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-template-tags="conflict l2 l3">
+      <div class="card-title">Когда сроки больше, чем ожидает клиент</div>
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>⏱ Честное ожидание</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-delay">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-delay">
+Берём задачу в приоритет. Нужно собрать дополнительные артефакты, чтобы решить корректно.
+Обновление дам в течение часа, финальное решение по SLA для этого приоритета — в течение рабочего дня. Если получится быстрее, напишу сразу.
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h4>Запросы информации и мягкие рамки</h4>
+  <div class="grid">
+    <article class="card" data-template-tags="l1 l2 l3">
+      <div class="card-title">Когда нужно больше данных</div>
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>📊 Шаблон запроса</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-request-more">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-request-more">
+Чтобы не гадать, нужен минимум:
+— где и когда видите проблему (объект, терминал, время)
+— шаги 1-2-3, как к ней прийти
+— скрины/видео и примеры чеков/документов
+— что уже проверили
+Соберём это — и сразу двинемся к решению/эскалации.
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-template-tags="conflict l2 l3">
+      <div class="card-title">Мягкий отказ или невозможность доработки</div>
+      <div class="template-block">
+        <div class="template-block-header">
+          <span>🚧 Что не делаем</span>
+          <button type="button" class="btn btn-ghost template-copy" data-copy-target="tmpl-soft-no">Скопировать</button>
+        </div>
+        <div class="template-text" id="tmpl-soft-no">
+К сожалению, выполнить такую доработку в рамках текущего функционала iiko нельзя — потребуется изменение продукта.
+Можем предложить обходной сценарий или передать идею в iiko. Если нужен временный вариант — подскажем, как безопасно настроить.
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h4>Анти-примеры</h4>
+  <div class="card" data-template-tags="l1 l2 l3 conflict">
+    <ul class="card-list">
+      <li>❌ «Не знаю, что у вас там не работает»</li>
+      <li>❌ «У вас опять всё сломалось»</li>
+      <li>❌ «Так работает система, ничего не сделать»</li>
+      <li>❌ «Сами откройте логи и смотрите»</li>
+      <li>❌ Ответ без действий и сроков: «Разберёмся когда-нибудь»</li>
+    </ul>
+    <p class="small">Если текст не даёт действия, срок или ответственность — переделываем по шаблонам выше.</p>
+  </div>
+
+  <div class="quiz-launchers">
+    <button type="button" class="btn quiz-trigger" data-quiz="templates-communication">
+      🎯 Мини-тест: как ответить клиенту?
+    </button>
+    <p class="quiz-hint">Проверь, умеешь ли ты формулировать ответы с действиями, сроками и корректным тоном.</p>
   </div>
 </section>
 
