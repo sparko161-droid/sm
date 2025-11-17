@@ -348,6 +348,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const triggerBtn = card.querySelector('[data-action="recalc-l2"]');
     if (triggerBtn) triggerBtn.addEventListener('click', recalc);
 
+    // Стартуем с одной строки обновлений, чтобы калькулятор сразу показывал полный расклад
+    addRow();
+
     recalc();
   };
 
