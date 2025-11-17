@@ -84,6 +84,7 @@
   border: 1px solid var(--border-soft);
   padding: 8px 10px;
   font-size: 13px;
+  color: var(--text-main);
   background: var(--card-bg);
   cursor: pointer;
   transition: border-color 0.15s ease, transform 0.08s ease;
