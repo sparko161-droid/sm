@@ -92,6 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const outputs = {
       result: card.querySelector('[data-output="l1-result"]'),
       breakdown: card.querySelector('[data-output="l1-breakdown"]'),
+      totalGross: card.querySelector('[data-output="l1-total-gross"]'),
+      totalNet: card.querySelector('[data-output="l1-total-net"]'),
     };
 
     const recalc = () => {
@@ -139,6 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const totalGross = baseSalary + resSum + crSum;
       const ndfl = baseSalary * ndflRate;
       const totalNet = totalGross - ndfl;
+
+      if (outputs.totalGross) outputs.totalGross.textContent = `${formatMoney(totalGross)} ₽`;
+      if (outputs.totalNet) outputs.totalNet.textContent = `${formatMoney(totalNet)} ₽`;
 
       if (outputs.result) {
         outputs.result.textContent = `ЗП L1: ${formatMoney(totalGross)} ₽ до вычета, ${formatMoney(totalNet)} ₽ после вычета (НДФЛ ${formatMoney(ndfl)} ₽ с оклада)`;
@@ -201,6 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
       result: card.querySelector('[data-output="l2-result"]'),
       breakdown: card.querySelector('[data-output="l2-breakdown"]'),
       updatesTotal: card.querySelector('[data-output="updates-total"]'),
+      totalGross: card.querySelector('[data-output="l2-total-gross"]'),
+      totalNet: card.querySelector('[data-output="l2-total-net"]'),
     };
 
     const updatesTable = card.querySelector('[data-updates-table] tbody');
@@ -283,6 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const ndfl = baseSalary * ndflRate;
       const totalNet = totalGross - ndfl;
 
+      if (outputs.totalGross) outputs.totalGross.textContent = `${formatMoney(totalGross)} ₽`;
+      if (outputs.totalNet) outputs.totalNet.textContent = `${formatMoney(totalNet)} ₽`;
+
       if (outputs.result) {
         outputs.result.textContent = `ЗП L2: ${formatMoney(totalGross)} ₽ до вычета, ${formatMoney(totalNet)} ₽ после вычета (НДФЛ ${formatMoney(ndfl)} ₽ с оклада)`;
       }
@@ -308,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
       row.dataset.rowId = String(rowId);
       row.innerHTML = `
         <td>${rowId}</td>
-        <td><input type="number" min="1" value="1" class="calc-input" data-update-terminals /></td>
+        <td><input type="number" min="1" value="1" class="calc-input updates-terminals" data-update-terminals /></td>
         <td class="upd-price">0 ₽</td>
         <td class="upd-income">0 ₽</td>
         <td><button type="button" data-remove-update>✕</button></td>

@@ -733,6 +733,22 @@ body.dark-theme .step-list li.active .step-index {
   border-color: var(--red);
   color: var(--red);
 }
+.calc-table input.updates-terminals {
+  width: 90px;
+  padding: 6px 8px;
+}
+.calc-table button[data-remove-update] {
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.calc-table button[data-remove-update]:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
 
 .calc-table {
   width: 100%;

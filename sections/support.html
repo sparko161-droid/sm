@@ -124,6 +124,25 @@
         </div>
 
         <button class="calc-btn" type="button" data-action="recalc-l1">Пересчитать L1</button>
+
+        <div class="calc-results">
+          <div class="calc-result-highlight">
+            <div class="calc-highlight-label">Итого после НДФЛ</div>
+            <div class="calc-highlight-value" data-output="l1-total-net">—</div>
+            <div class="calc-highlight-hint">Чистыми, НДФЛ удерживается только с оклада</div>
+          </div>
+
+          <div class="calc-result-line">
+            <div>
+              <div class="calc-label">До вычета</div>
+              <div class="calc-hint">Оклад + премии</div>
+            </div>
+            <div class="calc-value" data-output="l1-total-gross">—</div>
+          </div>
+
+          <div class="calc-divider"></div>
+        </div>
+
         <div id="l1-result" class="calc-result" data-output="l1-result"></div>
         <div id="l1-breakdown" class="rate-breakdown" data-output="l1-breakdown"></div>
         <div class="calc-note">Подробная расшифровка обновляется при каждом вводе: видно, как влияет каждая мотивация.</div>
@@ -352,6 +371,25 @@
         <div id="updates-total" class="updates-total" data-output="updates-total">Доход от обновлений: 0 ₽</div>
 
         <button class="calc-btn" type="button" data-action="recalc-l2">Пересчитать L2</button>
+
+        <div class="calc-results">
+          <div class="calc-result-highlight">
+            <div class="calc-highlight-label">Итого после НДФЛ</div>
+            <div class="calc-highlight-value" data-output="l2-total-net">—</div>
+            <div class="calc-highlight-hint">Чистыми, НДФЛ удерживается только с оклада</div>
+          </div>
+
+          <div class="calc-result-line">
+            <div>
+              <div class="calc-label">До вычета</div>
+              <div class="calc-hint">Оклад + тикеты + обновления + смены</div>
+            </div>
+            <div class="calc-value" data-output="l2-total-gross">—</div>
+          </div>
+
+          <div class="calc-divider"></div>
+        </div>
+
         <div id="l2-result" class="calc-result" data-output="l2-result"></div>
         <div id="l2-breakdown" class="rate-breakdown" data-output="l2-breakdown"></div>
         <div class="calc-note">Суммируем ставку за тикеты, обновления и вторые смены. НДФЛ удерживается только с оклада.</div>
