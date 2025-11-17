@@ -479,12 +479,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const effRate = perTicketAfterPlan + overdueBonusRate + teamBonusRate;
       const ticketsIncome = totalTicketsForPlan * effRate;
 
-      const onsiteGsmbonus = onsite * 100;
+      const onsiteGsmBonus = onsite * 100;
       const summerIncome = summerSetup * 300;
       const transferIncome = transfer * 500;
 
       const updatesIncome = recalcUpdates();
-      const bonuses = ticketsIncome + updatesIncome + secondShiftsIncome + onsiteGsmbonus + summerIncome + transferIncome;
+      const bonuses = ticketsIncome + updatesIncome + secondShiftsIncome + onsiteGsmBonus + summerIncome + transferIncome;
       const totalGross = baseSalary + bonuses;
       const ndfl = baseSalary * ndflRate;
       const totalNet = totalGross - ndfl;
@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
           `<div class="rate-line"><span class="rate-label">Доход за вторые смены (ручной ввод): </span>${formatMoney(secondShiftsIncome)} ₽</div>`;
 
         const addons =
-          `<div class="rate-line"><span class="rate-label">ГСМ за выезды: </span>${formatMoney(onsiteGsmbonus)} ₽</div>` +
+          `<div class="rate-line"><span class="rate-label">ГСМ за выезды: </span>${formatMoney(onsiteGsmBonus)} ₽</div>` +
           `<div class="rate-line"><span class="rate-label">Выставление летника / ЧЗ: </span>${formatMoney(summerIncome)} ₽</div>` +
           `<div class="rate-line"><span class="rate-label">Перенос в клад: </span>${formatMoney(transferIncome)} ₽</div>` +
           `<div class="rate-line"><span class="rate-label">Итого премии и доплат: </span><strong>${formatMoney(bonuses)} ₽</strong></div>`;
