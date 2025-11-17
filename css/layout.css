@@ -1,0 +1,131 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: rgba(247,247,248,0.96);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+body.dark-theme .header {
+  background: rgba(17,17,17,0.96);
+}
+
+.header-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 10px 20px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.logo-text h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.logo-text p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-nav {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 20px 10px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.nav-link {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 5px 12px;
+  font-size: 13px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.06s ease;
+}
+
+.nav-link:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+body.dark-theme .nav-link:hover {
+  background: #1f1f1f;
+}
+
+.nav-link.active {
+  border-color: var(--red);
+  background: #ffecec;
+  color: #a30000;
+  font-weight: 600;
+}
+
+body.dark-theme .nav-link.active {
+  background: #301212;
+  color: #ffb3b3;
+}
+
+.content {
+  max-width: 1160px;
+  margin: 16px auto 32px;
+  padding: 0 20px 32px;
+}
+
+.footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 10px 20px 18px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.section {
+  margin-bottom: 28px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.subgrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 700px) {
+  .subgrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
