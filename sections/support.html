@@ -96,58 +96,64 @@
         <div class="calc-title">L1 — калькулятор зарплаты</div>
         <div class="calc-sub">Оклад + премии за закрытие и создание с учётом пропущенных звонков и просрочек</div>
 
-        <div class="calc-row">
-          <label class="calc-label" for="l1-grade">Грейд:</label>
-          <select id="l1-grade" class="calc-select" name="grade">
-            <option value="1">1 грейд (оклад 23 000)</option>
-            <option value="2">2 грейд (оклад 29 000)</option>
-            <option value="3">3 грейд (оклад 32 000)</option>
-          </select>
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l1-resolved">Закрытых заявок за месяц:</label>
-          <input id="l1-resolved" class="calc-input" type="number" min="0" value="100" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l1-created">Созданных заявок за месяц:</label>
-          <input id="l1-created" class="calc-input" type="number" min="0" value="300" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l1-missed">% пропущенных звонков:</label>
-          <input id="l1-missed" class="calc-input" type="number" min="0" step="0.1" value="1.0" inputmode="decimal" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l1-overdue">% просроченных задач (для 3 грейда):</label>
-          <input id="l1-overdue" class="calc-input" type="number" min="0" step="0.1" value="1.0" inputmode="decimal" />
-        </div>
-
-        <button class="calc-btn" type="button" data-action="recalc-l1">Пересчитать L1</button>
-
-        <div class="calc-results">
-          <div class="calc-result-highlight">
-            <div class="calc-highlight-label">Итого после НДФЛ</div>
-            <div class="calc-highlight-value" data-output="l1-total-net">—</div>
-            <div class="calc-highlight-hint">Чистыми, НДФЛ удерживается только с оклада</div>
-          </div>
-
-          <div class="calc-result-line">
-            <div>
-              <div class="calc-label">До вычета</div>
-              <div class="calc-hint">Оклад + премии</div>
+        <div class="calc-two-col">
+          <div class="calc-panel calc-panel-inputs">
+            <div class="calc-row">
+              <label class="calc-label" for="l1-grade">Грейд:</label>
+              <select id="l1-grade" class="calc-select" name="grade">
+                <option value="1">1 грейд (оклад 23 000)</option>
+                <option value="2">2 грейд (оклад 29 000)</option>
+                <option value="3">3 грейд (оклад 32 000)</option>
+              </select>
             </div>
-            <div class="calc-value" data-output="l1-total-gross">—</div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l1-resolved">Закрытых заявок за месяц:</label>
+              <input id="l1-resolved" class="calc-input" type="number" min="0" value="100" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l1-created">Созданных заявок за месяц:</label>
+              <input id="l1-created" class="calc-input" type="number" min="0" value="300" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l1-missed">% пропущенных звонков:</label>
+              <input id="l1-missed" class="calc-input" type="number" min="0" step="0.1" value="1.0" inputmode="decimal" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l1-overdue">% просроченных задач (для 3 грейда):</label>
+              <input id="l1-overdue" class="calc-input" type="number" min="0" step="0.1" value="1.0" inputmode="decimal" />
+            </div>
+
+            <button class="calc-btn" type="button" data-action="recalc-l1">Пересчитать L1</button>
           </div>
 
-          <div class="calc-divider"></div>
-        </div>
+          <div class="calc-panel calc-panel-results">
+            <div class="calc-results">
+              <div class="calc-result-highlight">
+                <div class="calc-highlight-label">Итого после НДФЛ</div>
+                <div class="calc-highlight-value" data-output="l1-total-net">—</div>
+                <div class="calc-highlight-hint">Чистыми, НДФЛ удерживается только с оклада</div>
+              </div>
 
-        <div id="l1-result" class="calc-result" data-output="l1-result"></div>
-        <div id="l1-breakdown" class="rate-breakdown" data-output="l1-breakdown"></div>
-        <div class="calc-note">Подробная расшифровка обновляется при каждом вводе: видно, как влияет каждая мотивация.</div>
+              <div class="calc-result-line">
+                <div>
+                  <div class="calc-label">До вычета</div>
+                  <div class="calc-hint">Оклад + премии</div>
+                </div>
+                <div class="calc-value" data-output="l1-total-gross">—</div>
+              </div>
+
+              <div class="calc-divider"></div>
+            </div>
+
+            <div id="l1-result" class="calc-result" data-output="l1-result"></div>
+            <div id="l1-breakdown" class="rate-breakdown" data-output="l1-breakdown"></div>
+            <div class="calc-note">Подробная расшифровка обновляется при каждом вводе: видно, как влияет каждая мотивация.</div>
+          </div>
+        </div>
       </div>
     </div>
 
