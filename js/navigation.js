@@ -382,10 +382,13 @@ document.addEventListener('DOMContentLoaded', () => {
       grade: card.querySelector('#l2-grade'),
       city: card.querySelector('#l2-city'),
       resolved: card.querySelector('#l2-resolved'),
+      onsite: card.querySelector('#l2-onsite'),
       overdue: card.querySelector('#l2-overdue'),
       teamPlan: card.querySelector('#l2-team-plan'),
       teamFact: card.querySelector('#l2-team-fact'),
       secondShifts: card.querySelector('#l2-second-shifts'),
+      summerSetup: card.querySelector('#l2-summer-setup'),
+      transfer: card.querySelector('#l2-transfer'),
     };
 
     const outputs = {
@@ -424,10 +427,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const grade = Number(els.grade?.value || 1);
       const cityType = els.city?.value || 'base';
       const resolved = Math.max(0, Number(els.resolved?.value || 0));
+      const onsite = Math.max(0, Number(els.onsite?.value || 0));
       const overdue = Math.max(0, Number(els.overdue?.value || 0));
       const teamPlan = Math.max(0, Number(els.teamPlan?.value || 0));
       const teamFact = Math.max(0, Number(els.teamFact?.value || 0));
       const secondShiftsIncome = Math.max(0, Number(els.secondShifts?.value || 0));
+      const summerSetup = Math.max(0, Number(els.summerSetup?.value || 0));
+      const transfer = Math.max(0, Number(els.transfer?.value || 0));
 
       const baseOklads = [32000, 38000, 40000, 49000];
       const plans = [190, 220, 240, 240];
@@ -440,7 +446,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const plan = plans[grade - 1] || 1;
       const rateBase = rateBaseArr[grade - 1] || 0;
-      const ratio = plan > 0 ? resolved / plan : 0;
+      const totalTicketsForPlan = resolved + onsite;
+      const ratio = plan > 0 ? totalTicketsForPlan / plan : 0;
 
       let coef = 0;
       if (ratio >= 1) coef = 1;
@@ -469,10 +476,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const perTicketAfterPlan = rateBase * coef;
       const effRate = perTicketAfterPlan + overdueBonusRate + teamBonusRate;
-      const ticketsIncome = resolved * effRate;
+      const ticketsIncome = totalTicketsForPlan * effRate;
+
+      const onsiteGsmbonus = onsite * 100;
+      const summerIncome = summerSetup * 300;
+      const transferIncome = transfer * 500;
 
       const updatesIncome = recalcUpdates();
-      const totalGross = baseSalary + ticketsIncome + updatesIncome + secondShiftsIncome;
+      const totalGross = baseSalary + ticketsIncome + updatesIncome + secondShiftsIncome + onsiteGsmbonus + summerIncome + transferIncome;
       const ndfl = baseSalary * ndflRate;
       const totalNet = totalGross - ndfl;
 
@@ -491,9 +502,17 @@ document.addEventListener('DOMContentLoaded', () => {
           `<div class="rate-line"><span class="rate-label">+ бонус за низкие просрочки: </span>${overdueBonusRate.toFixed(2)} ₽</div>` +
           `<div class="rate-line"><span class="rate-label">+ командный бонус: </span>${teamBonusRate.toFixed(2)} ₽</div>` +
           `<div class="rate-line"><span class="rate-label">Итоговая ставка за тикет: </span><strong>${effRate.toFixed(2)} ₽</strong></div>` +
-          `<div class="rate-line"><span class="rate-label">Доход за ${resolved} тикетов: </span>${formatMoney(ticketsIncome)} ₽</div>` +
+          `<div class="rate-line"><span class="rate-label">Учитываем в плане: </span>${totalTicketsForPlan} тикетов (включая ${onsite} выезд${onsite === 1 ? '' : 'ов'})</div>` +
+          `<div class="rate-line"><span class="rate-label">Доход за тикеты и выезды: </span>${formatMoney(ticketsIncome)} ₽</div>` +
           `<div class="rate-line"><span class="rate-label">Доход от ночных обновлений: </span>${formatMoney(updatesIncome)} ₽</div>` +
           `<div class="rate-line"><span class="rate-label">Доход за вторые смены (ручной ввод): </span>${formatMoney(secondShiftsIncome)} ₽</div>`;
+
+        const addons =
+          `<div class="rate-line"><span class="rate-label">ГСМ за выезды: </span>${formatMoney(onsiteGsmbonus)} ₽</div>` +
+          `<div class="rate-line"><span class="rate-label">Выставление летника / ЧЗ: </span>${formatMoney(summerIncome)} ₽</div>` +
+          `<div class="rate-line"><span class="rate-label">Перенос в клад: </span>${formatMoney(transferIncome)} ₽</div>`;
+
+        outputs.breakdown.innerHTML += addons;
       }
     };
 
