@@ -1,6 +1,6 @@
 window.QuizEngine = {
-  init(containerElement, quizBank) {
-    if (!containerElement || !quizBank) return;
+  init(containerElement, sectionName) {
+    if (!containerElement) return;
     const triggers = Array.from(containerElement.querySelectorAll('[data-quiz]'));
     const backdrop = containerElement.querySelector('[data-quiz-backdrop]');
     if (!triggers.length || !backdrop) return;
@@ -84,8 +84,9 @@ window.QuizEngine = {
 
     triggers.forEach((btn) => {
       btn.addEventListener('click', () => {
-        const key = btn.getAttribute('data-quiz');
-        const quiz = quizBank[key];
+        const quizId = btn.getAttribute('data-quiz');
+        const section = btn.getAttribute('data-quiz-section') || sectionName;
+        const quiz = window.QuizRegistry && window.QuizRegistry.getQuiz(section, quizId);
         if (!quiz) return;
         currentQuiz = quiz;
         currentIndex = 0;

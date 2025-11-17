@@ -6,8 +6,8 @@ window.SupportPage = {
     if (window.SupportAccordions) {
       window.SupportAccordions.init(containerElement);
     }
-    if (window.SupportQuizzes) {
-      window.SupportQuizzes.init(containerElement);
+    if (window.QuizInit) {
+      window.QuizInit.initForSection(containerElement, 'support');
     }
     if (window.L1Calculator) {
       window.L1Calculator.init(containerElement);
