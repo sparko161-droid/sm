@@ -1,75 +1,60 @@
-import SupportAccordions from "/sm/js/modules/support/support-accordions.js";
-import SupportTemplates from "/sm/js/modules/support/support-templates.js";
-
-// Lazy-loading support filters with remote sections (adapted for SPA)
 const SupportFilters = {
   init(containerElement) {
     const container = containerElement;
     if (!container) return;
 
-    const pills = Array.from(container.querySelectorAll('.subnav-pill[data-line-filter]'));
-    const blocks = Array.from(container.querySelectorAll('.support-line'));
-    if (!pills.length || !blocks.length) return;
+    // Главное меню фильтров по линиям поддержки
+    const nav = container.querySelector('.subnav-lines[data-role="support-main-nav"]');
+    const navPills = nav ? Array.from(nav.querySelectorAll('.subnav-pill[data-line-filter]')) : [];
 
-    const loadedRemotes = new WeakSet();
+    // Все элементы, которые могут триггерить фильтр (например, кнопка "К онбордингу")
+    const triggers = Array.from(container.querySelectorAll('[data-line-filter]'));
 
-    const loadRemoteIfNeeded = (block) => {
-      const url = block.dataset.remote;
-      if (!url) return Promise.resolve();
-      if (loadedRemotes.has(block)) return Promise.resolve();
-
-      return fetch(url, { credentials: 'same-origin' })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Failed to load remote section: ' + url);
-          }
-          return response.text();
-        })
-        .then((html) => {
-          block.innerHTML = html;
-          loadedRemotes.add(block);
-
-          try {
-            SupportAccordions.init(block);
-            SupportTemplates.init(block);
-          } catch (e) {
-            console.warn('Error while initializing dynamic support block', e);
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-          if (!loadedRemotes.has(block)) {
-            block.innerHTML =
-              '<div class="callout callout-error">Не удалось загрузить раздел. Попробуйте обновить страницу.</div>';
-          }
-        });
-    };
+    // Все блоки линий поддержки (включая онбординг и матрицу)
+    const blocks = Array.from(container.querySelectorAll('.support-line[data-line]'));
+    if (!triggers.length || !blocks.length) return;
 
     const applyFilter = (value) => {
-      blocks.forEach((block) => {
-        const line = block.dataset.line;
-        const shouldShow = !line || value === 'all' || value === line;
+      const target = value || 'all';
 
-        if (shouldShow) {
-          block.style.display = '';
-          if (block.dataset.remote) {
-            loadRemoteIfNeeded(block);
-          }
-        } else {
-          block.style.display = 'none';
-        }
+      blocks.forEach((block) => {
+        const line = block.dataset.line || 'all';
+        const shouldShow = target === 'all' || line === target;
+
+        block.hidden = !shouldShow;
+        block.classList.toggle('support-line--hidden', !shouldShow);
       });
+
+      const firstVisible = blocks.find((b) => !b.hidden);
+      if (firstVisible) {
+        try {
+          firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (e) {
+          // старые браузеры могут не поддерживать поведение scrollIntoView с опциями
+          firstVisible.scrollIntoView(true);
+        }
+      }
     };
 
-    pills.forEach((pill) => {
-      pill.addEventListener('click', () => {
-        const value = pill.dataset.lineFilter;
-        pills.forEach((p) => p.classList.toggle('active', p === pill));
-        applyFilter(value);
+    const handleClick = (trigger, event) => {
+      event.preventDefault();
+      const value = trigger.dataset.lineFilter || 'all';
+
+      // Активное состояние только на главной навигации
+      navPills.forEach((pill) => {
+        pill.classList.toggle('active', pill.dataset.lineFilter === value);
       });
+
+      applyFilter(value);
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', handleClick.bind(null, trigger));
     });
 
-    applyFilter('all');
+    // Стартовое состояние — по активной пилюле в основном меню или "all"
+    const activePill = navPills.find((p) => p.classList.contains('active'));
+    applyFilter(activePill ? activePill.dataset.lineFilter : 'all');
   }
 };
 

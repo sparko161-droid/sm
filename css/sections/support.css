@@ -109,3 +109,9 @@ body.dark-theme .step-list li.active .step-index {
   font-size: 13px;
   white-space: pre-line;
 }
+
+
+.support-line[hidden],
+.support-line.support-line--hidden {
+  display: none;
+}
