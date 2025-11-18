@@ -55,3 +55,44 @@ body.light-theme {
   font-size: 12px;
   color: var(--text-muted);
 }
+/* --- Dark theme hard overrides for SPA --- */
+
+body.dark-theme,
+body.dark-theme .content,
+body.dark-theme .content-inner {
+  background-color: var(--bg) !important;
+  color: var(--text-main) !important;
+}
+
+/* Общий текст в секциях и карточках */
+body.dark-theme .section,
+body.dark-theme .section p,
+body.dark-theme .section li,
+body.dark-theme .card,
+body.dark-theme .card p,
+body.dark-theme .card li {
+  color: var(--text-main) !important;
+}
+
+/* Подписи, muted-текст */
+body.dark-theme .muted,
+body.dark-theme .section small,
+body.dark-theme .section .note {
+  color: var(--text-muted) !important;
+}
+
+/* Белые фоны, которые оставались светлыми — принудительно в карточный */
+body.dark-theme .card,
+body.dark-theme .support-toolbar,
+body.dark-theme .support-line,
+body.dark-theme .callout,
+body.dark-theme .probation-table-wrapper {
+  background-color: var(--card-bg) !important;
+}
+
+/* Красные хедеры/бейджи остаются красными, но текст делаем читабельным */
+body.dark-theme .callout-error,
+body.dark-theme .badge,
+body.dark-theme .pill-red {
+  color: #ffecec !important;
+}
