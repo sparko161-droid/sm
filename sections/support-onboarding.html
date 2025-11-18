@@ -448,3 +448,184 @@
     </article>
   </div>
 </section>
+
+<section class="section">
+  <h2>Статус испытательного срока</h2>
+  <p class="tagline">
+    Интерактивный статус испытательного срока: по галочкам за 1–3 месяц автоматически считается итог
+    (пройден / продлить / не пройден).
+  </p>
+
+  <div class="card" style="overflow-x:auto;">
+    <table class="calc-table probation-table" style="min-width: 820px;" data-probation-table>
+      <thead>
+        <tr>
+          <th>ФИО</th>
+          <th>Должность</th>
+          <th>1 месяц</th>
+          <th>2 месяц</th>
+          <th>3 месяц</th>
+          <th>Итог</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- Пример строки сотрудника -->
+        <tr data-probation-row>
+          <td>Иванов И.И.</td>
+          <td>L1 оператор</td>
+          <td>
+            <div class="probation-month" data-probation-month="1">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> База знаний
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Тикеты (оформление)
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> SLA / дисциплина
+              </label>
+            </div>
+          </td>
+          <td>
+            <div class="probation-month" data-probation-month="2">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Объём тикетов
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Качество решений
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Коммуникация
+              </label>
+            </div>
+          </td>
+          <td>
+            <div class="probation-month" data-probation-month="3">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Стабильность
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Работа без «ручного сопровождения»
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Готовность к следующему грейду
+              </label>
+            </div>
+          </td>
+          <td data-probation-status>
+            <span class="badge probation-status-badge" data-status="in-progress">
+              В работе
+            </span>
+          </td>
+        </tr>
+
+        <!-- Ещё один пример -->
+        <tr data-probation-row>
+          <td>Петрова А.А.</td>
+          <td>L2 инженер</td>
+          <td>
+            <div class="probation-month" data-probation-month="1">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> База знаний
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Учёт (основы)
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Регламенты L2
+              </label>
+            </div>
+          </td>
+          <td>
+            <div class="probation-month" data-probation-month="2">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Тикеты L2
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Работа с логами
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Эскалация в L3
+              </label>
+            </div>
+          </td>
+          <td>
+            <div class="probation-month" data-probation-month="3">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Сложные кейсы
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Повторяемость инцидентов ↓
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Надёжность
+              </label>
+            </div>
+          </td>
+          <td data-probation-status>
+            <span class="badge probation-status-badge" data-status="in-progress">
+              В работе
+            </span>
+          </td>
+        </tr>
+
+        <!-- Пустые строки под будущее заполнение -->
+        <tr data-probation-row>
+          <td>Фамилия Имя</td>
+          <td>Роль</td>
+          <td>
+            <div class="probation-month" data-probation-month="1">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 1
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 2
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 3
+              </label>
+            </div>
+          </td>
+          <td>
+            <div class="probation-month" data-probation-month="2">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 1
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 2
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 3
+              </label>
+            </div>
+          </td>
+          <td>
+            <div class="probation-month" data-probation-month="3">
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 1
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 2
+              </label><br>
+              <label class="small">
+                <input type="checkbox" class="probation-check" /> Критерий 3
+              </label>
+            </div>
+          </td>
+          <td data-probation-status>
+            <span class="badge probation-status-badge" data-status="in-progress">
+              В работе
+            </span>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <p class="small" style="margin-top:8px;">
+      ✔ Чем больше галочек по ключевым критериям за 3 месяца — тем выше вероятность статуса «Пройден».
+      Логика расчёта: &gt;= 80% чекбоксов — «Пройден», 50–79% — «Продлить», &lt; 50% — «Не пройден».
+    </p>
+  </div>
+</section>

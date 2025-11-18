@@ -42,6 +42,9 @@ window.SupportFilters = {
             if (window.L2Calculator) {
               window.L2Calculator.init(block);
             }
+            if (window.SupportProbation) {
+              window.SupportProbation.init(block);
+            }
           } catch (e) {
             console.warn('Error while initializing dynamic support block', e);
           }
