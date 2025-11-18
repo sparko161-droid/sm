@@ -810,20 +810,7 @@ export default {
             <p class="quiz-hint">Потренируйся переводить технические выводы в понятный язык для клиента.</p>
           </div>
 
-          <div class="quiz-modal" data-quiz-backdrop hidden>
-            <div class="quiz-dialog">
-              <button type="button" class="quiz-close" data-quiz-close aria-label="Закрыть тест">✕</button>
-              <div class="quiz-label">Интерактивный мини-тест</div>
-              <h4 class="quiz-title" data-quiz-title>Тест</h4>
-              <div class="quiz-progress" data-quiz-progress></div>
-              <p class="quiz-question" data-quiz-question></p>
-              <div class="quiz-options" data-quiz-options></div>
-              <div class="quiz-feedback" data-quiz-feedback></div>
-              <div class="quiz-actions">
-                <button type="button" class="btn quiz-next" data-quiz-next disabled>Следующий вопрос →</button>
-              </div>
-            </div>
-          </div>
+          
 
           <h4>Основные функции L3 (L3_DO)</h4>
           <div class="grid">
@@ -3480,11 +3467,6 @@ export default {
         </div>
       </div>
     </section>
-
-        in>
-
-        
-    
     `;
     initSupportInteractions(container);
   },

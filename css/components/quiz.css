@@ -11,158 +11,13 @@
   margin: 0;
 }
 
-/* Модалка квиза */
-.quiz-modal[hidden] {
-  display: none;
-}
-
-.quiz-modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 1000;
-  padding: 12px;
-}
-
-.quiz-dialog {
-  width: min(520px, 96vw);
-  background: var(--card-bg);
-  border-radius: 14px;
-  border: 1px solid var(--border-soft);
-  padding: 14px 16px 12px;
-  position: relative;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
-}
-
-.quiz-close {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.quiz-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 2px;
-}
-
-/* Заголовок и прогресс */
-.quiz-title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.quiz-progress {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-/* Вопрос */
-.quiz-question {
-  font-size: 1.1rem;
-  margin: 0 0 1rem;
-  line-height: 1.45;
-}
-
-/* Опции */
-.quiz-options {
-  display: grid;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.quiz-option {
-  width: 100%;
-  text-align: left;
-  border-radius: 10px;
-  border: 1px solid var(--border-soft);
-  padding: 8px 10px;
-  font-size: 13px;
-  color: var(--text-main);
-  background: var(--card-bg);
-  cursor: pointer;
-  transition: border-color 0.15s ease, transform 0.08s ease;
-  justify-content: flex-start;
-}
-
-.quiz-option:hover {
-  border-color: var(--red);
-  transform: translateY(-1px);
-}
-
-/* Старые модификаторы .correct / .wrong — для модалки */
-.quiz-option.correct {
-  border-color: #22c55e;
-  background: #ecfdf3;
-}
-
-.quiz-option.wrong {
-  border-color: #ef4444;
-  background: #fff2f2;
-}
-
-body.dark-theme .quiz-option.correct {
-  background: #0f2b1d;
-  border-color: #22c55e;
-}
-
-body.dark-theme .quiz-option.wrong {
-  background: #2a1414;
-  border-color: #ef4444;
-}
-
-/* Новые модификаторы с более мягкой подсветкой */
-.quiz-option--selected {
-  outline: 2px solid rgba(59, 130, 246, 0.8);
-}
-
-/* Подсветка верного/ошибочного, но без ядовитой заливки */
-.quiz-option--correct {
-  background: rgba(22, 163, 74, 0.10);
-}
-
-.quiz-option--wrong {
-  background: rgba(220, 38, 38, 0.10);
-}
-
-/* Фидбек под вопросом */
-.quiz-feedback {
-  min-height: 2.4rem;
-  margin: 6px 0;
-  font-size: 0.95rem;
-}
-
-/* Кнопки/действия */
-.quiz-actions {
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.quiz-next:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* Страница квиза */
+/* Страница квиза внутри попапа */
 .page--quiz {
   max-width: 720px;
   margin: 0 auto;
 }
 
-/* Карточка квиза как нормальная "карта" */
+/* Карточка квиза */
 .quiz-card {
   padding: 1.5rem;
   border-radius: 1.5rem;
@@ -172,13 +27,11 @@ body.dark-theme .quiz-option.wrong {
   margin-bottom: 1.5rem;
 }
 
-/* Темная тема — те же переменные, просто доверяем theme-переключателю */
 body.dark-theme .quiz-card {
   background-color: var(--card-bg);
   color: var(--text-main);
 }
 
-/* Хедер квиза */
 .quiz-header {
   display: flex;
   justify-content: space-between;
@@ -187,7 +40,44 @@ body.dark-theme .quiz-card {
   margin-bottom: 1.5rem;
 }
 
-/* Футер, счёт и подсказки */
+.quiz-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.quiz-progress {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-option {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.quiz-option--selected {
+  outline: 2px solid rgba(59, 130, 246, 0.8);
+}
+
+.quiz-option--correct {
+  background: rgba(22, 163, 74, 0.10);
+}
+
+.quiz-option--wrong {
+  background: rgba(220, 38, 38, 0.10);
+}
+
+.quiz-feedback {
+  min-height: 2.4rem;
+  font-size: 0.95rem;
+}
+
 .quiz-footer {
   display: flex;
   justify-content: flex-end;
@@ -201,6 +91,15 @@ body.dark-theme .quiz-card {
 .quiz-score-hint {
   margin-bottom: 1.25rem;
 }
+
+.quiz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Попап квиза */
+
 .quiz-backdrop {
   position: fixed;
   inset: 0;
