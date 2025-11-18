@@ -3471,6 +3471,14 @@ export default {
           </p>
         </div>
       </section>
+      
+            <!-- Попап для квизов -->
+      <div class="quiz-backdrop" data-quiz-backdrop hidden>
+        <div class="quiz-dialog">
+          <button class="quiz-close" type="button" data-quiz-close aria-label="Закрыть квиз">×</button>
+          <div data-quiz-container></div>
+        </div>
+      </div>
     </section>
 
         in>
