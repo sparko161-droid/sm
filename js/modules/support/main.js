@@ -1706,7 +1706,7 @@ export default {
           <strong>Как пользоваться:</strong> выбери фильтр по линии или типу задач, скопируй подходящий шаблон и адаптируй под клиента.
         </div>
 
-        <div class="subnav-lines">
+        <div class="subnav-lines" data-role="support-main-nav">
           <button class="subnav-pill active" data-template-filter="all">Все</button>
           <button class="subnav-pill" data-template-filter="l1">L1</button>
           <button class="subnav-pill" data-template-filter="l2">L2</button>
@@ -2925,12 +2925,555 @@ export default {
                 <article class="card">
                   <div class="card-title">Быстрый переход</div>
                   <p class="card-body">Нужны конкретные шаги? Перейдите на страницу онбординга.</p>
-                  <a class="btn" href="../sections/support_onboarding.html">К онбордингу</a>
+                  <a class="btn" href="#" data-line-filter="onboarding">К онбордингу</a>
                 </article>
               </div>
             </section>
           </section>
-        </main>
+        </ma<section class="section support-line" data-page="support-onboarding" data-line="onboarding">
+      <div class="section-header">
+        <h2>Онбординг и испытательный срок для отдела поддержки</h2>
+        <p class="tagline">Цель: довести L1–L2 до стабильной работы за 1–3 месяца с понятными критериями и чек-листами.</p>
+      </div>
+
+      <div class="callout">
+        <strong>Навигация:</strong> эта страница выделена отдельно, чтобы не перегружать основной раздел поддержки. Здесь собраны
+        этапы онбординга, задачи на испытательный срок и интерактивная таблица статуса.
+      </div>
+
+      <section>
+        <h4>Общая схема испытательного срока</h4>
+        <ol class="step-list">
+          <li><div class="step-index">1</div><div><strong>Месяц 1:</strong> базовые знания, скрипты, чек-листы.</div></li>
+          <li><div class="step-index">2</div><div><strong>Месяц 2:</strong> уверенная работа, качество тикетов, первая самостоятельность.</div></li>
+          <li><div class="step-index">3</div><div><strong>Месяц 3:</strong> стабильно высокий уровень, подготовка к следующему грейду.</div></li>
+        </ol>
+      </section>
+
+      <!-- Основной контент онбординга (адаптирован из предыдущего блока) -->
+      <section>
+        <h3>Онбординг сотрудников поддержки</h3>
+        <p class="tagline">
+          Программа ввода в должность для L1 и L2: что происходит в первые дни, недели и месяцы, какие цели стоят перед новичком и
+          наставником, и как связать это с матрицей компетенций.
+        </p>
+
+        <div class="callout">
+          <strong>Принцип онбординга:</strong><br>
+          Не «бросить в бой», а за 1–3 месяца довести до стабильного уровня по матрице компетенций, с понятными шагами и регулярной обратной связью.
+        </div>
+
+        <section>
+          <h4>Общие элементы онбординга</h4>
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-title">Роли в онбординге</div>
+              <ul class="card-list">
+                <li><strong>Новичок:</strong> честно фиксирует вопросы, активно спрашивает, отмечает, что понятно, а что нет.</li>
+                <li><strong>Наставник:</strong> показывает реальные кейсы, даёт безопасную практику, помогает разбирать ошибки.</li>
+                <li><strong>Тимлид:</strong> задаёт цели онбординга, следит за прогрессом, проводит контрольные точки.</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-title">Инструменты</div>
+              <ul class="card-list">
+                <li>Этот портал (разделы L1–L3, SLA, коммуникации, кейсы, шаблоны).</li>
+                <li>Мини-тесты (квизы) по эскалации, SLA и коммуникации.</li>
+                <li>Чек-листы: приём обращения, оформление тикета, обращение в iiko, RCA.</li>
+                <li>Матрица компетенций: стартовая точка и цель на 3–6 месяцев.</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-title">Контрольные точки</div>
+              <ul class="card-list">
+                <li>Конец 1-й недели.</li>
+                <li>Конец 2-й недели.</li>
+                <li>Конец 1-го месяца.</li>
+                <li>Конец испытательного срока (обычно 3 месяца).</li>
+              </ul>
+              <p class="small">
+                На каждой точке фиксируем: что освоено, какие есть сложности, куда двигаться дальше.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- Существующие блоки L1/L2 онбординга (сокращены для примера) -->
+        <!-- Вставляем контент из предыдущего файла без изменений по смыслу -->
+        <section>
+          <h4>L1 · онбординг оператора первой линии</h4>
+          <p class="tagline">
+            Цель: за 1–1,5 месяца довести сотрудника до уровня уверенного L1 Middle по основным компетенциям: приём обращений,
+            оформление тикетов, базовые решения и корректная эскалация.
+          </p>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-title">День 1–2 · Старт и ориентация</div>
+              <ul class="card-list">
+                <li>Знакомство с компанией, отделом и структурой линий L1–L3.</li>
+                <li>Выдача доступов: Pyrus, телефония, портал, корпоративные чаты.</li>
+                <li>Обзор портала: раздел поддержки, SLA, стандарты коммуникации.</li>
+                <li>Просмотр примеров «хороших» и «плохих» тикетов.</li>
+              </ul>
+              <p class="small">
+                <strong>Результат:</strong> новичок понимает, как выглядит идеальный тикет и кому какая линия что делает.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-title">День 3–5 · Наблюдение и простые действия</div>
+              <ul class="card-list">
+                <li>Сидит «в тени» у опытного оператора: слушает звонки, читает тикеты.</li>
+                <li>Пробует самостоятельно оформлять тикеты по рассказанным кейсам (без отправки клиенту).</li>
+                <li>Проходит мини-тесты по приёму обращения и запросу информации у клиента.</li>
+                <li>Знакомится с чек-листом L1_DO_1–4 и применяет его в тренировочных задачах.</li>
+              </ul>
+              <p class="small">
+                <strong>Результат:</strong> может оформить черновик тикета, используя чек-лист и шаблоны.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-title">Неделя 2 · Первые самостоятельные тикеты</div>
+              <ul class="card-list">
+                <li>Самостоятельно берёт простые обращения и оформляет тикеты под контролем наставника.</li>
+                <li>Решает типовые L1-задачи: навигация, очевидные ошибки пользователя, простые перезапуски.</li>
+                <li>Отрабатывает коммуникацию по шаблонам: запрос данных, фиксация статуса, закрытие тикета.</li>
+                <li>Получает обратную связь по 5–10 своим тикетам (разбор с наставником/тимлидом).</li>
+              </ul>
+              <p class="small">
+                <strong>Результат:</strong> может работать с реальными клиентами на простых кейсах, знает, когда эскалировать.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-title">Неделя 3–4 · Стабилизация и качество</div>
+              <ul class="card-list">
+                <li>Работает в смене с поддержкой опытных коллег.</li>
+                <li>Поддерживает целевой уровень по % пропущенных звонков и просрочек.</li>
+                <li>Редко допускает возврат тикетов на дооформление.</li>
+                <li>Проходит квизы по эскалации L1→L2 и SLA.</li>
+              </ul>
+              <p class="small">
+                <strong>Результат:</strong> устойчивый уровень L1 Junior→Middle по матрице компетенций, решение о продолжении испытательного срока/повышении.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <h4>L2 · онбординг инженера второй линии</h4>
+          <p class="tagline">
+            Цель: за 2–3 месяца привести инженера к уровню уверенного L2 Middle, который закрывает типовые учётные и технические задачи,
+            сопровождает интеграции и готовит обращения в iiko.
+          </p>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-title">Неделя 1 · Погружение в учёт и инструменты</div>
+              <ul class="card-list">
+                <li>Обзор процессов L2 и границ ответственности (что делаем / что не делаем).</li>
+                <li>Знакомство с типовыми учётными кейсами: ТТК, себестоимость, инвентаризации.</li>
+                <li>Изучение регламентов по работе с отчётами, документами, корректировками.</li>
+                <li>Базовый блок по логам iikoFront и плагинов: где лежат, как собирать, как открывать.</li>
+              </ul>
+              <p class="small">
+                <strong>Результат:</strong> инженер понимает, как выглядят типовые задачи L2 и какими инструментами они решаются.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-title">Неделя 2 · Практика под контролем</div>
+              <ul class="card-list">
+                <li>Решение простых учётных кейсов под присмотром наставника: исправление ТТК, корректировка остатков, простые отчёты.</li>
+                <li>Разбор 3–5 реальных обращений: «не сходится отчёт», «скачет себестоимость».</li>
+                <li>Знакомство с типовыми интеграциями и логами обмена.</li>
+                <li>Написание 1–2 обращений в iiko по шаблону (вместе с наставником).
+                </li>
+              </ul>
+              <p class="small">
+                <strong>Результат:</strong> инженер уверенно выполняет простые задачи и понимает, где нужна помощь.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-title">Неделя 3–4 · Самостоятельные кейсы</div>
+              <ul class="card-list">
+                <li>Самостоятельное ведение типовых учётных и технических задач по чек-листам.</li>
+                <li>Сбор и анализ логов для фронта и плагинов по базовому сценарию.</li>
+                <li>Сопровождение типовых интеграций: проверка настроек, повторные выгрузки, диагностика.</li>
+                <li>Регулярные разборы кейсов с наставником/тимлидом (1–2 раза в неделю).</li>
+              </ul>
+              <p class="small">
+                <strong>Результат:</strong> инженер работает с потоком задач, выполняет план по тикетам с поддержкой, понимает критерии эскалации в L3.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-title">Месяц 2–3 · Укрепление и специализация</div>
+              <ul class="card-list">
+                <li>Выделение специализации (учёт / фронт / интеграции) и углубление в неё.</li>
+                <li>Участие в разборе сложных кейсов и подготовке простых RCA под руководством L3.</li>
+                <li>Первые обучающие мини-сессии для L1 по своей специализации.</li>
+                <li>Работа с метриками: выполнение плана, % просрочки, повторные обращения.</li>
+              </ul>
+              <p class="small">
+                <strong>Результат:</strong> устойчивый L2 Middle по ключевым компетенциям, готовность брать сложные кейсы в своей зоне.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <h5>Чек-лист наставника для L1 и L2</h5>
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-title">L1: что проверить к концу месяца</div>
+              <ul class="card-list">
+                <li>Понимание разницы между L1/L2/L3 и корректная эскалация.</li>
+                <li>Сбор минимального набора данных по чек-листу L1 при приёме обращения.</li>
+                <li>Оформление тикетов по шаблону без пропуска ключевых полей.</li>
+                <li>Понимание базовых приоритетов задач и умение объяснить клиенту SLA.</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-title">L2: что проверить к концу 3-го месяца</div>
+              <ul class="card-list">
+                <li>Умение разбирать типовые учётные задачи по чек-листу (ТТК, себестоимость, отчёты, инвентаризации).</li>
+                <li>Сбор и передача логов фронта и плагинов, понимание базовых сообщений об ошибках.</li>
+                <li>Готовит обращения в iiko по шаблону (с примерами документов и логами).</li>
+                <li>Понимание, какие задачи остаются на L2, а где нужна помощь L3.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <hr>
+
+      <section>
+        <h3>Связка с матрицей компетенций</h3>
+        <p class="tagline">Матрица задаёт целевые уровни для L1–L3. Эта страница помогает к ним прийти через задачи и контрольные точки.</p>
+        <div class="grid">
+          <article class="card">
+            <div class="card-title">Как использовать</div>
+            <ul class="card-list">
+              <li>Определите стартовый уровень сотрудника по матрице.</li>
+              <li>Сформируйте задачи на испытательный срок под этот уровень.</li>
+              <li>Отмечайте прогресс в таблице ниже и обновляйте план раз в 2–4 недели.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card-title">Быстрый переход</div>
+            <p class="card-body">
+              Посмотреть целевые компетенции можно в матрице грейдов L1–L3.
+            </p>
+            <a class="btn" href="../sections/support_matrix.html">Перейти к матрице</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Мини-карточки задач для испытательного срока L1–L2 -->
+
+      <section>
+        <h3>Испытательный срок: задачи и критерии</h3>
+        <p class="tagline">
+          Этот блок помогает формализовать ожидания от новичка на 1–3 месяце работы. Каждая карточка — набор задач и измеримых
+          критериев, по которым можно принять решение об успешном прохождении испытательного срока.
+        </p>
+
+        <h4>Испытательный срок L1 · операторы первой линии</h4>
+        <p class="tagline">
+          Цель: к концу 2-го месяца сотрудник стабильно соответствует профилю <strong>L1 Junior</strong> и частично закрывает
+          требования <strong>L1 Middle</strong>.
+        </p>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-title">Месяц 1 · Адаптация и базовые навыки</div>
+            <div class="card-sub">Фокус: форма тикетов, чек-листы и коммуникация</div>
+            <ul class="card-list">
+              <li><strong>Обучение и теоретика:</strong>
+                <ul class="card-list">
+                  <li>Прошёл вводный курс по продуктам и порталу (L1–L3, SLA, кейсы, шаблоны).</li>
+                  <li>Сдал мини-тесты по приёму обращения и эскалации L1 → L2.</li>
+                </ul>
+              </li>
+              <li><strong>Оформление тикетов:</strong>
+                <ul class="card-list">
+                  <li>Самостоятельно оформляет не менее <strong>30–50 тикетов</strong> по шаблону L1_DO_4.</li>
+                  <li>Не более <strong>10–15%</strong> тикетов возвращаются на дооформление (по выборке тимлида).</li>
+                </ul>
+              </li>
+              <li><strong>Чек-листы L1:</strong>
+                <ul class="card-list">
+                  <li>Использует чек-лист приёма обращения (кто/что/где/когда/что пробовали) без подсказок.</li>
+                  <li>Запрашивает скрины/фото по всем визуальным ошибкам.</li>
+                </ul>
+              </li>
+              <li><strong>Коммуникация:</strong>
+                <ul class="card-list">
+                  <li>Применяет базовые шаблоны: «взял в работу», «нужны данные», «завершение обращения».</li>
+                  <li>Нет жалоб клиентов на грубость или игнорирование — тон вежливый и конструктивный.</li>
+                </ul>
+              </li>
+            </ul>
+            <p class="small">
+              <strong>Точка контроля:</strong> тимлид/наставник проводит разбор 5–10 тикетов и даёт заключение:
+              «можно расширять зону самостоятельности» или «нужны доработки по чек-листам и формулировкам».
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-title">Месяц 2 · Уверенная работа в линии</div>
+            <div class="card-sub">Фокус: скорость реакции, качество эскалации и самостоятельность</div>
+            <ul class="card-list">
+              <li><strong>SLA и дисциплина:</strong>
+                <ul class="card-list">
+                  <li>Соблюдает SLA реакции по P1/P2 по минимум <strong>90%</strong> обращений (по выборке отчётов).</li>
+                  <li>Не допускает «висящих» задач без комментария клиенту более 1 рабочего дня.</li>
+                </ul>
+              </li>
+              <li><strong>Эскалация в L2:</strong>
+                <ul class="card-list">
+                  <li>Эскалирует задачи только после выполнения своего чек-листа L1.</li>
+                  <li>Не менее <strong>80–85%</strong> эскалированных тикетов принимаются L2 без возврата «нет данных».</li>
+                </ul>
+              </li>
+              <li><strong>Самостоятельные решения:</strong>
+                <ul class="card-list">
+                  <li>Сам решает стандартные вопросы по интерфейсу и простые пользовательские ошибки.</li>
+                  <li>Использует базу кейсов и шаблоны ответов, а не пишет каждый раз «с нуля».</li>
+                </ul>
+              </li>
+              <li><strong>Командное взаимодействие:</strong>
+                <ul class="card-list">
+                  <li>Корректно передаёт смену, фиксируя открытые критичные задачи.</li>
+                  <li>Общается с L2/L3 без конфликтов, принимает обратную связь по тикетам.</li>
+                </ul>
+              </li>
+            </ul>
+            <p class="small">
+              <strong>Точка контроля:</strong> по результатам 2-го месяца тимлид и наставник принимают решение:
+              «испытательный срок пройден, уровень L1 Junior подтверждён» или формулируют план доработок на 1 месяц.
+            </p>
+          </article>
+        </div>
+
+        <h4>Испытательный срок L2 · инженеры второй линии</h4>
+        <p class="tagline">
+          Цель: к концу 3-го месяца сотрудник уверенно работает с типовыми учётными и техническими задачами на уровне
+          <strong>L2 Junior</strong>.
+        </p>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-title">Месяц 1 · Вход в роль L2</div>
+            <div class="card-sub">Фокус: понимание учёта, логов и процессов</div>
+            <ul class="card-list">
+              <li><strong>Учёт:</strong>
+                <ul class="card-list">
+                  <li>Понимает базовый набор отчётов по продажам, остаткам, себестоимости.</li>
+                  <li>По инструкции находит связанные документы (чек, приход, корректировка, инвентаризация).</li>
+                </ul>
+              </li>
+              <li><strong>Техника и логи:</strong>
+                <ul class="card-list">
+                  <li>Собирает и прикладывает Front.log, CashServer.log и логи плагинов по чек-листу.</li>
+                  <li>Разбирает простые случаи падения фронта и зависаний по готовым сценариям.</li>
+                </ul>
+              </li>
+              <li><strong>Работа с тикетами:</strong>
+                <ul class="card-list">
+                  <li>Самостоятельно ведёт не менее <strong>20–30</strong> задач L2 под контролем старшего.</li>
+                  <li>В итоговом ответе клиенту описывает причину и сделанные действия, а не только «починили».</li>
+                </ul>
+              </li>
+              <li><strong>Коммуникация с L1 и iiko:</strong>
+                <ul class="card-list">
+                  <li>Дает конструктивную обратную связь L1 по качеству тикетов.</li>
+                  <li>Сформировал минимум 3–5 обращений в iiko по шаблону, без критичных возвратов «недостаточно данных».</li>
+                </ul>
+              </li>
+            </ul>
+            <p class="small">
+              <strong>Точка контроля:</strong> тимлид и старший L2 оценивают первые задачи и формируют индивидуальные зоны роста.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-title">Месяц 2–3 · Выход на L2 Junior</div>
+            <div class="card-sub">Фокус: самостоятельность и стабильность</div>
+            <ul class="card-list">
+              <li><strong>Объём и план:</strong>
+                <ul class="card-list">
+                  <li>Выполняет персональный план по закрытию заявок не менее чем на <strong>80–90%</strong>.</li>
+                  <li>Поддерживает приемлемый уровень просрочки (≤ целевого значения для линии).</li>
+                </ul>
+              </li>
+              <li><strong>Учётные кейсы:</strong>
+                <ul class="card-list">
+                  <li>Самостоятельно решает стандартные кейсы «не сходится отчёт», «скачет себестоимость», «остатки не те».</li>
+                  <li>В сложных ситуациях формулирует понятные гипотезы и обсуждает их с L3.</li>
+                </ul>
+              </li>
+              <li><strong>Технические и интеграционные кейсы:</strong>
+                <ul class="card-list">
+                  <li>Решает типовые проблемы интеграций (ключи, права, доступность сервиса) без постоянной помощи.</li>
+                  <li>Реже чем в <strong>15–20%</strong> задач требуется «спасение» от старших по базовым сценариям.</li>
+                </ul>
+              </li>
+              <li><strong>Качество взаимодействия:</strong>
+                <ul class="card-list">
+                  <li>Поддерживает уважительный тон с клиентами и коллегами, не «сбрасывает» задачи назад в L1 без аргументации.</li>
+                  <li>Участвует в кейс-ревью и обучениях, делится находками по своим задачам.</li>
+                </ul>
+              </li>
+            </ul>
+            <p class="small">
+              <strong>Точка контроля:</strong> по итогам 3-го месяца принимается решение:
+              испытательный срок пройден / продлён с конкретным планом / не пройден.
+            </p>
+          </article>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-title">Как использовать карточки испытательного срока · тимлид и HR</div>
+            <ul class="card-list">
+              <li>Использовать карточки как основу плана испытательного срока в оффере и на старте.</li>
+              <li>Раз в месяц отмечать выполненные пункты и формировать письменную обратную связь.</li>
+              <li>По итогам испытательного срока фиксировать решение и ссылку на конкретные критерии.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card-title">Как использовать карточки · сотрудник</div>
+            <ul class="card-list">
+              <li>В начале испытательного срока обсудить карточки с наставником и понять ожидания.</li>
+              <li>Раз в неделю смотреть, какие пункты уже закрыты, а где нужна помощь или обучение.</li>
+              <li>Приходить на 1:1 с примерами задач по спорным пунктам, а не только с общим ощущением «получается/не получается».</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- Интерактивная таблица статуса испытательного срока с фильтрами -->
+      <section class="onboarding-block" data-probation-root>
+        <h3>Статус испытательного срока</h3>
+        <p class="tagline">
+          Таблица для тимлида: по галочкам за 1–3 месяц автоматически считается итог (пройден / продлить / не пройден).
+        </p>
+
+        <div class="probation-filters">
+          <select class="probation-filter" data-filter="line">
+            <option value="all">Все линии</option>
+            <option value="l1">L1</option>
+            <option value="l2">L2</option>
+          </select>
+
+          <select class="probation-filter" data-filter="status">
+            <option value="all">Все статусы</option>
+            <option value="in-progress">В процессе</option>
+            <option value="passed">Испытательный срок пройден</option>
+            <option value="extend">Продлить</option>
+            <option value="failed">Не пройден</option>
+          </select>
+        </div>
+
+        <div class="card" style="overflow-x:auto;">
+          <table class="calc-table probation-table" style="min-width: 860px;" data-probation-table>
+            <thead>
+              <tr>
+                <th>ФИО</th>
+                <th>Должность / линия</th>
+                <th>1 месяц</th>
+                <th>2 месяц</th>
+                <th>3 месяц</th>
+                <th>Итог</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-probation-row data-line="l1" data-status="in-progress" data-id="emp_l1_ivanov">
+                <td>Иванов И.И.</td>
+                <td>L1 оператор</td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-core" /> База знаний</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-tickets" /> Тикеты (оформление)</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-sla" /> SLA / дисциплина</label>
+                </td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-volume" /> Объём тикетов</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-quality" /> Качество решений</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-comm" /> Коммуникация</label>
+                </td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-stability" /> Стабильность</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-autonomy" /> Работа без сопровождения</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-next" /> Готовность к грейду L1 Middle</label>
+                </td>
+                <td data-probation-status><span class="badge probation-status-badge" data-status="in-progress">В работе</span></td>
+              </tr>
+
+              <tr data-probation-row data-line="l2" data-status="in-progress" data-id="emp_l2_petrova">
+                <td>Петрова А.А.</td>
+                <td>L2 инженер</td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-knowledge" /> База знаний</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-accounting" /> Учёт (основы)</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-l2regs" /> Регламенты L2</label>
+                </td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-tickets" /> Тикеты L2</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-logs" /> Работа с логами</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-escalation" /> Эскалация в L3</label>
+                </td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-complex" /> Сложные кейсы</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-repeat" /> Повторяемость инцидентов ↓</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-reliable" /> Надёжность</label>
+                </td>
+                <td data-probation-status><span class="badge probation-status-badge" data-status="in-progress">В работе</span></td>
+              </tr>
+
+              <tr data-probation-row data-line="l1" data-status="in-progress" data-id="emp_template">
+                <td>Фамилия Имя</td>
+                <td>Роль</td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-a" /> Критерий 1</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-b" /> Критерий 2</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m1-c" /> Критерий 3</label>
+                </td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-a" /> Критерий 1</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-b" /> Критерий 2</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m2-c" /> Критерий 3</label>
+                </td>
+                <td>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-a" /> Критерий 1</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-b" /> Критерий 2</label><br>
+                  <label class="small probation-cell"><input type="checkbox" class="probation-check" data-cell="m3-c" /> Критерий 3</label>
+                </td>
+                <td data-probation-status><span class="badge probation-status-badge" data-status="in-progress">В работе</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="small" style="margin-top:8px;">
+            ✔ Логика: ≥ 80% чекбоксов — <strong>«Пройден»</strong>, 50–79% — <strong>«Продлить»</strong>, &lt; 50% — <strong>«Не пройден»</strong>.
+          </p>
+        </div>
+      </section>
+    </section>
+
+        in>
 
         
     
