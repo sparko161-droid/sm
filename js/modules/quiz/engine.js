@@ -4,12 +4,12 @@ function createInitialState(quiz) {
   return {
     currentIndex: 0,
     completed: false,
-    answers: [], // { questionIndex, optionIndex, correct }
+    answers: [],
     quiz
   };
 }
 
-function renderQuestion(container, state) {
+function renderQuestion(container, state, options = {}) {
   const { quiz, currentIndex } = state;
   const question = quiz.questions[currentIndex];
   const total = quiz.questions.length;
@@ -26,7 +26,7 @@ function renderQuestion(container, state) {
         <div class="quiz-feedback" data-quiz-feedback></div>
       </article>
       <footer class="quiz-footer">
-        <button type="button" class="btn" data-quiz-next disabled>Ответить</button>
+        <button type="button" class="btn" data-quiz-next disabled>Следующий вопрос</button>
       </footer>
     </section>
   `;
@@ -44,83 +44,73 @@ function renderQuestion(container, state) {
     optionsRoot.appendChild(btn);
   });
 
-  let selectedIndex = null;
-  let locked = false;
+  let answered = false;
 
   optionsRoot.addEventListener("click", (event) => {
     const target = event.target;
-    if (!(target instanceof HTMLElement)) return;
+    if (!(target instanceof HTMLElement) || answered) return;
     const btn = target.closest(".quiz-option");
-    if (!btn || locked) return;
-    const idxStr = btn.dataset.index;
-    if (idxStr == null) return;
+    if (!btn) return;
 
-    selectedIndex = Number(idxStr);
+    const idx = Number(btn.dataset.index ?? -1);
+    if (Number.isNaN(idx) || idx < 0) return;
 
-    optionsRoot.querySelectorAll(".quiz-option").forEach((el) => {
-      el.classList.remove("quiz-option--selected");
+    const opt = question.options[idx];
+    const correct = !!opt.correct;
+
+    // Запоминаем ответ (только один раз на вопрос)
+    state.answers.push({
+      questionIndex: currentIndex,
+      optionIndex: idx,
+      correct
     });
-    btn.classList.add("quiz-option--selected");
 
-    if (nextBtn) nextBtn.disabled = false;
-    feedbackEl.textContent = "";
+    // Подсветка вариантов
+    optionsRoot.querySelectorAll(".quiz-option").forEach((el, optionIndex) => {
+      el.classList.remove("quiz-option--selected", "quiz-option--correct", "quiz-option--wrong");
+      const optionData = question.options[optionIndex];
+      if (optionData.correct) {
+        el.classList.add("quiz-option--correct");
+      }
+      if (optionIndex === idx && !optionData.correct) {
+        el.classList.add("quiz-option--wrong");
+      }
+    });
+
+    // Фидбек
+    let feedbackHtml = "";
+    if (opt.note) {
+      feedbackHtml = opt.note;
+    } else if (correct) {
+      feedbackHtml = "✅ Верно!";
+    } else {
+      feedbackHtml = "❌ Не совсем так. Посмотри пояснение.";
+    }
+    feedbackEl.innerHTML = feedbackHtml;
+
+    answered = true;
+    if (nextBtn) {
+      nextBtn.disabled = false;
+    }
   });
 
   if (nextBtn) {
-    nextBtn.addEventListener("click", async () => {
-      if (selectedIndex == null || locked) return;
-      locked = true;
-
-      const opt = question.options[selectedIndex];
-      const correct = !!opt.correct;
-
-      state.answers.push({
-        questionIndex: currentIndex,
-        optionIndex: selectedIndex,
-        correct
-      });
-
-      optionsRoot.querySelectorAll(".quiz-option").forEach((el, idx) => {
-        el.classList.remove("quiz-option--selected");
-        el.classList.remove("quiz-option--correct");
-        el.classList.remove("quiz-option--wrong");
-
-        const optionData = question.options[idx];
-        if (optionData.correct) {
-          el.classList.add("quiz-option--correct");
-        }
-        if (idx === selectedIndex && !optionData.correct) {
-          el.classList.add("quiz-option--wrong");
-        }
-      });
-
-      let feedbackHtml = "";
-      if (opt.note) {
-        feedbackHtml = opt.note;
-      } else if (correct) {
-        feedbackHtml = "✅ Верно!";
-      } else {
-        feedbackHtml = "❌ Не совсем так. Посмотри пояснение.";
-      }
-      feedbackEl.innerHTML = feedbackHtml;
-
-      nextBtn.disabled = true;
-
-      await delay(600);
+    nextBtn.addEventListener("click", () => {
+      if (!answered) return;
 
       const nextIndex = currentIndex + 1;
       if (nextIndex < total) {
         state.currentIndex = nextIndex;
-        renderQuestion(container, state);
+        renderQuestion(container, state, options);
       } else {
         state.completed = true;
-        renderSummary(container, state);
+        renderSummary(container, state, options);
       }
     });
   }
 }
 
-function renderSummary(container, state) {
+function renderSummary(container, state, options = {}) {
   const { quiz, answers } = state;
   const total = quiz.questions.length;
   const correctCount = answers.filter((a) => a.correct).length;
@@ -135,9 +125,13 @@ function renderSummary(container, state) {
       <article class="quiz-card">
         <p class="quiz-score-main">Верных ответов: <strong>${correctCount} из ${total}</strong> (${scorePercent}%)</p>
         <p class="quiz-score-hint">
-          ${scorePercent >= 80 ? "Отлично! Можно идти дальше или помогать другим." :
-            scorePercent >= 50 ? "Неплохо — но есть, что повторить." :
-            "Хороший повод ещё раз пройтись по материалам и попробовать снова."}
+          ${
+            scorePercent >= 80
+              ? "Отлично! Можно идти дальше или помогать другим."
+              : scorePercent >= 50
+              ? "Неплохо — но есть, что повторить."
+              : "Хороший повод ещё раз пройтись по материалам и попробовать снова."
+          }
         </p>
         <div class="quiz-actions">
           <button type="button" class="btn" data-quiz-restart>Пройти ещё раз</button>
@@ -153,19 +147,21 @@ function renderSummary(container, state) {
   if (restartBtn) {
     restartBtn.addEventListener("click", () => {
       const newState = createInitialState(quiz);
-      renderQuestion(container, newState);
+      renderQuestion(container, newState, options);
     });
   }
 
   if (backBtn) {
     backBtn.addEventListener("click", () => {
-      window.history.back();
+      if (typeof options.onClose === "function") {
+        options.onClose();
+      }
     });
   }
 }
 
 export const QuizEngine = {
-  async run(quizData, container) {
+  async run(quizData, container, options = {}) {
     if (!quizData || !quizData.questions || quizData.questions.length === 0) {
       container.innerHTML = `
         <section class="page page--quiz">
@@ -177,6 +173,6 @@ export const QuizEngine = {
     }
 
     const state = createInitialState(quizData);
-    renderQuestion(container, state);
+    renderQuestion(container, state, options);
   }
 };
