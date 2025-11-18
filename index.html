@@ -1,34 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Стандарт Мастер — Внутренний портал</title>
+  <meta charset="utf-8" />
+  <title>SM Codex Portal (SPA)</title>
+
+  <!-- ВАЖНО: для GitHub Pages /sm/ -->
+  <base href="https://sparko161-droid.github.io/sm/">
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <script defer src="js/theme.js"></script>
-  <script defer src="js/navigation.js"></script>
+
+  <link rel="stylesheet" href="/sm/css/base.css">
+  <link rel="stylesheet" href="/sm/css/layout.css">
+  <link rel="stylesheet" href="/sm/css/themes.css">
+  <link rel="stylesheet" href="/sm/css/components/buttons.css">
 </head>
-<body class="dark-theme">
-  <header class="header">
-    <div class="header-inner">
-      <div class="logo-text">
-        <h1>Корпоративный портал Стандарт Мастер</h1>
-        <p>Внутренняя база знаний, регламенты и мотивация</p>
-      </div>
-      <div class="header-actions">
-        <button id="themeToggle" type="button" class="btn btn-ghost">🌓 Тема</button>
-      </div>
-    </div>
-    <nav class="main-nav">
-      <button class="nav-link active" data-section="support">Отдел поддержки</button>
+<body data-theme="light">
+  <header class="app-header">
+    <div class="app-header__logo">SM Codex Portal</div>
+    <nav class="app-header__nav">
+      <a href="#dashboard">Дашборд</a>
+      <a href="#support">Support</a>
+      <a href="#sales">Sales</a>
+      <a href="#operations">Operations</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#results">Результаты</a>
     </nav>
+    <button id="themeToggle" class="btn btn--ghost">🌓</button>
   </header>
 
-  <main id="content" class="content">
+  <main id="app">
+    <section id="content">
+      <h1>Загрузка...</h1>
+    </section>
   </main>
 
-  <footer class="footer">
-    <p>© Стандарт Мастер · внутренний портал</p>
+  <footer class="app-footer">
+    <small>SM Codex Portal · SPA Skeleton</small>
   </footer>
+
+  <script type="module" src="/sm/js/main.js"></script>
 </body>
 </html>
