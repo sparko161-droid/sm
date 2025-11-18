@@ -1,6 +1,7 @@
 {
-  "sales-intro": {
-    "title": "Квиз по продажам",
-    "questions": []
-  }
+  "id": "sales-v1",
+  "category": "sales",
+  "title": "Sales Readiness Quiz",
+  "version": 1,
+  "questions": []
 }

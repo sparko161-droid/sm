@@ -1,6 +1,7 @@
 {
-  "l1-intro": {
-    "title": "Вводный квиз",
-    "questions": []
-  }
+  "id": "support-v1",
+  "category": "support",
+  "title": "Support Escalation Quiz",
+  "version": 1,
+  "questions": []
 }
