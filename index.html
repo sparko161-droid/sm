@@ -19,24 +19,35 @@
   <link rel="stylesheet" href="/sm/css/components/quiz.css">
   <link rel="stylesheet" href="/sm/css/sections/support.css">
 </head>
-<body data-theme="light">
-  <header class="app-header">
-    <div class="app-header__logo">SM Codex Portal</div>
-    <nav class="app-header__nav">
-      <a href="#dashboard">Дашборд</a>
-      <a href="#support">Support</a>
-      <a href="#sales">Sales</a>
-      <a href="#operations">Operations</a>
-      <a href="#implementation">Implementation</a>
-      <a href="#results">Результаты</a>
-    </nav>
-    <button id="themeToggle" class="btn btn--ghost">🌓</button>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-text">
+        <h1>SM Codex Portal</h1>
+        <p>Отдел поддержки · L1–L3</p>
+      </div>
+
+      <div class="header-actions">
+        <nav class="main-nav">
+          <a href="#dashboard" class="nav-link">Дашборд</a>
+          <a href="#support" class="nav-link">Support</a>
+          <a href="#sales" class="nav-link">Sales</a>
+          <a href="#operations" class="nav-link">Operations</a>
+          <a href="#implementation" class="nav-link">Implementation</a>
+          <a href="#results" class="nav-link">Результаты</a>
+        </nav>
+
+        <button id="themeToggle" class="btn btn-ghost">🌓</button>
+      </div>
+    </div>
   </header>
 
-  <main id="app">
-    <section id="content">
-      <h1>Загрузка...</h1>
-    </section>
+  <main class="content">
+    <div class="content-inner" id="app">
+      <section id="content">
+        <h1>Загрузка...</h1>
+      </section>
+    </div>
   </main>
 
   <footer class="app-footer">
