@@ -18,8 +18,5 @@ window.SupportPage = {
     if (window.L2Calculator) {
       window.L2Calculator.init(containerElement);
     }
-    if (window.SupportProbation) {
-      window.SupportProbation.init(containerElement);
-    }
   }
 };
