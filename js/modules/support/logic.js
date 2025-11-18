@@ -50,4 +50,21 @@ export function initSupportInteractions(container) {if (!container) return;
     console.warn('[Support] L2 calculator init failed', e);
   }
 
+
+  // Обработчики запуска квизов из раздела поддержки
+  try {
+    const quizTriggers = Array.from(container.querySelectorAll(".quiz-trigger[data-quiz]"));
+    quizTriggers.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.preventDefault();
+        const section = btn.dataset.quizSection || "support";
+        const quizId = btn.dataset.quiz || "";
+        const hash = `#quiz?category=${encodeURIComponent(section)}&quiz=${encodeURIComponent(quizId)}`;
+        window.location.hash = hash;
+      });
+    });
+  } catch (e) {
+    console.warn('[Support] Quiz triggers init failed', e);
+  }
+
 }
