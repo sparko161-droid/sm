@@ -96,63 +96,69 @@
         <div class="calc-title">L1 — калькулятор зарплаты</div>
         <div class="calc-sub">Оклад + премии за закрытие и создание с учётом пропущенных звонков и просрочек</div>
 
-        <div class="calc-row">
-          <label class="calc-label" for="l1-grade">Грейд:</label>
-          <select id="l1-grade" class="calc-select" name="grade">
-            <option value="1">1 грейд (оклад 23 000)</option>
-            <option value="2">2 грейд (оклад 29 000)</option>
-            <option value="3">3 грейд (оклад 32 000)</option>
-          </select>
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l1-resolved">Закрытых заявок за месяц:</label>
-          <input id="l1-resolved" class="calc-input" type="number" min="0" value="100" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l1-created">Созданных заявок за месяц:</label>
-          <input id="l1-created" class="calc-input" type="number" min="0" value="300" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l1-missed">% пропущенных звонков:</label>
-          <input id="l1-missed" class="calc-input" type="number" min="0" step="0.1" value="1.0" inputmode="decimal" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l1-overdue">% просроченных задач (для 3 грейда):</label>
-          <input id="l1-overdue" class="calc-input" type="number" min="0" step="0.1" value="1.0" inputmode="decimal" />
-        </div>
-
-        <button class="calc-btn" type="button" data-action="recalc-l1">Пересчитать L1</button>
-
-        <div class="calc-results">
-          <div class="calc-result-highlight">
-            <div class="calc-highlight-label">Итого после НДФЛ</div>
-            <div class="calc-highlight-value" data-output="l1-total-net">—</div>
-            <div class="calc-highlight-hint">Чистыми, НДФЛ удерживается только с оклада</div>
-          </div>
-
-          <div class="calc-result-line">
-            <div>
-              <div class="calc-label">До вычета</div>
-              <div class="calc-hint">Оклад + премии</div>
+        <div class="calc-two-col">
+          <div class="calc-panel calc-panel-inputs">
+            <div class="calc-row">
+              <label class="calc-label" for="l1-grade">Грейд:</label>
+              <select id="l1-grade" class="calc-select" name="grade">
+                <option value="1">1 грейд (оклад 23 000)</option>
+                <option value="2">2 грейд (оклад 29 000)</option>
+                <option value="3">3 грейд (оклад 32 000)</option>
+              </select>
             </div>
-            <div class="calc-value" data-output="l1-total-gross">—</div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l1-resolved">Закрытых заявок за месяц:</label>
+              <input id="l1-resolved" class="calc-input" type="number" min="0" value="100" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l1-created">Созданных заявок за месяц:</label>
+              <input id="l1-created" class="calc-input" type="number" min="0" value="300" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l1-missed">% пропущенных звонков:</label>
+              <input id="l1-missed" class="calc-input" type="number" min="0" step="0.1" value="1.0" inputmode="decimal" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l1-overdue">% просроченных задач (для 3 грейда):</label>
+              <input id="l1-overdue" class="calc-input" type="number" min="0" step="0.1" value="1.0" inputmode="decimal" />
+            </div>
+
+            <button class="calc-btn" type="button" data-action="recalc-l1">Пересчитать L1</button>
           </div>
 
-          <div class="calc-divider"></div>
-        </div>
+          <div class="calc-panel calc-panel-results">
+            <div class="calc-results">
+              <div class="calc-result-highlight">
+                <div class="calc-highlight-label">Итого после НДФЛ</div>
+                <div class="calc-highlight-value" data-output="l1-total-net">—</div>
+                <div class="calc-highlight-hint">Чистыми, НДФЛ удерживается только с оклада</div>
+              </div>
 
-        <div id="l1-result" class="calc-result" data-output="l1-result"></div>
-        <div id="l1-breakdown" class="rate-breakdown" data-output="l1-breakdown"></div>
-        <div class="calc-note">Подробная расшифровка обновляется при каждом вводе: видно, как влияет каждая мотивация.</div>
+              <div class="calc-result-line">
+                <div>
+                  <div class="calc-label">До вычета</div>
+                  <div class="calc-hint">Оклад + премии</div>
+                </div>
+                <div class="calc-value" data-output="l1-total-gross">—</div>
+              </div>
+
+              <div class="calc-divider"></div>
+            </div>
+
+            <div id="l1-result" class="calc-result" data-output="l1-result"></div>
+            <div id="l1-breakdown" class="rate-breakdown" data-output="l1-breakdown"></div>
+            <div class="calc-note">Подробная расшифровка обновляется при каждом вводе: видно, как влияет каждая мотивация.</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="quiz-launchers">
-      <button type="button" class="btn quiz-trigger" data-quiz="l1-escalation">
+      <button type="button" class="btn quiz-trigger" data-quiz-section="support" data-quiz="l1-escalation">
         🧭 Мини-тест: эскалация в L2
       </button>
       <p class="quiz-hint">Потренируйся, как корректно передать кейс инженерам L2.</p>
@@ -193,7 +199,16 @@
     </div>
 
     <div class="quiz-launchers">
-      <button type="button" class="btn quiz-trigger" data-quiz="l1-intro">
+      <button type="button" class="btn quiz-trigger" data-quiz-section="support" data-quiz="l1-flow-intake">
+        ✅ Мини-тест: пройти все шаги приёма обращения
+      </button>
+      <p class="quiz-hint">
+        Проверь, не забываешь ли ты важные вопросы: кто/откуда, что именно не работает, где и когда, что уже пробовали сделать.
+      </p>
+    </div>
+
+    <div class="quiz-launchers">
+      <button type="button" class="btn quiz-trigger" data-quiz-section="support" data-quiz="l1-intro">
         📞 Мини-тест: первый контакт с клиентом
       </button>
       <p class="quiz-hint">Разберись, что спрашивать и как вести себя в первые секунды разговора.</p>
@@ -291,107 +306,113 @@
         <div class="calc-title">L2 — калькулятор зарплаты</div>
         <div class="calc-sub">Оклад + закрытые тикеты + выезды + доп. работы + командные бонусы + обновления + смены</div>
 
-        <div class="calc-row">
-          <label class="calc-label" for="l2-grade">Грейд:</label>
-          <select id="l2-grade" class="calc-select" name="grade">
-            <option value="1">1 грейд (оклад 32 000)</option>
-            <option value="2">2 грейд (оклад 38 000)</option>
-            <option value="3">3 грейд (оклад 40 000)</option>
-            <option value="4">4 грейд (оклад 49 000)</option>
-          </select>
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-city">Город:</label>
-          <select id="l2-city" class="calc-select" name="city">
-            <option value="base">Тольятти / др. регионы</option>
-            <option value="plus30">Самара / Казань (+30% к окладу)</option>
-          </select>
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-resolved">Закрытых заявок за месяц:</label>
-          <input id="l2-resolved" class="calc-input" type="number" min="0" value="220" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-onsite">Выездных заявок (учитываем в плане, +100 ₽/шт за ГСМ):</label>
-          <input id="l2-onsite" class="calc-input" type="number" min="0" value="0" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-overdue">% просроченных заявок:</label>
-          <input id="l2-overdue" class="calc-input" type="number" min="0" step="0.1" value="4.0" inputmode="decimal" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-team-plan">План команды по заявкам (сумма):</label>
-          <input id="l2-team-plan" class="calc-input" type="number" min="0" value="1500" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-team-fact">Фактически закрыто командой:</label>
-          <input id="l2-team-fact" class="calc-input" type="number" min="0" value="1650" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-second-shifts">Доп. доход за вторые смены (руб):</label>
-          <input id="l2-second-shifts" class="calc-input" type="number" min="0" value="0" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-summer-setup">Выставление летника / настройка ЧЗ (шт, +300 ₽ за единицу):</label>
-          <input id="l2-summer-setup" class="calc-input" type="number" min="0" value="0" inputmode="numeric" />
-        </div>
-
-        <div class="calc-row">
-          <label class="calc-label" for="l2-transfer">Перенос в клад (шт, +500 ₽ за единицу):</label>
-          <input id="l2-transfer" class="calc-input" type="number" min="0" value="0" inputmode="numeric" />
-        </div>
-
-        <div class="updates-section-title">Ночные обновления (30% от стоимости, минимум 500 ₽ за обновление)</div>
-        <div class="updates-controls">
-          <button type="button" data-action="add-update-row">+ Добавить обновление</button>
-        </div>
-        <table class="calc-table" id="updates-table" data-updates-table>
-          <thead>
-            <tr><th>№</th><th>Кол-во терминалов</th><th>Стоимость обновления</th><th>Ваш доход</th><th></th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <div id="updates-total" class="updates-total" data-output="updates-total">Доход от обновлений: 0 ₽</div>
-
-        <button class="calc-btn" type="button" data-action="recalc-l2">Пересчитать L2</button>
-
-        <div class="calc-results">
-          <div class="calc-result-highlight">
-            <div class="calc-highlight-label">Итого после НДФЛ</div>
-            <div class="calc-highlight-value" data-output="l2-total-net">—</div>
-            <div class="calc-highlight-hint">Чистыми, НДФЛ удерживается только с оклада</div>
-          </div>
-
-          <div class="calc-result-line">
-            <div>
-              <div class="calc-label">До вычета</div>
-              <div class="calc-hint">Оклад + тикеты и выезды + обновления + смены + доп. работы</div>
+        <div class="calc-two-col">
+          <div class="calc-panel calc-panel-inputs">
+            <div class="calc-row">
+              <label class="calc-label" for="l2-grade">Грейд:</label>
+              <select id="l2-grade" class="calc-select" name="grade">
+                <option value="1">1 грейд (оклад 32 000)</option>
+                <option value="2">2 грейд (оклад 38 000)</option>
+                <option value="3">3 грейд (оклад 40 000)</option>
+                <option value="4">4 грейд (оклад 49 000)</option>
+              </select>
             </div>
-            <div class="calc-value" data-output="l2-total-gross">—</div>
-          </div>
 
-          <div class="calc-result-line">
-            <div>
-              <div class="calc-label">Премии и доплаты</div>
-              <div class="calc-hint">Тикеты, выезды (ГСМ), обновления, смены, летники/ЧЗ, переносы</div>
+            <div class="calc-row">
+              <label class="calc-label" for="l2-city">Город:</label>
+              <select id="l2-city" class="calc-select" name="city">
+                <option value="base">Тольятти / др. регионы</option>
+                <option value="plus30">Самара / Казань (+30% к окладу)</option>
+              </select>
             </div>
-            <div class="calc-value" data-output="l2-bonus-total">—</div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l2-resolved">Закрытых заявок за месяц:</label>
+              <input id="l2-resolved" class="calc-input" type="number" min="0" value="220" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l2-onsite">Выездных заявок (учитываем в плане, +100 ₽/шт за ГСМ):</label>
+              <input id="l2-onsite" class="calc-input" type="number" min="0" value="0" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l2-overdue">% просроченных заявок:</label>
+              <input id="l2-overdue" class="calc-input" type="number" min="0" step="0.1" value="4.0" inputmode="decimal" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l2-team-plan">План команды по заявкам (сумма):</label>
+              <input id="l2-team-plan" class="calc-input" type="number" min="0" value="1500" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l2-team-fact">Фактически закрыто командой:</label>
+              <input id="l2-team-fact" class="calc-input" type="number" min="0" value="1650" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l2-second-shifts">Доп. доход за вторые смены (руб):</label>
+              <input id="l2-second-shifts" class="calc-input" type="number" min="0" value="0" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l2-summer-setup">Выставление летника / настройка ЧЗ (шт, +300 ₽ за единицу):</label>
+              <input id="l2-summer-setup" class="calc-input" type="number" min="0" value="0" inputmode="numeric" />
+            </div>
+
+            <div class="calc-row">
+              <label class="calc-label" for="l2-transfer">Перенос в клад (шт, +500 ₽ за единицу):</label>
+              <input id="l2-transfer" class="calc-input" type="number" min="0" value="0" inputmode="numeric" />
+            </div>
+
+            <div class="updates-section-title">Ночные обновления (30% от стоимости, минимум 500 ₽ за обновление)</div>
+            <div class="updates-controls">
+              <button type="button" data-action="add-update-row">+ Добавить обновление</button>
+            </div>
+            <table class="calc-table" id="updates-table" data-updates-table>
+              <thead>
+                <tr><th>№</th><th>Кол-во терминалов</th><th>Стоимость обновления</th><th>Ваш доход</th><th></th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div id="updates-total" class="updates-total" data-output="updates-total">Доход от обновлений: 0 ₽</div>
+
+            <button class="calc-btn" type="button" data-action="recalc-l2">Пересчитать L2</button>
           </div>
 
-          <div class="calc-divider"></div>
-        </div>
+          <div class="calc-panel calc-panel-results">
+            <div class="calc-results">
+              <div class="calc-result-highlight">
+                <div class="calc-highlight-label">Итого после НДФЛ</div>
+                <div class="calc-highlight-value" data-output="l2-total-net">—</div>
+                <div class="calc-highlight-hint">Чистыми, НДФЛ удерживается только с оклада</div>
+              </div>
 
-        <div id="l2-result" class="calc-result" data-output="l2-result"></div>
-        <div id="l2-breakdown" class="rate-breakdown" data-output="l2-breakdown"></div>
-        <div class="calc-note">Суммируем ставку за тикеты и выезды, обновления, вторые смены, летник/ЧЗ и переносы. НДФЛ удерживается только с оклада.</div>
+              <div class="calc-result-line">
+                <div>
+                  <div class="calc-label">До вычета</div>
+                  <div class="calc-hint">Оклад + тикеты и выезды + обновления + смены + доп. работы</div>
+                </div>
+                <div class="calc-value" data-output="l2-total-gross">—</div>
+              </div>
+
+              <div class="calc-result-line">
+                <div>
+                  <div class="calc-label">Премии и доплаты</div>
+                  <div class="calc-hint">Тикеты, выезды (ГСМ), обновления, смены, летники/ЧЗ, переносы</div>
+                </div>
+                <div class="calc-value" data-output="l2-bonus-total">—</div>
+              </div>
+
+              <div class="calc-divider"></div>
+            </div>
+
+            <div id="l2-result" class="calc-result" data-output="l2-result"></div>
+            <div id="l2-breakdown" class="rate-breakdown" data-output="l2-breakdown"></div>
+            <div class="calc-note">Суммируем ставку за тикеты и выезды, обновления, вторые смены, летник/ЧЗ и переносы. НДФЛ удерживается только с оклада.</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -509,7 +530,7 @@
       </article>
     </div>
     <div class="quiz-launchers">
-      <button type="button" class="btn quiz-trigger" data-quiz="l2-escalation">
+      <button type="button" class="btn quiz-trigger" data-quiz-section="support" data-quiz="l2-escalation">
         🧠 Мини-тест: как отправить кейс на L3
       </button>
       <p class="quiz-hint">Проверь себя: что нужно подготовить для экспертов и как описать проблему.</p>
