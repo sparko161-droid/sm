@@ -1,4 +1,7 @@
-// Lazy-loading support filters with remote sections
+import SupportAccordions from "/sm/js/modules/support/support-accordions.js";
+import SupportTemplates from "/sm/js/modules/support/support-templates.js";
+
+// Lazy-loading support filters with remote sections (adapted for SPA)
 const SupportFilters = {
   init(containerElement) {
     const container = containerElement;
@@ -27,21 +30,8 @@ const SupportFilters = {
           loadedRemotes.add(block);
 
           try {
-            if (window.SupportAccordions) {
-              window.SupportAccordions.init(block);
-            }
-            if (window.SupportTemplates) {
-              window.SupportTemplates.init(block);
-            }
-            if (window.QuizInit) {
-              window.QuizInit.initForSection(block, 'support');
-            }
-            if (window.L1Calculator) {
-              window.L1Calculator.init(block);
-            }
-            if (window.L2Calculator) {
-              window.L2Calculator.init(block);
-            }
+            SupportAccordions.init(block);
+            SupportTemplates.init(block);
           } catch (e) {
             console.warn('Error while initializing dynamic support block', e);
           }
@@ -49,7 +39,8 @@ const SupportFilters = {
         .catch((err) => {
           console.error(err);
           if (!loadedRemotes.has(block)) {
-            block.innerHTML = '<div class="callout callout-error">Не удалось загрузить раздел. Попробуйте обновить страницу.</div>';
+            block.innerHTML =
+              '<div class="callout callout-error">Не удалось загрузить раздел. Попробуйте обновить страницу.</div>';
           }
         });
     };
@@ -79,7 +70,7 @@ const SupportFilters = {
     });
 
     applyFilter('all');
-  },
+  }
 };
 
 export default SupportFilters;

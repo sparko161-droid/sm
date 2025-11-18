@@ -55,7 +55,7 @@ const SupportProbation = {
     };
 
     tables.forEach(attachTable);
-  },
+  }
 };
 
 export default SupportProbation;

@@ -12,7 +12,7 @@ const SupportTemplates = {
     if (!pills.length || !blocks.length) return;
 
     const apply = (filterValue) => {
-      blocks.forEach(block => {
+      blocks.forEach((block) => {
         const tags = (block.dataset.templateTags || '')
           .split(/\s+/)
           .filter(Boolean);
@@ -21,11 +21,13 @@ const SupportTemplates = {
       });
     };
 
-    const initial = pills.find(pill => pill.classList.contains('active'))?.dataset.templateFilter || 'all';
-    pills.forEach(pill => {
+    const initial =
+      pills.find((pill) => pill.classList.contains('active'))?.dataset.templateFilter || 'all';
+
+    pills.forEach((pill) => {
       pill.addEventListener('click', () => {
         const value = pill.dataset.templateFilter;
-        pills.forEach(p => p.classList.toggle('active', p === pill));
+        pills.forEach((p) => p.classList.toggle('active', p === pill));
         apply(value);
       });
     });
@@ -56,16 +58,19 @@ const SupportTemplates = {
       }, 1200);
     };
 
-    buttons.forEach(button => {
+    buttons.forEach((button) => {
+      const originalLabel = button.textContent || 'Скопировать';
       button.addEventListener('click', () => {
-        const targetId = button.dataset.copyTarget;
-        const target = targetId ? section.querySelector(`#${targetId}`) : null;
-        const text = target ? target.innerText.trim() : '';
-        if (!text) return;
+        const targetId = button.dataset.templateTarget;
+        if (!targetId) return;
+        const templateNode = section.querySelector('[data-template-id="' + targetId + '"]');
+        if (!templateNode) return;
 
-        const originalLabel = button.textContent;
+        const text = templateNode.textContent || '';
+
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text)
+          navigator.clipboard
+            .writeText(text)
             .then(() => {
               button.textContent = 'Скопировано!';
               setTimeout(() => {

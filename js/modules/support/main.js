@@ -2936,6 +2936,18 @@ export default {
               </div>
             </section>
           </section>
+        </main>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const section = document.querySelector('.section[data-page="support-matrix"]');
+            if (section && window.SupportMatrixPage) {
+              window.SupportMatrixPage.init(section);
+            }
+          });
+        </script>
+      </body>
+      </html>
 
       <hr class="support-divider" />
 
@@ -3481,8 +3493,19 @@ export default {
               </div>
             </section>
           </section>
-    `;
+        </main>
 
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const section = document.querySelector('.section[data-page="support-onboarding"]');
+            if (section && window.SupportOnboardingPage) {
+              window.SupportOnboardingPage.init(section);
+            }
+          });
+        </script>
+      </body>
+      </html>
+    `;
     initSupportInteractions(container);
   },
 
