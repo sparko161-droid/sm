@@ -16,6 +16,10 @@
       <button class="subnav-pill" data-line-filter="lead">Руководителю</button>
       <button class="subnav-pill" data-line-filter="cases">Кейсы</button>
       <button class="subnav-pill" data-line-filter="templates">Шаблоны сообщений</button>
+
+      <!-- Новые секции с ленивой загрузкой -->
+      <button class="subnav-pill" data-line-filter="matrix">Матрица компетенций</button>
+      <button class="subnav-pill" data-line-filter="onboarding">Онбординг</button>
     </div>
 
     <div class="callout">
@@ -2344,5 +2348,23 @@
         Пройди оба мини-теста: сначала как оператор L1, потом как инженер L2 — чтобы увидеть связную картину эскалации.
       </p>
     </div>
+  </section>
+
+  <!-- Лениво подгружаемая секция: матрица компетенций -->
+  <section
+    class="support-line"
+    data-line="matrix"
+    data-remote="/sections/support-matrix.html"
+  >
+    <!-- Контент загрузится динамически через SupportFilters -->
+  </section>
+
+  <!-- Лениво подгружаемая секция: онбординг -->
+  <section
+    class="support-line"
+    data-line="onboarding"
+    data-remote="/sections/support-onboarding.html"
+  >
+    <!-- Контент загрузится динамически через SupportFilters -->
   </section>
 </section>
