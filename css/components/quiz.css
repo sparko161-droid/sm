@@ -5,6 +5,12 @@
   gap: 6px;
 }
 
+/* Кнопки-запуски квизов на странице */
+.quiz-launchers .btn {
+  width: 100%;
+  justify-content: flex-start;
+}
+
 .quiz-hint {
   font-size: 12px;
   color: var(--text-muted);
@@ -56,15 +62,33 @@ body.dark-theme .quiz-card {
   margin-bottom: 1rem;
 }
 
+/* Варианты ответов — на основе .btn / .btn-ghost */
 .quiz-option {
+  display: flex;
+  align-items: center;
   width: 100%;
   justify-content: flex-start;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  padding: 6px 12px;
+  font-size: 12px;
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, color .15s ease, transform .06s ease;
+}
+
+.quiz-option:hover {
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateY(-1px);
 }
 
 .quiz-option--selected {
   outline: 2px solid rgba(59, 130, 246, 0.8);
 }
 
+/* Подсветка верных / неверных ответов */
 .quiz-option--correct {
   background: rgba(22, 163, 74, 0.10);
 }
