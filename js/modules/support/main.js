@@ -1693,7 +1693,7 @@ export default {
           <strong>Как пользоваться:</strong> выбери фильтр по линии или типу задач, скопируй подходящий шаблон и адаптируй под клиента.
         </div>
 
-        <div class="subnav-lines" data-role="support-main-nav">
+        <div class="subnav-lines" data-role="support-templates-nav">
           <button class="subnav-pill active" data-template-filter="all">Все</button>
           <button class="subnav-pill" data-template-filter="l1">L1</button>
           <button class="subnav-pill" data-template-filter="l2">L2</button>

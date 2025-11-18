@@ -1,12 +1,30 @@
 .support-toolbar {
+  position: relative;
+  padding: 0 0 8px;
+  margin-bottom: 12px;
+}
+
+/* Главный фильтр по линиям — фиксируем под шапкой */
+.support-toolbar > .subnav-lines[data-role="support-main-nav"] {
   position: sticky;
   top: 104px;
-  z-index: 15;
+  z-index: 20;
   padding: 10px 0 12px;
   background: var(--bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-soft);
-  margin-bottom: 14px;
+}
+
+/* Локальные фильтры внутри блоков поддержки (например, шаблоны, матрица) */
+.support-line .subnav-lines {
+  position: sticky;
+  top: 148px;
+  z-index: 15;
+  padding: 6px 0 8px;
+  margin-bottom: 8px;
+  background: var(--bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .support-line {
