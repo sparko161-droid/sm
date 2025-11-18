@@ -1,9 +1,8 @@
-# SM Codex Portal — SPA Skeleton
+# SM Codex Portal — SPA (Support content migrated)
 
-Это skeleton-проект для миграции портала в SPA на Vanilla JS.
+Этот проект — SPA-версия SM Codex Portal на Vanilla JS.
 
-- Hash-based роутер
-- Light/Dark тема
-- Заглушки страниц (support, sales, operations, implementation, results)
-- Заглушки квиз-системы и калькуляторов
-- Подготовленные JSON-файлы для квизов
+На данном этапе:
+- Раздел Support полностью перенесён из оригинального проекта (включая матрицу и онбординг) в /js/modules/support/main.js
+- Остальные разделы — заглушки
+- Квиз-система и калькуляторы — заглушки
