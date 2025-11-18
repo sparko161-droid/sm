@@ -6,6 +6,9 @@ window.SupportPage = {
     if (window.SupportAccordions) {
       window.SupportAccordions.init(containerElement);
     }
+    if (window.SupportTemplates) {
+      window.SupportTemplates.init(containerElement);
+    }
     if (window.QuizInit) {
       window.QuizInit.initForSection(containerElement, 'support');
     }
