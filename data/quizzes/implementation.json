@@ -1,6 +1,7 @@
 {
-  "impl-intro": {
-    "title": "Квиз по внедрению",
-    "questions": []
-  }
+  "id": "implementation-v1",
+  "category": "implementation",
+  "title": "Implementation Readiness Quiz",
+  "version": 1,
+  "questions": []
 }

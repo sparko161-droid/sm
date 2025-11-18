@@ -1,30 +1,23 @@
-const THEME_KEY = 'portal-theme';
+export const Theme = {
+  key: "sm_theme",
 
-export class Theme {
-  static init(buttonSelector = '#themeToggle') {
-    this.body = document.body;
-    this.toggleBtn = document.querySelector(buttonSelector);
-    const savedTheme = localStorage.getItem(THEME_KEY);
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (systemDark ? 'dark' : 'light');
-    this.apply(theme);
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem(THEME_KEY)) {
-        this.apply(e.matches ? 'dark' : 'light');
-      }
+  init() {
+    const toggle = document.getElementById("themeToggle");
+    if (!toggle) return;
+
+    const systemPrefersDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    const stored = localStorage.getItem(this.key);
+    const initial = stored || (systemPrefersDark ? "dark" : "light");
+
+    document.documentElement.dataset.theme = initial;
+
+    toggle.addEventListener("click", () => {
+      const current = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem(this.key, next);
     });
-    if (this.toggleBtn) {
-      this.toggleBtn.addEventListener('click', () => {
-        const current = this.body.dataset.theme || 'light';
-        const next = current === 'light' ? 'dark' : 'light';
-        this.apply(next, true);
-      });
-    }
   }
-  static apply(theme, save = false) {
-    this.body.dataset.theme = theme;
-    this.body.classList.remove('dark-theme', 'light-theme');
-    this.body.classList.add(`${theme}-theme`);
-    if (save) localStorage.setItem(THEME_KEY, theme);
-  }
-}
+};

@@ -1,6 +1,7 @@
 {
-  "ops-intro": {
-    "title": "Квиз по операциям",
-    "questions": []
-  }
+  "id": "operations-v1",
+  "category": "operations",
+  "title": "Operations Efficiency Quiz",
+  "version": 1,
+  "questions": []
 }

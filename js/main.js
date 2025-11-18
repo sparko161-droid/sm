@@ -1,17 +1,14 @@
-import { Theme } from './core/theme.js';
-import { Router } from './core/router.js';
-import { Utils } from './core/utils.js';
-import { QuizEngine } from './modules/quiz/engine.js';
+import { Router } from "/sm/js/core/router.js";
+import { Theme } from "/sm/js/core/theme.js";
 
-export class App {
-  static async init() {
-    Theme.init('#themeToggle');
-    Router.init('#content');
-    const content = document.querySelector('#content');
-    if (content) {
-      const section = content.dataset.section || 'home';
-      await Utils.autoInitPage(section, content);
-    }
-  }
-}
-document.addEventListener('DOMContentLoaded', () => App.init());
+// Регистрация роутов (ленивая загрузка модулей страниц)
+Router.register("dashboard", () => import("/sm/js/modules/results/main.js")); // временно
+Router.register("support", () => import("/sm/js/modules/support/main.js"));
+Router.register("sales", () => import("/sm/js/modules/sales/main.js"));
+Router.register("operations", () => import("/sm/js/modules/operations/main.js"));
+Router.register("implementation", () => import("/sm/js/modules/implementation/main.js"));
+Router.register("results", () => import("/sm/js/modules/results/main.js"));
+
+// Инициализация
+Theme.init();
+Router.init();

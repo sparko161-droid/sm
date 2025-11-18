@@ -1,27 +1,68 @@
-import { Utils } from './utils.js';
+// Простой hash-based роутер с lazy-loading модулей страниц
 
-export class Router {
-  static init(containerSelector = '#content') {
-    this.container = document.querySelector(containerSelector);
-    this.navLinks = Array.from(document.querySelectorAll('.nav-link'));
-    window.addEventListener('hashchange', () => this.handleRoute());
-    this.handleRoute();
+export const Router = {
+  /** @type {Map<string, () => Promise<any>>} */
+  routes: new Map(),
+  currentRoute: null,
+  currentModule: null,
+
+  register(name, loader) {
+    this.routes.set(name, loader);
+  },
+
+  init() {
+    window.addEventListener("hashchange", () => this.loadFromLocation());
+    window.addEventListener("DOMContentLoaded", () => this.loadFromLocation());
+    this.loadFromLocation();
+  },
+
+  getRouteName() {
+    const hash = window.location.hash.slice(1); // без #
+    if (!hash) return "dashboard";
+    return hash.split("?")[0];
+  },
+
+  async loadFromLocation() {
+    const name = this.getRouteName();
+    const container = document.getElementById("content");
+
+    if (!container) {
+      console.error("[Router] #content not found");
+      return;
+    }
+
+    if (!this.routes.has(name)) {
+      container.innerHTML = `<h2>404 — Раздел не найден</h2>`;
+      return;
+    }
+
+    // destroy старого модуля
+    if (this.currentModule && typeof this.currentModule.destroy === "function") {
+      try {
+        this.currentModule.destroy();
+      } catch (e) {
+        console.warn("[Router] destroy error:", e);
+      }
+    }
+
+    this.currentRoute = name;
+    container.innerHTML = `<p>Загрузка раздела <strong>${name}</strong>…</p>`;
+
+    try {
+      const loader = this.routes.get(name);
+      const module = await loader();
+      const page = module.default;
+
+      if (!page || typeof page.init !== "function") {
+        container.innerHTML = `<h2>Ошибка: модуль страницы не экспортирует init()</h2>`;
+        return;
+      }
+
+      this.currentModule = page;
+      await page.init(container);
+    } catch (err) {
+      console.error("[Router] Failed to load route", name, err);
+      container.innerHTML = `<h2>Ошибка загрузки раздела</h2><p>${String(err)}</p>`;
+    }
   }
-  static handleRoute() {
-    const section = location.hash.replace('#', '') || 'home';
-    this.container.classList.add('fade-out');
-    setTimeout(() => {
-      this.updateActive(section);
-      this.container.dataset.section = section;
-      Utils.autoInitPage(section, this.container);
-      this.container.classList.remove('fade-out');
-      this.container.classList.add('fade-in');
-      setTimeout(() => this.container.classList.remove('fade-in'), 400);
-    }, 300);
-  }
-  static updateActive(section) {
-    this.navLinks.forEach((btn) =>
-      btn.classList.toggle('active', btn.dataset.section === section)
-    );
-  }
-}
+};
