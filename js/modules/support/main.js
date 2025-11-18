@@ -1,4 +1,6 @@
 
+import { initSupportInteractions } from "/sm/js/modules/support/logic.js";
+
 export default {
   name: "support",
 
@@ -265,7 +267,7 @@ export default {
                 <li>Проверка фильтров, разделов, статуса смены и других очевидных факторов.</li>
               </ul>
             </article>
-
+    
           </div>
 
           <div class="quiz-launchers">
@@ -2933,7 +2935,19 @@ export default {
                 </article>
               </div>
             </section>
-          </section
+          </section>
+        </main>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const section = document.querySelector('.section[data-page="support-matrix"]');
+            if (section && window.SupportMatrixPage) {
+              window.SupportMatrixPage.init(section);
+            }
+          });
+        </script>
+      </body>
+      </html>
 
       <hr class="support-divider" />
 
@@ -3478,8 +3492,21 @@ export default {
                 </p>
               </div>
             </section>
-          </section
+          </section>
+        </main>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const section = document.querySelector('.section[data-page="support-onboarding"]');
+            if (section && window.SupportOnboardingPage) {
+              window.SupportOnboardingPage.init(section);
+            }
+          });
+        </script>
+      </body>
+      </html>
     `;
+    initSupportInteractions(container);
   },
 
   destroy() {}
