@@ -5,21 +5,19 @@ import { QuizEngine } from "/sm/js/modules/quiz/engine.js";
 export function initImplementationInteractions(container) {
   if (!container) return;
 
+  // Калькулятор
   try {
-    // Калькулятор
     initImplementationCalculator(container);
   } catch (e) {
     console.warn("[Implementation] Calculator init failed", e);
   }
 
-  // Локальная поднавигация по разделам (sticky-паттерн как в поддержке)
+  // Локальная навигация по разделу (sticky меню)
   try {
     const nav = container.querySelector(".implementation-toolbar .subnav-lines[data-role=\"implementation-nav\"]");
     if (nav) {
       const pills = Array.from(nav.querySelectorAll(".subnav-pill[data-target]"));
-      const sections = Array.from(
-        container.querySelectorAll("[data-impl-section]")
-      );
+      const sections = Array.from(container.querySelectorAll("[data-impl-section]"));
 
       const map = new Map();
       sections.forEach((sec) => {
@@ -50,7 +48,7 @@ export function initImplementationInteractions(container) {
     console.warn("[Implementation] local nav init failed", e);
   }
 
-  // Квизы по внедрению (попап внутри раздела)
+  // Локальные квизы (попап внутри раздела)
   try {
     const backdrop = container.querySelector("[data-quiz-backdrop]");
     const quizContainer = backdrop?.querySelector("[data-quiz-container]");
@@ -97,9 +95,7 @@ export function initImplementationInteractions(container) {
         }
       };
 
-      const triggers = Array.from(
-        container.querySelectorAll(".quiz-trigger[data-quiz]")
-      );
+      const triggers = Array.from(container.querySelectorAll(".quiz-trigger[data-quiz]"));
       triggers.forEach((btn) => {
         btn.addEventListener("click", (e) => {
           e.preventDefault();

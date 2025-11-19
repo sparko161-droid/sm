@@ -453,7 +453,12 @@ body.dark-theme .step-list li.active .step-index {
 }
 
 
-/* Implementation: sticky toolbar similar to support */
+/* Implementation section */
+.section--implementation {
+  margin-top: 10px;
+}
+
+/* Sticky toolbar like Support */
 .implementation-toolbar {
   position: relative;
   padding: 0 0 8px;
@@ -470,69 +475,58 @@ body.dark-theme .step-list li.active .step-index {
   border-bottom: 1px solid var(--border-soft);
 }
 
-/* Small glossary note as a footnote */
+/* bro / not-bro chips */
+.section--implementation .list-bro {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.section--implementation .list-bro li {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.bro-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bro-chip--yes {
+  background: rgba(76, 175, 80, 0.08);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.6);
+}
+
+.bro-chip--no {
+  background: rgba(244, 67, 54, 0.08);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.6);
+}
+
+/* Glossary footnote */
 .glossary-note {
   margin-top: 16px;
   padding-top: 8px;
   border-top: 1px dashed var(--border-soft);
   color: var(--text-muted);
-  max-width: 900px;
+  max-width: 960px;
 }
 
-
-/* Bro / not-bro flags inside implementation section */
-.bro-flag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1px 8px;
-  margin-right: 6px;
-  border-radius: 999px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 600;
-}
-
-.bro-flag--yes {
-  background: rgba(76, 175, 80, 0.1);
-  color: #4caf50;
-  border: 1px solid rgba(76, 175, 80, 0.6);
-}
-
-.bro-flag--no {
-  background: rgba(244, 67, 54, 0.1);
-  color: #f44336;
-  border: 1px solid rgba(244, 67, 54, 0.6);
-}
-
-.section--implementation .list--bro {
-  list-style: none;
-  padding-left: 0;
-}
-
-.section--implementation .list--bro li {
+/* Quiz actions row */
+.quiz-actions {
+  margin-top: 8px;
   display: flex;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-.section--implementation .list--bro li span:last-child {
-  flex: 1;
-}
-
-/* Onboarding: горизонтальное выравнивание как у кейсов */
-.section--implementation [data-impl-section="onboarding"] .grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
-  gap: 14px;
-}
-
-@media (max-width: 1024px) {
-  .section--implementation [data-impl-section="onboarding"] .grid-3 {
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(260px, 1fr);
-    overflow-x: auto;
-    padding-bottom: 4px;
-  }
+  flex-wrap: wrap;
+  gap: 8px;
 }
