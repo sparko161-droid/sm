@@ -165,3 +165,48 @@ body.dark-theme .quiz-dialog {
   line-height: 1;
   cursor: pointer;
 }
+
+
+
+/* Popup for calculators: reuse quiz modal styling */
+.calc-backdrop {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+}
+
+.calc-backdrop.is-open {
+  display: flex;
+}
+
+.calc-dialog {
+  width: min(960px, 100% - 2rem);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 1.5rem;
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem 1.5rem 1.25rem;
+  position: relative;
+}
+
+.calc-dialog-body {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.calc-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}

@@ -587,3 +587,18 @@ body.dark-theme .step-list li.active .step-index {
   font-size: 12px;
 }
 
+
+
+
+/* Clickable cards for calculators overview */
+.card.card--clickable {
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card.card--clickable:hover {
+  border-color: var(--red);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+  transform: translateY(-1px);
+}
+
