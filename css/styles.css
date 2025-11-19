@@ -538,3 +538,27 @@ body.dark-theme .step-list li.active .step-index {
   gap: 8px;
   margin-top: 8px;
 }
+
+/* === Imported from implementation v6 === */
+/* Implementation section */
+.section--implementation {
+/* Sticky toolbar like Support */
+.implementation-toolbar {
+.implementation-toolbar > .subnav-lines[data-role="implementation-nav"] {
+/* bro / not-bro chips */
+.section--implementation .list-bro {
+.section--implementation .list-bro li {
+.bro-chip {
+  padding: 1px 8px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+.bro-chip--yes {
+  background: rgba(76, 175, 80, 0.08);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.6);
+.bro-chip--no {
+  background: rgba(244, 67, 54, 0.08);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.6);
+/* Glossary footnote */
+/* Quiz actions row */
