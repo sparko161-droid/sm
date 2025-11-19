@@ -1,4 +1,4 @@
-const NDFL_RATE = 0.13;
+import { NDFL_RATE, formatMoney, parseNumber, attachAutoRecalc } from "/sm/js/calculators/core.js";
 
 const LEVELS = {
   "1i": {
@@ -61,7 +61,7 @@ function calcTeamCoef(teamHours) {
   return 1.0;
 }
 
-function formatMoney(v) {
+function _legacyFormatMoney(v) {
   return Math.round(v).toLocaleString("ru-RU");
 }
 

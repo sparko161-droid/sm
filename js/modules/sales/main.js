@@ -26,7 +26,7 @@ const SalesPage = {
           </div>
         </div>
 
-        <div class="card-grid" data-sales-section="top">
+        <div class="card-grid onboarding-grid" data-sales-section="top">
           <article class="card">
             <div class="card-title">Миссия отдела продаж</div>
             <p>
@@ -73,7 +73,7 @@ const SalesPage = {
               </ul>
             </article>
 
-            <article class="card card--soft">
+            <article class="card card--soft matrix-card">
               <div class="card-sub">Чего не делают хантеры</div>
               <ul class="list small">
                 <li>Не ведут техническую переписку по инцидентам — это зона поддержки.</li>
@@ -130,7 +130,7 @@ const SalesPage = {
               </ul>
             </article>
 
-            <article class="card card--soft">
+            <article class="card card--soft matrix-card">
               <div class="card-sub">Чего не делает клиентский отдел</div>
               <ul class="list small">
                 <li>Не решает технические инциденты — это зона поддержки.</li>
@@ -343,7 +343,7 @@ const SalesPage = {
             </article>
           </div>
 
-          <div class="card card--soft" style="margin-top: 14px;">
+          <div class="card card--soft matrix-card" style="margin-top: 14px;">
             <div class="card-title">Проверь себя</div>
             <p class="small">
               Для практики можно пройти квизы по работе отдела продаж.
@@ -402,7 +402,7 @@ const SalesPage = {
 
         <section class="section-block" data-sales-section="matrix">
           <h3>🧩 Матрица ответственности: продажи, внедрение, поддержка</h3>
-          <div class="card card--soft">
+          <div class="card card--soft matrix-card">
             <div class="table-wrapper">
               <table class="table table-sm">
                 <thead>

@@ -1,6 +1,6 @@
 // L1 salary calculator logic, SPA-friendly
 
-const NDFL_RATE = 0.13;
+import { NDFL_RATE, formatMoney } from "/sm/js/calculators/core.js";
 
 export function calculateL1({ grade, resolved, created, missed, overdue }) {
   const safeGrade = Number.isFinite(grade) && grade >= 1 && grade <= 3 ? grade : 1;

@@ -541,3 +541,49 @@ body.dark-theme .step-list li.active .step-index {
   margin-top: 8px;
 }
 
+
+
+
+/* === Shared calculators page & onboarding / matrix patterns === */
+
+.section--calculators {
+  margin-top: 8px;
+}
+
+.calculators-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.calculators-note {
+  margin-top: 16px;
+  color: var(--text-muted);
+  max-width: 960px;
+}
+
+/* Унифицированная сетка онбординга: 3 колонки на десктопе, одна колонка на мобиле */
+.onboarding-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.onboarding-card .card-title {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+/* Унифицированный блок матрицы ответственности / взаимодействия */
+.matrix-card {
+  margin-top: 12px;
+}
+
+.matrix-card .matrix-title {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.matrix-card .table {
+  font-size: 12px;
+}
+

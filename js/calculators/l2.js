@@ -1,6 +1,6 @@
 // L2 salary calculator logic, SPA-friendly
 
-const NDFL_RATE = 0.13;
+import { NDFL_RATE, formatMoney, parseNumber } from "/sm/js/calculators/core.js";
 
 function updatePriceForTerminals(n) {
   const num = Number.isFinite(n) ? n : 0;

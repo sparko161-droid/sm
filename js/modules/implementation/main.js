@@ -75,7 +75,7 @@ export default {
               </ul>
             </article>
 
-            <article class="card card--soft">
+            <article class="card card--soft matrix-card">
               <div class="card-sub">Чего не делает ОВ</div>
               <ul class="list-bro">
                 <li><span class="bro-chip bro-chip--no">⛔ не бро</span><span>Не занимается инцидентной поддержкой — это зона L1.</span></li>
@@ -255,7 +255,7 @@ export default {
             </article>
           </div>
 
-          <div class="card card--soft" style="margin-top: 16px;">
+          <div class="card card--soft matrix-card" style="margin-top: 16px;">
             <div class="card-title">Проверка понимания по кейсам</div>
             <p class="small">
               Пройди короткие квизы, чтобы закрепить маршрутизацию задач и зону ответственности ОВ.
@@ -314,7 +314,7 @@ export default {
         <!-- Матрица взаимодействия -->
         <section class="section-block" data-impl-section="matrix">
           <h3>🤝 Матрица взаимодействия и роли</h3>
-          <div class="card card--soft">
+          <div class="card card--soft matrix-card">
             <div class="table-wrapper">
               <table class="table table-sm">
                 <thead>

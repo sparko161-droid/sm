@@ -1,12 +1,12 @@
+import { NDFL_RATE, formatMoney, parseNumber, attachAutoRecalc } from "/sm/js/calculators/core.js";
 
-const NDFL_RATE = 0.13;
 
-function formatMoney(v) {
+function _legacyFormatMoney(v) {
   if (!Number.isFinite(v)) return "0 ₽";
   return Math.round(v).toLocaleString("ru-RU") + " ₽";
 }
 
-function parseNumber(el, fallback = 0) {
+function _legacyParseNumber(el, fallback = 0) {
   if (!el) return fallback;
   const raw = String(el.value || "").replace(",", ".").trim();
   const n = Number(raw);
