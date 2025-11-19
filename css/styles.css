@@ -453,19 +453,18 @@ body.dark-theme .step-list li.active .step-index {
 }
 
 
-/* Implementation section */
-.section--implementation {
-  margin-top: 10px;
+/* Sales section */
+.section--sales {
+  margin-top: 8px;
 }
 
-/* Sticky toolbar like Support */
-.implementation-toolbar {
+.sales-toolbar {
   position: relative;
   padding: 0 0 8px;
   margin-bottom: 12px;
 }
 
-.implementation-toolbar > .subnav-lines[data-role="implementation-nav"] {
+.sales-toolbar > .subnav-lines[data-role="sales-nav"] {
   position: sticky;
   top: 104px;
   z-index: 20;
@@ -475,46 +474,56 @@ body.dark-theme .step-list li.active .step-index {
   border-bottom: 1px solid var(--border-soft);
 }
 
-/* bro / not-bro chips */
-.section--implementation .list-bro {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+.section--sales .section-block {
+  margin-top: 18px;
 }
 
-.section--implementation .list-bro li {
+.calc-row {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+.calc-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.calc-input {
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid var(--border-soft);
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+.calc-result-highlight {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.calc-result-details {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.rate-line {
+  display: flex;
   gap: 6px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
-.bro-chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 600;
-  white-space: nowrap;
+.rate-label {
+  min-width: 180px;
+  font-weight: 500;
 }
 
-.bro-chip--yes {
-  background: rgba(76, 175, 80, 0.08);
-  color: #4caf50;
-  border: 1px solid rgba(76, 175, 80, 0.6);
-}
-
-.bro-chip--no {
-  background: rgba(244, 67, 54, 0.08);
-  color: #f44336;
-  border: 1px solid rgba(244, 67, 54, 0.6);
-}
-
-/* Glossary footnote */
 .glossary-note {
   margin-top: 16px;
   padding-top: 8px;
@@ -523,10 +532,9 @@ body.dark-theme .step-list li.active .step-index {
   max-width: 960px;
 }
 
-/* Quiz actions row */
 .quiz-actions {
-  margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: 8px;
 }
