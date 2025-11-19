@@ -760,7 +760,7 @@ export default {
           </div>
 
           <div class="quiz-launchers">
-            <button type="button" class="btn quiz-trigger" data-quiz-section="support" data-quiz="comm-logs">
+            <button type="button" class="btn quiz-trigger" data-quiz-section="support" data-quiz="comm-logs" data-quiz-category="support">
               🧪 Мини-тест: как запросить логи и факты
             </button>
             <p class="quiz-hint">Убедись, что умеешь просить логи, примеры чеков и шаги воспроизведения без потери такта.</p>
@@ -1108,10 +1108,10 @@ export default {
           </div>
 
           <div class="quiz-launchers">
-            <button type="button" class="btn quiz-trigger" data-quiz="l1-escalation">
+            <button type="button" class="btn quiz-trigger" data-quiz="l1-escalation" data-quiz-category="support">
               🧭 Мини-тест: L1 → L2
             </button>
-            <button type="button" class="btn quiz-trigger" data-quiz="l2-escalation">
+            <button type="button" class="btn quiz-trigger" data-quiz="l2-escalation" data-quiz-category="support">
               🧠 Мини-тест: L2 → L3
             </button>
             <p class="quiz-hint">
@@ -1271,7 +1271,7 @@ export default {
 
           <!-- Мини-тест по SLA -->
           <div class="quiz-launchers">
-            <button type="button" class="btn quiz-trigger" data-quiz="sla-basics">
+            <button type="button" class="btn quiz-trigger" data-quiz="sla-basics" data-quiz-category="support">
               ⏱ Мини-тест: как работать с SLA
             </button>
             <p class="quiz-hint">
@@ -2331,10 +2331,10 @@ export default {
           </ul>
 
           <div class="quiz-launchers">
-            <button type="button" class="btn quiz-trigger" data-quiz="l1-escalation">
+            <button type="button" class="btn quiz-trigger" data-quiz="l1-escalation" data-quiz-category="support">
               🧭 Тест: когда и как L1 эскалирует в L2
             </button>
-            <button type="button" class="btn quiz-trigger" data-quiz="l2-escalation">
+            <button type="button" class="btn quiz-trigger" data-quiz="l2-escalation" data-quiz-category="support">
               🧠 Тест: как подготовить задачу для L3
             </button>
             <p class="quiz-hint">
@@ -3458,14 +3458,6 @@ export default {
           </p>
         </div>
       </section>
-      
-            <!-- Попап для квизов -->
-      <div class="quiz-backdrop" data-quiz-backdrop hidden>
-        <div class="quiz-dialog">
-          <button class="quiz-close" type="button" data-quiz-close aria-label="Закрыть квиз">×</button>
-          <div data-quiz-container></div>
-        </div>
-      </div>
     </section>
     `;
     initSupportInteractions(container);

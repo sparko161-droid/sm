@@ -452,6 +452,41 @@ body.dark-theme .step-list li.active .step-index {
   font-size: 12px;
 }
 
+/* === Imported from implementation & sales === */
+/* Implementation section */
+.section--implementation {
+/* Sticky toolbar like Support */
+.implementation-toolbar {
+  position: relative;
+  padding: 0 0 8px;
+.implementation-toolbar > .subnav-lines[data-role="implementation-nav"] {
+  top: 104px;
+  padding: 8px 0 10px;
+  backdrop-filter: blur(10px);
+/* bro / not-bro chips */
+.section--implementation .list-bro {
+.section--implementation .list-bro li {
+.bro-chip {
+  padding: 1px 8px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+.bro-chip--yes {
+  background: rgba(76, 175, 80, 0.08);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.6);
+.bro-chip--no {
+  background: rgba(244, 67, 54, 0.08);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.6);
+/* Glossary footnote */
+.glossary-note {
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-soft);
+  max-width: 960px;
+/* Quiz actions row */
+.quiz-actions {
+
 
 /* Sales section */
 .section--sales {
@@ -539,26 +574,3 @@ body.dark-theme .step-list li.active .step-index {
   margin-top: 8px;
 }
 
-/* === Imported from implementation v6 === */
-/* Implementation section */
-.section--implementation {
-/* Sticky toolbar like Support */
-.implementation-toolbar {
-.implementation-toolbar > .subnav-lines[data-role="implementation-nav"] {
-/* bro / not-bro chips */
-.section--implementation .list-bro {
-.section--implementation .list-bro li {
-.bro-chip {
-  padding: 1px 8px;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-.bro-chip--yes {
-  background: rgba(76, 175, 80, 0.08);
-  color: #4caf50;
-  border: 1px solid rgba(76, 175, 80, 0.6);
-.bro-chip--no {
-  background: rgba(244, 67, 54, 0.08);
-  color: #f44336;
-  border: 1px solid rgba(244, 67, 54, 0.6);
-/* Glossary footnote */
-/* Quiz actions row */

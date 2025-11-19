@@ -69,7 +69,7 @@ const SalesPage = {
                 <li>Презентуют решения iiko и сервисы «Стандарт Мастер».</li>
                 <li>Формируют коммерческие предложения и просчитывают маржу.</li>
                 <li>Согласуют условия, помогают клиенту пройти путь до договора.</li>
-                <li>Передают объект в внедрение и клиентский отдел.</li>
+                <li>Передают объект во внедрение и клиентский отдел.</li>
               </ul>
             </article>
 
@@ -346,11 +346,15 @@ const SalesPage = {
           <div class="card card--soft" style="margin-top: 14px;">
             <div class="card-title">Проверь себя</div>
             <p class="small">
-              Для практики можно пройти квизы по работе отдела продаж. Они открываются в отдельной вкладке квизов.
+              Для практики можно пройти квизы по работе отдела продаж.
             </p>
             <div class="quiz-actions">
-              <a href="#quiz?category=sales&quiz=hunter-routing" class="btn btn-sm">Квиз: маршрутизация для хантера</a>
-              <a href="#quiz?category=sales&quiz=client-scope" class="btn btn-sm btn-ghost">Квиз: зона ответственности клиентского отдела</a>
+              <button class="btn btn-sm" type="button" data-quiz-category="sales" data-quiz-id="hunter-routing">
+                Квиз: маршрутизация для хантера
+              </button>
+              <button class="btn btn-sm btn-ghost" type="button" data-quiz-category="sales" data-quiz-id="client-scope">
+                Квиз: зона ответственности клиентского отдела
+              </button>
             </div>
           </div>
         </section>

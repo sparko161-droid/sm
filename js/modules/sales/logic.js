@@ -4,7 +4,7 @@ import { initSalesHunterCalculator, initSalesClientCalculator } from "/sm/js/cal
 export function initSalesInteractions(container) {
   if (!container) return;
 
-  // Sticky subnavigation
+  // Sticky navigation inside sales section
   try {
     const nav = container.querySelector(".sales-toolbar .subnav-lines[data-role=\"sales-nav\"]");
     if (nav) {
@@ -17,9 +17,7 @@ export function initSalesInteractions(container) {
       });
 
       const activate = (target) => {
-        pills.forEach((p) => {
-          p.classList.toggle("active", p.dataset.target === target);
-        });
+        pills.forEach((p) => p.classList.toggle("active", p.dataset.target === target));
       };
 
       pills.forEach((pill) => {
@@ -38,7 +36,6 @@ export function initSalesInteractions(container) {
     console.warn("[Sales] nav init failed", e);
   }
 
-  // Calculators
   try {
     initSalesHunterCalculator(container);
     initSalesClientCalculator(container);
