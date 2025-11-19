@@ -72,7 +72,7 @@ export function initImplementationCalculator(rootEl) {
         mainOut.textContent = "Укажите фактически отработанные норма-часы, чтобы рассчитать пример.";
       } else {
         mainOut.textContent =
-          `Примерная ЗП: ${formatMoney(gross)} ₽ до вычета НДФЛ и ${formatMoney(net)} ₽ «на руки».`;
+          `Примерная ЗП: ${formatMoney(gross)} ₽ до вычета и ${formatMoney(net)} ₽ «на руки».`;
       }
     }
 
@@ -89,7 +89,7 @@ export function initImplementationCalculator(rootEl) {
     }
   }
 
-  ["change", "input"].forEach(evt => {
+  ["change", "input"].forEach((evt) => {
     gradeEl?.addEventListener(evt, recalc);
     hoursEl?.addEventListener(evt, recalc);
     teamHoursEl?.addEventListener(evt, recalc);

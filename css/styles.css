@@ -451,3 +451,30 @@ body.dark-theme .step-list li.active .step-index {
   margin-top: 6px;
   font-size: 12px;
 }
+
+
+/* Implementation: sticky toolbar similar to support */
+.implementation-toolbar {
+  position: relative;
+  padding: 0 0 8px;
+  margin-bottom: 12px;
+}
+
+.implementation-toolbar > .subnav-lines[data-role="implementation-nav"] {
+  position: sticky;
+  top: 104px;
+  z-index: 20;
+  padding: 8px 0 10px;
+  background: var(--bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* Small glossary note as a footnote */
+.glossary-note {
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-soft);
+  color: var(--text-muted);
+  max-width: 900px;
+}

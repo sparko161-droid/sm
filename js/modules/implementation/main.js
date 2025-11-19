@@ -1,4 +1,4 @@
-import { initImplementationCalculator } from "/sm/js/calculators/implementation.js";
+import { initImplementationInteractions } from "/sm/js/modules/implementation/logic.js";
 
 export default {
   name: "implementation",
@@ -6,7 +6,7 @@ export default {
   async init(container) {
     container.innerHTML = `
       <section class="section section--implementation">
-        <div class="section-header">
+        <div class="section-header" data-impl-section="top">
           <h2>🚀 Отдел внедрения iiko</h2>
           <p class="tagline">
             Целевая модель работы отдела внедрения «Стандарт Мастер»: роли, процессы запуска объектов, мотивация и
@@ -14,7 +14,19 @@ export default {
           </p>
         </div>
 
-        <div class="grid-2">
+        <div class="implementation-toolbar">
+          <div class="subnav-lines" data-role="implementation-nav">
+            <button class="subnav-pill active" data-target="top">Общее</button>
+            <button class="subnav-pill" data-target="scope">Зона ответственности</button>
+            <button class="subnav-pill" data-target="process">Процесс внедрения</button>
+            <button class="subnav-pill" data-target="motivation">Мотивация и ЗП</button>
+            <button class="subnav-pill" data-target="cases">Кейсы</button>
+            <button class="subnav-pill" data-target="onboarding">Онбординг</button>
+            <button class="subnav-pill" data-target="matrix">Матрица ответственности</button>
+          </div>
+        </div>
+
+        <div class="grid-2" data-impl-section="top">
           <article class="card">
             <div class="card-title">Миссия ОВ</div>
             <p>
@@ -44,7 +56,7 @@ export default {
 
         <hr class="section-divider" />
 
-        <section class="section-block">
+        <section class="section-block" data-impl-section="scope">
           <h3>🔧 Что делает / не делает отдел внедрения</h3>
           <div class="grid-2">
             <article class="card">
@@ -76,7 +88,7 @@ export default {
 
         <hr class="section-divider" />
 
-        <section class="section-block">
+        <section class="section-block" data-impl-section="process">
           <h3>🧭 Полный цикл внедрения</h3>
           <ol class="steps-list">
             <li>
@@ -120,10 +132,11 @@ export default {
 
         <hr class="section-divider" />
 
-        <section class="section-block">
+        <section class="section-block" data-impl-section="motivation">
           <h3>📈 Мотивация и калькулятор ЗП инженера внедрения</h3>
           <p class="small">
-            Мотивация строится на выполнении индивидуального плана по нормо-часам, уровне инженера и командном результате.
+            Оплата строится на норма-часах и ставке за час по уровню. Отдельный оклад для ОВ не выделяется: вся мотивация
+            завязана на фактически выполненные внедренческие работы и коэффициенты.
           </p>
 
           <div class="calc-grid">
@@ -173,7 +186,7 @@ export default {
 
         <hr class="section-divider" />
 
-        <section class="section-block">
+        <section class="section-block" data-impl-section="cases">
           <h3>📚 Кейсы по внедрению</h3>
           <div class="card-grid">
             <article class="card">
@@ -236,11 +249,26 @@ export default {
               </p>
             </article>
           </div>
+
+          <div class="card card--soft" style="margin-top: 16px;">
+            <div class="card-title">Проверка понимания по кейсам</div>
+            <p class="small">
+              Пройди короткие квизы, чтобы закрепить маршрутизацию задач и зону ответственности ОВ.
+            </p>
+            <div class="quiz-actions">
+              <button class="btn btn-sm quiz-trigger" data-quiz="impl-routing">
+                Квиз: куда передавать задачу
+              </button>
+              <button class="btn btn-sm btn-ghost quiz-trigger" data-quiz="impl-scope">
+                Квиз: в зоне ОВ или нет?
+              </button>
+            </div>
+          </div>
         </section>
 
         <hr class="section-divider" />
 
-        <section class="section-block">
+        <section class="section-block" data-impl-section="onboarding">
           <h3>🎓 Онбординг инженера внедрения · 3 месяца</h3>
           <p class="tagline small">
             Онбординг идёт по спирали: от базовых знаний iiko и оборудования к самостоятельным сложным внедрениям.
@@ -277,8 +305,8 @@ export default {
 
         <hr class="section-divider" />
 
-        <section class="section-block">
-          <h3>🤝 Матрица взаимодействия и зоны ответственности</h3>
+        <section class="section-block" data-impl-section="matrix">
+          <h3>🤝 Матрица взаимодействия и роли</h3>
           <div class="card card--soft">
             <div class="table-wrapper">
               <table class="table table-sm">
@@ -385,64 +413,28 @@ export default {
           </div>
         </section>
 
-        <hr class="section-divider" />
+        <!-- Небольшой глоссарий как сноска -->
+        <p class="glossary-note small">
+          * <strong>iiko</strong> — комплекс автоматизации ресторанов и общепита;
+          <strong>ОВ</strong> — отдел внедрения;
+          <strong>ТО</strong> — техническая поддержка клиента;
+          <strong>норма-часы</strong> — учёт трудозатрат на внедрение;
+          <strong>BackOffice</strong> — административная панель iiko;
+          <strong>терминал</strong> — кассовое рабочее место с iikoFront;
+          <strong>Souschef</strong> — экран кухни для отображения заказов.
+        </p>
 
-        <section class="section-block">
-          <h3>📖 Глоссарий внедрения</h3>
-          <div class="grid-2">
-            <dl class="glossary">
-              <div class="glossary-item">
-                <dt>iiko</dt>
-                <dd>Комплекс автоматизации ресторанов и общепита.</dd>
-              </div>
-              <div class="glossary-item">
-                <dt>ОВ</dt>
-                <dd>Отдел внедрения.</dd>
-              </div>
-              <div class="glossary-item">
-                <dt>ТО</dt>
-                <dd>Техническая поддержка (служба поддержки клиентов).</dd>
-              </div>
-              <div class="glossary-item">
-                <dt>L1/L2/L3</dt>
-                <dd>Уровни поддержки: первая линия, углублённая и экспертная.</dd>
-              </div>
-            </dl>
-
-            <dl class="glossary">
-              <div class="glossary-item">
-                <dt>Норма-часы</dt>
-                <dd>Единица учёта трудозатрат на внедрение и доработки.</dd>
-              </div>
-              <div class="glossary-item">
-                <dt>BackOffice</dt>
-                <dd>Административная панель iiko для управленческого учёта и настроек.</dd>
-              </div>
-              <div class="glossary-item">
-                <dt>Терминал</dt>
-                <dd>Рабочее место с iikoFront (кассовая станция/станция официанта).</dd>
-              </div>
-              <div class="glossary-item">
-                <dt>Souschef</dt>
-                <dd>Экран кухни для отображения заказов и контроля приготовления.</dd>
-              </div>
-            </dl>
+        <!-- Попап квизов только для этого раздела -->
+        <div class="quiz-backdrop" data-quiz-backdrop hidden>
+          <div class="quiz-dialog">
+            <button class="quiz-close" type="button" data-quiz-close aria-label="Закрыть квиз">×</button>
+            <div data-quiz-container></div>
           </div>
-        </section>
-
-        <hr class="section-divider" />
-
-        <section class="section-block">
-          <h3>🧪 Квизы по отделу внедрения</h3>
-          <p class="small">
-            Квизы реализованы через общий модуль квизов. Открой раздел «Квизы» и выбери категорию
-            <strong>Implementation</strong>, чтобы пройти проверку знаний по ОВ.
-          </p>
-        </section>
+        </div>
       </section>
     `;
 
-    initImplementationCalculator(container);
+    initImplementationInteractions(container);
   },
 
   destroy() {}
