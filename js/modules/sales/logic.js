@@ -4,7 +4,7 @@ import { initSalesHunterCalculator, initSalesClientCalculator } from "/sm/js/cal
 export function initSalesInteractions(container) {
   if (!container) return;
 
-  // Sticky navigation inside sales section
+  // Sticky навигация внутри раздела продаж
   try {
     const nav = container.querySelector(".sales-toolbar .subnav-lines[data-role=\"sales-nav\"]");
     if (nav) {
@@ -36,6 +36,7 @@ export function initSalesInteractions(container) {
     console.warn("[Sales] nav init failed", e);
   }
 
+  // Калькуляторы
   try {
     initSalesHunterCalculator(container);
     initSalesClientCalculator(container);

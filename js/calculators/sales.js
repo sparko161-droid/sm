@@ -30,8 +30,8 @@ export function initSalesHunterCalculator(root) {
   const bonusRestoEl = card.querySelector("#sales-h-resto");
   const bonusOtherEl = card.querySelector("#sales-h-other");
 
-  const mainOut = card.querySelector('[data-output="sales-h-main"]');
-  const detailsOut = card.querySelector('[data-output="sales-h-details"]');
+  const mainOut = card.querySelector('[data-output=\"sales-h-main\"]');
+  const detailsOut = card.querySelector('[data-output=\"sales-h-details\"]');
 
   function recalc() {
     const salary = parseNumber(salaryEl, 0);
@@ -119,8 +119,8 @@ export function initSalesClientCalculator(root) {
   const bonusRestoEl = card.querySelector("#sales-c-resto");
   const bonusOtherEl = card.querySelector("#sales-c-other");
 
-  const mainOut = card.querySelector('[data-output="sales-c-main"]');
-  const detailsOut = card.querySelector('[data-output="sales-c-details"]');
+  const mainOut = card.querySelector('[data-output=\"sales-c-main\"]');
+  const detailsOut = card.querySelector('[data-output=\"sales-c-details\"]');
 
   function recalc() {
     const salary = parseNumber(salaryEl, 0);

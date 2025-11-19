@@ -66,8 +66,8 @@ export async function openQuizPopup(category, quizId) {
     const res = await fetch(src, { cache: "no-cache" });
     if (!res.ok) throw new Error("Failed to load quiz json: " + src);
     const data = await res.json();
-    const list = Array.isArray(data.quizzes) ? data.quizzes : [];
-    const quizData = list.find((q) => q.id === quizId) || list[0];
+    const quizzes = Array.isArray(data.quizzes) ? data.quizzes : [];
+    const quizData = quizzes.find((q) => q.id === quizId) || quizzes[0];
     if (!quizData) {
       console.warn("[QuizPopup] No quiz found in json:", src);
       return;
@@ -95,12 +95,18 @@ export function initQuizPopupGlobal() {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
 
-    // Поддержка вложенных элементов (иконка внутри кнопки и т.п.)
-    const trigger = target.closest("[data-quiz-id]");
+    // Ищем ближайшую кнопку/ссылку с атрибутами data-quiz-id или data-quiz
+    const trigger = target.closest("[data-quiz-id], [data-quiz]");
     if (!trigger) return;
 
-    const category = trigger.getAttribute("data-quiz-category") || trigger.getAttribute("data-quiz") || "support";
-    const quizId = trigger.getAttribute("data-quiz-id") || trigger.getAttribute("data-quiz");
+    const category =
+      trigger.getAttribute("data-quiz-category") ||
+      trigger.getAttribute("data-quiz-section") ||
+      "support";
+
+    const quizId =
+      trigger.getAttribute("data-quiz-id") ||
+      trigger.getAttribute("data-quiz");
 
     if (!quizId || !category) return;
 

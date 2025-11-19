@@ -261,10 +261,10 @@ export default {
               Пройди короткие квизы, чтобы закрепить маршрутизацию задач и зону ответственности ОВ.
             </p>
             <div class="quiz-actions">
-              <button class="btn btn-sm quiz-trigger" data-quiz="impl-routing" data-quiz-category="implementation">
+              <button class="btn btn-sm quiz-trigger" data-quiz-id="impl-routing" data-quiz-category="implementation">
                 Квиз: куда передавать задачу
               </button>
-              <button class="btn btn-sm btn-ghost quiz-trigger" data-quiz="impl-scope" data-quiz-category="implementation">
+              <button class="btn btn-sm btn-ghost quiz-trigger" data-quiz-id="impl-scope" data-quiz-category="implementation">
                 Квиз: в зоне ОВ или нет?
               </button>
             </div>
@@ -431,7 +431,6 @@ export default {
           <strong>Souschef</strong> — экран кухни для отображения заказов.
         </p>
 
-        <!-- Попап квизов только для этого раздела -->
       </section>
     `;
 
