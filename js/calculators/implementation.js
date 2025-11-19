@@ -65,13 +65,6 @@ function formatMoney(v) {
   return Math.round(v).toLocaleString("ru-RU");
 }
 
-function formatMoneySigned(v) {
-  const abs = Math.round(Math.abs(v)).toLocaleString("ru-RU");
-  if (v > 0) return "+ " + abs + " ₽";
-  if (v < 0) return "− " + abs + " ₽";
-  return "0 ₽";
-}
-
 export function initImplementationCalculator(rootEl) {
   if (!rootEl) return;
   const card = rootEl.querySelector("[data-calc-impl]");
@@ -105,18 +98,18 @@ export function initImplementationCalculator(rootEl) {
     const personalCoef = calcPersonalCoef(ratio);
     const teamCoef = calcTeamCoef(teamHours);
 
-    const basePay = factHours * rate; // оплата за факт нч без коэффициентов
-    const personalBonus = basePay * (personalCoef - 1);
-    const personalBase = basePay * personalCoef;
-    const teamBonus = personalBase * (teamCoef - 1);
-    const totalBonus = personalBonus + teamBonus;
+    // База по нормо-часам сразу с учётом личного коэффициента
+    const baseHoursRaw = factHours * rate;                 // просто факт × ставка
+    const baseHoursWithPersonal = baseHoursRaw * personalCoef; // база с учётом личного плана
+    const teamBonus = baseHoursWithPersonal * (teamCoef - 1);
+    const totalBonus = baseHoursWithPersonal + teamBonus;  // всё, что свыше 0 по нч
 
     // Оклад и НДФЛ
     const salaryNdfl = salary * NDFL_RATE;
     const salaryNet = salary - salaryNdfl;
 
-    const grossTotal = salary + basePay + totalBonus;
-    const netTotal = salaryNet + basePay + totalBonus;
+    const grossTotal = salary + baseHoursWithPersonal + teamBonus;
+    const netTotal = salaryNet + baseHoursWithPersonal + teamBonus;
 
     if (mainOut) {
       if (!factHours || factHours <= 0) {
@@ -124,7 +117,7 @@ export function initImplementationCalculator(rootEl) {
           "Укажите фактически отработанные норма-часы и нч отдела, чтобы рассчитать пример зарплаты.";
       } else {
         mainOut.textContent =
-          `Итого к выплате «на руки»: ${formatMoney(netTotal)} ₽ (включая оклад после НДФЛ и все премии).`;
+          `Итого к выплате «на руки»: ${formatMoney(netTotal)} ₽ (включая оклад после НДФЛ и все премии по нормо-часам).`;
       }
     }
 
@@ -138,12 +131,12 @@ export function initImplementationCalculator(rootEl) {
         `<div class="rate-line"><span class="rate-label">Оклад (до НДФЛ):</span> ${formatMoney(salary)} ₽</div>` +
         `<div class="rate-line"><span class="rate-label">НДФЛ 13% с оклада:</span> − ${formatMoney(salaryNdfl)} ₽</div>` +
         `<div class="rate-line"><span class="rate-label">Оклад «на руки»:</span> ${formatMoney(salaryNet)} ₽</div>` +
-        `<div class="rate-line"><span class="rate-label">База по нормо-часам:</span> ${formatMoney(basePay)} ₽ (факт нч × ставка)</div>` +
-        `<div class="rate-line"><span class="rate-label">Коэффициент личного плана:</span> ${personalCoef.toFixed(3)}</div>` +
-        `<div class="rate-line"><span class="rate-label">Доплата за личный план:</span> ${formatMoneySigned(personalBonus)}</div>` +
-        `<div class="rate-line"><span class="rate-label">Коэффициент командного плана:</span> ${teamCoef.toFixed(2)}</div>` +
-        `<div class="rate-line"><span class="rate-label">Доплата за командный план:</span> ${formatMoneySigned(teamBonus)}</div>` +
-        `<div class="rate-line"><span class="rate-label">Общая премия (личный + командный план):</span> ${formatMoney(totalBonus)} ₽</div>` +
+        `<div class="rate-line"><span class="rate-label">База по нч (без коэф.):</span> ${formatMoney(baseHoursRaw)} ₽ (факт нч × ставка)</div>` +
+        `<div class="rate-line"><span class="rate-label">Личный коэфф. плана:</span> ${personalCoef.toFixed(3)}</div>` +
+        `<div class="rate-line"><span class="rate-label">База по нч с личным коэфф.:</span> ${formatMoney(baseHoursWithPersonal)} ₽</div>` +
+        `<div class="rate-line"><span class="rate-label">Командный коэфф. плана:</span> ${teamCoef.toFixed(2)}</div>` +
+        `<div class="rate-line"><span class="rate-label">Доплата за командный план:</span> ${teamCoef > 1 ? "+" : ""}${formatMoney(teamBonus)} ₽</div>` +
+        `<div class="rate-line"><span class="rate-label">Всего по нормо-часам (личный + командный):</span> ${formatMoney(baseHoursWithPersonal + teamBonus)} ₽</div>` +
         `<div class="rate-line"><span class="rate-label">Начислено всего (до НДФЛ):</span> ${formatMoney(grossTotal)} ₽</div>` +
         `<div class="rate-line"><span class="rate-label">Итого к выплате «на руки»:</span> <strong>${formatMoney(netTotal)} ₽</strong></div>` +
         `<div class="rate-line"><span class="rate-label">Сумма НДФЛ:</span> ${formatMoney(salaryNdfl)} ₽ (только с оклада)</div>`;
