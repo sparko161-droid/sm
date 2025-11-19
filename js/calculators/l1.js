@@ -62,9 +62,6 @@ export function calculateL1({ grade, resolved, created, missed, overdue }) {
   };
 }
 
-function formatMoney(value) {
-  return Math.round(value).toLocaleString("ru-RU");
-}
 
 export function initL1Calculator(rootEl) {
   if (!rootEl) return;

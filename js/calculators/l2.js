@@ -124,9 +124,6 @@ export function calculateL2({
   };
 }
 
-function formatMoney(value) {
-  return Math.round(value).toLocaleString("ru-RU");
-}
 
 export function initL2Calculator(rootEl) {
   if (!rootEl) return;
