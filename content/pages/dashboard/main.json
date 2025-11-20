@@ -1,0 +1,26 @@
+{
+  "id": "dashboard-main",
+  "sectionId": "dashboard",
+  "slug": "dashboard",
+  "title": "Добро пожаловать в корпоративный портал",
+  "description": "Здесь будут собраны инструкции, регламенты, мотивация и обучающие материалы для всех отделов компании «Стандарт Мастер».",
+  "tags": [
+    "dashboard"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "Основной контент",
+      "description": "",
+      "blocks": [
+        {
+          "id": "b1",
+          "type": "html",
+          "data": {
+            "html": "<section class=\"section\">\n  <h2>Добро пожаловать в корпоративный портал</h2>\n  <p class=\"tagline\">\n    Здесь будут собраны инструкции, регламенты, мотивация и обучающие материалы для всех отделов компании «Стандарт Мастер».\n  </p>\n  <div class=\"card-grid\">\n    <article class=\"card\">\n      <div class=\"card-title\">Отдел поддержки</div>\n      <p class=\"card-body\">\n        L1, L2 и L3: роли, зоны ответственности, примеры задач, правила эскалации и мотивация.\n      </p>\n    </article>\n    <article class=\"card\">\n      <div class=\"card-title\">Отдел внедрения</div>\n      <p class=\"card-body\">\n        В разработке: процессы запуска новых объектов, интеграции, проектные работы.\n      </p>\n    </article>\n    <article class=\"card\">\n      <div class=\"card-title\">Продажи и клиентский отдел</div>\n      <p class=\"card-body\">\n        В разработке: хантеры, аккаунты, правила работы с клиентами и мотивация.\n      </p>\n    </article>\n  </div>\n</section>\n"
+          }
+        }
+      ]
+    }
+  ]
+}

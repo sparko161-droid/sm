@@ -1,0 +1,135 @@
+.support-toolbar {
+  position: relative;
+  padding: 0 0 8px;
+  margin-bottom: 12px;
+}
+
+/* Главный фильтр по линиям — фиксируем под шапкой */
+.support-toolbar > .subnav-lines[data-role="support-main-nav"] {
+  position: sticky;
+  top: 104px;
+  z-index: 20;
+  padding: 10px 0 12px;
+  background: var(--bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* Локальные фильтры внутри блоков поддержки (например, шаблоны, матрица) */
+.support-line .subnav-lines {
+  position: sticky;
+  top: 148px;
+  z-index: 15;
+  padding: 6px 0 8px;
+  margin-bottom: 8px;
+  background: var(--bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.support-line {
+  margin-top: 18px;
+}
+
+.accordion {
+  margin-top: 8px;
+}
+
+.accordion-content {
+  margin-top: 6px;
+  font-size: 13px;
+  display: none;
+}
+
+.accordion-content.open {
+  display: block;
+}
+
+.step-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+
+.step-list li {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.step-list li .step-index {
+  font-size: 11px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-list li.active .step-index {
+  border-color: var(--red);
+  background: #ffecec;
+  color: #a30000;
+}
+
+body.dark-theme .step-list li.active .step-index {
+  background: #301212;
+  color: #ffb3b3;
+}
+
+.step-next {
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.case-template {
+  background: rgba(255, 236, 236, 0.4);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px dashed var(--border-soft);
+  font-size: 13px;
+  margin-top: 6px;
+  white-space: pre-line;
+}
+
+.template-block {
+  border: 1px dashed var(--border-soft);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background: var(--card-bg);
+}
+
+.template-block-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.template-copy {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.template-copy:hover {
+  color: var(--text);
+}
+
+.template-text {
+  font-size: 13px;
+  white-space: pre-line;
+}
+
+
+.support-line[hidden],
+.support-line.support-line--hidden {
+  display: none;
+}

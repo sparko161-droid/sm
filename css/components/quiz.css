@@ -1,0 +1,212 @@
+.quiz-launchers {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Кнопки-запуски квизов на странице */
+.quiz-launchers .btn {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.quiz-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Страница квиза внутри попапа */
+.page--quiz {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Карточка квиза */
+.quiz-card {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.16);
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+body.dark-theme .quiz-card {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.quiz-progress {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Варианты ответов — на основе .btn / .btn-ghost */
+.quiz-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  padding: 6px 12px;
+  font-size: 12px;
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, color .15s ease, transform .06s ease;
+}
+
+.quiz-option:hover {
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateY(-1px);
+}
+
+.quiz-option--selected {
+  outline: 2px solid rgba(59, 130, 246, 0.8);
+}
+
+/* Подсветка верных / неверных ответов */
+.quiz-option--correct {
+  background: rgba(22, 163, 74, 0.10);
+}
+
+.quiz-option--wrong {
+  background: rgba(220, 38, 38, 0.10);
+}
+
+.quiz-feedback {
+  min-height: 2.4rem;
+  font-size: 0.95rem;
+}
+
+.quiz-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quiz-score-main {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.quiz-score-hint {
+  margin-bottom: 1.25rem;
+}
+
+.quiz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Попап квиза */
+
+.quiz-backdrop {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+}
+
+.quiz-backdrop.is-open {
+  display: flex;
+}
+
+.quiz-dialog {
+  width: min(960px, 100% - 2rem);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 1.5rem;
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem 1.5rem 1.25rem;
+  position: relative;
+}
+
+body.dark-theme .quiz-dialog {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+.quiz-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+
+
+/* Popup for calculators: reuse quiz modal styling */
+.calc-backdrop {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+}
+
+.calc-backdrop.is-open {
+  display: flex;
+}
+
+.calc-dialog {
+  width: min(960px, 100% - 2rem);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 1.5rem;
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem 1.5rem 1.25rem;
+  position: relative;
+}
+
+.calc-dialog-body {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.calc-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}

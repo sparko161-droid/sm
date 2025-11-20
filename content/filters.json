@@ -1,0 +1,64 @@
+{
+  "lines": [
+    {
+      "id": "L1",
+      "label": "L1 — Первая линия (операторы)"
+    },
+    {
+      "id": "L2",
+      "label": "L2 — Вторая линия (инженеры)"
+    },
+    {
+      "id": "L3",
+      "label": "L3 — Третья линия (эксперты/архитектура)"
+    }
+  ],
+  "caseTypes": [
+    {
+      "id": "account",
+      "label": "Учётные"
+    },
+    {
+      "id": "technical",
+      "label": "Технические"
+    },
+    {
+      "id": "integration",
+      "label": "Интеграционные"
+    },
+    {
+      "id": "rare",
+      "label": "Редкие / L3-уровень"
+    }
+  ],
+  "categories": [
+    {
+      "id": "overview",
+      "label": "Обзор и сводки"
+    },
+    {
+      "id": "onboarding",
+      "label": "Онбординг"
+    },
+    {
+      "id": "cases",
+      "label": "Кейсы"
+    },
+    {
+      "id": "templates",
+      "label": "Шаблоны"
+    },
+    {
+      "id": "probation",
+      "label": "Испытательный срок"
+    },
+    {
+      "id": "regulations",
+      "label": "Регламенты и правила"
+    },
+    {
+      "id": "other",
+      "label": "Прочие материалы"
+    }
+  ]
+}

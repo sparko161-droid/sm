@@ -451,3 +451,154 @@ body.dark-theme .step-list li.active .step-index {
   margin-top: 6px;
   font-size: 12px;
 }
+
+
+/* === Sales & shared components === */
+
+/* Sales section */
+.section--sales {
+  margin-top: 8px;
+}
+
+.sales-toolbar {
+  position: relative;
+  padding: 0 0 8px;
+  margin-bottom: 12px;
+}
+
+.sales-toolbar > .subnav-lines[data-role="sales-nav"] {
+  position: sticky;
+  top: 104px;
+  z-index: 20;
+  padding: 8px 0 10px;
+  background: var(--bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.section--sales .section-block {
+  margin-top: 18px;
+}
+
+.calc-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+.calc-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.calc-input {
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid var(--border-soft);
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+.calc-result-highlight {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.calc-result-details {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.rate-line {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.rate-label {
+  min-width: 180px;
+  font-weight: 500;
+}
+
+.glossary-note {
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-soft);
+  color: var(--text-muted);
+  max-width: 960px;
+}
+
+.quiz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+
+
+
+/* === Shared calculators page & onboarding / matrix patterns === */
+
+.section--calculators {
+  margin-top: 8px;
+}
+
+.calculators-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.calculators-note {
+  margin-top: 16px;
+  color: var(--text-muted);
+  max-width: 960px;
+}
+
+/* Унифицированная сетка онбординга: 3 колонки на десктопе, одна колонка на мобиле */
+.onboarding-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.onboarding-card .card-title {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+/* Унифицированный блок матрицы ответственности / взаимодействия */
+.matrix-card {
+  margin-top: 12px;
+}
+
+.matrix-card .matrix-title {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.matrix-card .table {
+  font-size: 12px;
+}
+
+
+
+
+/* Clickable cards for calculators overview */
+.card.card--clickable {
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card.card--clickable:hover {
+  border-color: var(--red);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+  transform: translateY(-1px);
+}
+

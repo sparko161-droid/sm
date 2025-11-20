@@ -1,15 +1,9 @@
 :root {
-  --color-bg: #ffffff;
-  --color-text: #111111;
-  --color-accent: #2563eb;
-  --color-border: rgba(0, 0, 0, 0.08);
-}
-
-:root[data-theme="dark"] {
-  --color-bg: #020617;
-  --color-text: #e5e7eb;
-  --color-accent: #60a5fa;
-  --color-border: rgba(148, 163, 184, 0.4);
+  /* Маппим старые переменные в новые, чтобы всё было единообразно */
+  --color-bg: var(--bg);
+  --color-text: var(--text-main);
+  --color-accent: var(--red);
+  --color-border: var(--border-soft);
 }
 
 body {

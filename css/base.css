@@ -4,24 +4,95 @@
   box-sizing: border-box;
 }
 
-html,
+:root {
+  --red: #c80000;
+  --bg: #f7f7f8;
+  --card-bg: #ffffff;
+  --text-main: #222222;
+  --text-muted: #777777;
+  --border-soft: #e0e0e0;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-body {
-  background: var(--color-bg, #ffffff);
-  color: var(--color-text, #111111);
+body.dark-theme {
+  --bg: #111111;
+  --card-bg: #181818;
+  --text-main: #f5f5f5;
+  --text-muted: #999999;
+  --border-soft: #333333;
+  --red: #ff4b4b;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body.light-theme {
+  /* по умолчанию используются значения из :root */
 }
 
-button {
-  font: inherit;
-  cursor: pointer;
+.section h2 {
+  font-size: 22px;
+  margin: 4px 0 4px;
+}
+
+.section h3 {
+  font-size: 18px;
+  margin: 18px 0 4px;
+}
+
+.tagline {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 4px 0 10px;
+}
+
+.muted {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+/* --- Dark theme hard overrides for SPA --- */
+
+body.dark-theme,
+body.dark-theme .content,
+body.dark-theme .content-inner {
+  background-color: var(--bg) !important;
+  color: var(--text-main) !important;
+}
+
+/* Общий текст в секциях и карточках */
+body.dark-theme .section,
+body.dark-theme .section p,
+body.dark-theme .section li,
+body.dark-theme .card,
+body.dark-theme .card p,
+body.dark-theme .card li {
+  color: var(--text-main) !important;
+}
+
+/* Подписи, muted-текст */
+body.dark-theme .muted,
+body.dark-theme .section small,
+body.dark-theme .section .note {
+  color: var(--text-muted) !important;
+}
+
+/* Белые фоны, которые оставались светлыми — принудительно в карточный */
+body.dark-theme .card,
+body.dark-theme .support-toolbar,
+body.dark-theme .support-line,
+body.dark-theme .callout,
+body.dark-theme .probation-table-wrapper {
+  background-color: var(--card-bg) !important;
+}
+
+/* Красные хедеры/бейджи остаются красными, но текст делаем читабельным */
+body.dark-theme .callout-error,
+body.dark-theme .badge,
+body.dark-theme .pill-red {
+  color: #ffecec !important;
 }

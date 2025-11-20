@@ -1,0 +1,79 @@
+{
+  "sections": [
+    {
+      "id": "dashboard",
+      "slug": "dashboard",
+      "title": "Главная / Дашборд",
+      "order": 1,
+      "pages": [
+        {
+          "id": "dashboard-main",
+          "slug": "dashboard",
+          "title": "Добро пожаловать в корпоративный портал",
+          "order": 1,
+          "pagePath": "dashboard/main.json"
+        }
+      ]
+    },
+    {
+      "id": "support",
+      "slug": "support",
+      "title": "🎧 Отдел поддержки · L1–L3",
+      "order": 2,
+      "pages": [
+        {
+          "id": "support-main",
+          "slug": "support",
+          "title": "🎧 Отдел поддержки · L1–L3",
+          "order": 1,
+          "pagePath": "support/main.json"
+        }
+      ]
+    },
+    {
+      "id": "implementation",
+      "slug": "implementation",
+      "title": "Отдел внедрения",
+      "order": 3,
+      "pages": [
+        {
+          "id": "implementation-main",
+          "slug": "implementation",
+          "title": "Отдел внедрения",
+          "order": 1,
+          "pagePath": "implementation/main.json"
+        }
+      ]
+    },
+    {
+      "id": "sales",
+      "slug": "sales",
+      "title": "Продажи и клиентский отдел",
+      "order": 4,
+      "pages": [
+        {
+          "id": "sales-main",
+          "slug": "sales",
+          "title": "Продажи и клиентский отдел",
+          "order": 1,
+          "pagePath": "sales/main.json"
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "slug": "operations",
+      "title": "Operations",
+      "order": 5,
+      "pages": [
+        {
+          "id": "operations-main",
+          "slug": "operations",
+          "title": "Operations",
+          "order": 1,
+          "pagePath": "operations/main.json"
+        }
+      ]
+    }
+  ]
+}

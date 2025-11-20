@@ -1,0 +1,26 @@
+{
+  "id": "operations-main",
+  "sectionId": "operations",
+  "slug": "operations",
+  "title": "Operations",
+  "description": "Здесь позже будет контент operations из оригинального проекта.",
+  "tags": [
+    "operations"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "Основной контент",
+      "description": "",
+      "blocks": [
+        {
+          "id": "b1",
+          "type": "html",
+          "data": {
+            "html": "<section class=\"page page--operations\">\n  <h1>Operations</h1>\n  <p>Здесь позже будет контент operations из оригинального проекта.</p>\n</section>"
+          }
+        }
+      ]
+    }
+  ]
+}
