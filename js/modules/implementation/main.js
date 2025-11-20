@@ -143,49 +143,7 @@ export default {
             затем командный коэффициент. Ниже — примерный расчёт.
           </p>
 
-          <div class="calc-grid">
-            <div class="calc-card" data-calc-impl>
-              <div class="calc-title">ОВ — калькулятор зарплаты</div>
-              <div class="calc-sub">Оклад + норма-часы × ставка × личный коэф. × командный коэф.</div>
-
-              <div class="calc-two-col">
-                <div class="calc-panel calc-panel-inputs">
-                  <div class="calc-row">
-                    <label class="calc-label" for="impl-grade">Уровень сотрудника:</label>
-                    <select id="impl-grade" class="calc-select" name="grade">
-                      <option value="1i">Специалист 1-го уровня (исп. срок) — план 80 нч, 100 ₽/ч, оклад 30 000 ₽</option>
-                      <option value="1">Специалист 1-го уровня — план 100 нч, 100 ₽/ч, оклад 30 000 ₽</option>
-                      <option value="2">Специалист 2-го уровня — план 120 нч, 140 ₽/ч, оклад 35 000 ₽</option>
-                      <option value="3">Специалист 3-го уровня — план 150 нч, 170 ₽/ч, оклад 38 000 ₽</option>
-                      <option value="4">Специалист 4-го уровня — план 180 нч, 200 ₽/ч, оклад 43 000 ₽</option>
-                    </select>
-                  </div>
-
-                  <div class="calc-row">
-                    <label class="calc-label" for="impl-hours">Фактически отработано нормо-часов:</label>
-                    <input id="impl-hours" class="calc-input" type="number" min="0" step="1" value="100" />
-                  </div>
-
-                  <div class="calc-row">
-                    <label class="calc-label" for="impl-team-hours">Норма-часы всего отдела за месяц:</label>
-                    <input id="impl-team-hours" class="calc-input" type="number" min="0" step="1" value="450" />
-                    <p class="calc-help small">
-                      450 нч — план отдела, 550 нч — ×1.1, 650 нч — ×1.2. Если меньше плана, командный коэффициент 1.0.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="calc-panel calc-panel-results">
-                  <div class="calc-results">
-                    <div class="calc-result-highlight" data-output="impl-main">
-                      Укажите данные, чтобы рассчитать примерную зарплату.
-                    </div>
-                    <div class="calc-result-details" data-output="impl-details"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </section>
 
         <hr class="section-divider" />
