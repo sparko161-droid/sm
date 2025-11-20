@@ -19,7 +19,6 @@ export default {
             <button class="subnav-pill active" data-target="top">Общее</button>
             <button class="subnav-pill" data-target="scope">Зона ответственности</button>
             <button class="subnav-pill" data-target="process">Процесс внедрения</button>
-            <button class="subnav-pill" data-target="motivation">Мотивация и ЗП</button>
             <button class="subnav-pill" data-target="cases">Кейсы</button>
             <button class="subnav-pill" data-target="onboarding">Онбординг</button>
             <button class="subnav-pill" data-target="matrix">Матрица ответственности</button>
@@ -131,19 +130,6 @@ export default {
               Фиксируем итоги и статус, передаём в техподдержку и менеджеру сопровождения.
             </li>
           </ol>
-        </section>
-
-        <hr class="section-divider" />
-
-        <!-- Мотивация и калькулятор -->
-        <section class="section-block" data-impl-section="motivation">
-          <h3>📈 Мотивация и калькулятор ЗП инженера внедрения</h3>
-          <p class="small">
-            Зарплата состоит из оклада (с НДФЛ только по окладу) и премии за нормо-часы: сначала считается личный план,
-            затем командный коэффициент. Ниже — примерный расчёт.
-          </p>
-
-          
         </section>
 
         <hr class="section-divider" />

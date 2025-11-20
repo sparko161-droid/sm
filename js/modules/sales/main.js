@@ -19,7 +19,6 @@ const SalesPage = {
             <button class="subnav-pill active" data-target="top">Общее</button>
             <button class="subnav-pill" data-target="hunters">Хантеры</button>
             <button class="subnav-pill" data-target="clients">Клиентский отдел</button>
-            <button class="subnav-pill" data-target="motivation">Мотивация и ZP</button>
             <button class="subnav-pill" data-target="cases">Кейсы и квизы</button>
             <button class="subnav-pill" data-target="onboarding">Онбординг</button>
             <button class="subnav-pill" data-target="matrix">Матрица ответственности</button>
@@ -162,17 +161,6 @@ const SalesPage = {
               </ul>
             </article>
           </div>
-        </section>
-
-        <hr class="section-divider" />
-
-        <section class="section-block" data-sales-section="motivation">
-          <h3>💰 Мотивация и калькуляторы ZP</h3>
-          <p class="tagline small">
-            Для прозрачности мотивации сделаны два калькулятора: для хантера и для аккаунт-менеджера. НДФЛ считается только с окладной части.
-          </p>
-
-          
         </section>
 
         <hr class="section-divider" />
