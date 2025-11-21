@@ -322,6 +322,7 @@ function handleAdd(localState, container) {
     return;
   }
 
+
   if (current.sectionId) {
     const section = getSectionById(localState, current.sectionId);
     if (!section) return;
@@ -339,6 +340,18 @@ function handleAdd(localState, container) {
     localState.current.pagePath = newPagePath;
     localState.current.stepIndex = null;
     bindPages(container, localState);
+
+    // 🆕 сразу создаём пустой черновик страницы, чтобы её можно было сохранить в GitHub
+    if (!getPageDraft(localState, newPagePath)) {
+      setPageDraft(localState, newPagePath, {
+        id: newId,
+        sectionId: section.id,
+        slug: newId,
+        title: "Новая страница " + newIndex,
+        description: "",
+        steps: []
+      });
+    }
 
     const stepsUl = container.querySelector("[data-steps-list]");
     const blocksUl = container.querySelector("[data-blocks-list]");
