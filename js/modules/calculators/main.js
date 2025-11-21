@@ -3,8 +3,30 @@ import { initL1Calculator } from "/sm/js/calculators/l1.js";
 import { initL2Calculator } from "/sm/js/calculators/l2.js";
 import { initImplementationCalculator } from "/sm/js/calculators/implementation.js";
 import { initSalesHunterCalculator, initSalesClientCalculator } from "/sm/js/calculators/sales.js";
-import { L1_CALC_TEMPLATE, L2_CALC_TEMPLATE, IMPL_CALC_TEMPLATE, SALES_H_CALC_TEMPLATE, SALES_C_CALC_TEMPLATE } from "/sm/js/modules/calculators/templates.js";
+import { L1_CALC_TEMPLATE, L2_CALC_TEMPLATE, IMPL_CALC_TEMPLATE,..._CALC_TEMPLATE } from "/sm/js/modules/calculators/templates.js";
 
+function ensureCalcAuthShakeStyles() {
+  if (document.querySelector("style[data-calc-auth-shake]")) {
+    return;
+  }
+
+  const style = document.createElement("style");
+  style.setAttribute("data-calc-auth-shake", "true");
+  style.textContent = `
+    @keyframes calc-auth-shake {
+      0%   { transform: translateX(0); }
+      25%  { transform: translateX(-6px); }
+      50%  { transform: translateX(6px); }
+      75%  { transform: translateX(-4px); }
+      100% { transform: translateX(0); }
+    }
+
+    .calc-auth-dialog.shake {
+      animation: calc-auth-shake 0.18s ease-in-out;
+    }
+  `;
+  document.head.appendChild(style);
+}
 
 function setupCalculatorsAuthGate(container) {
   const globalKey = "sm_calc_access_allowed";
@@ -26,6 +48,8 @@ function setupCalculatorsAuthGate(container) {
     return; // уже есть доступ, попап не показываем
   }
 
+  ensureCalcAuthShakeStyles();
+
   const overlay = document.createElement("div");
   overlay.className = "calc-auth-overlay";
   overlay.setAttribute("data-calc-auth-overlay", "true");
@@ -33,7 +57,7 @@ function setupCalculatorsAuthGate(container) {
     <div class="calc-auth-dialog">
       <h2 class="calc-auth-title">Доступ к калькуляторам</h2>
       <p class="calc-auth-text">
-        Для доступа к разделу калькуляторов введите пароль. 
+        Для доступа к разделу калькуляторов введите пароль.
         Пароль проверяется через защищённый n8n-хук, в браузере он не сохраняется.
       </p>
       <form class="calc-auth-form" data-calc-auth-form>
@@ -55,11 +79,10 @@ function setupCalculatorsAuthGate(container) {
     </div>
   `;
 
-  // Делаем оверлей полноэкранным и некликабельным "сквозь"
   Object.assign(overlay.style, {
     position: "fixed",
     inset: "0",
-    backgroundColor: "rgba(0, 0, 0, 0.75)",
+    backgroundColor: "rgba(0, 0, 0, 0.65)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -71,15 +94,70 @@ function setupCalculatorsAuthGate(container) {
     Object.assign(dialog.style, {
       maxWidth: "480px",
       width: "100%",
-      backgroundColor: "#111827",
-      borderRadius: "16px",
+      backgroundColor: "var(--card-bg)",
+      color: "var(--text-main)",
+      borderRadius: "24px",
       padding: "24px 24px 20px",
-      boxShadow: "0 20px 60px rgba(0,0,0,0.6)"
+      boxShadow: "0 20px 60px rgba(0,0,0,0.55)",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px"
+    });
+  }
+
+  const titleEl = overlay.querySelector(".calc-auth-title");
+  if (titleEl) {
+    Object.assign(titleEl.style, {
+      margin: "0 0 4px",
+      fontSize: "20px",
+      fontWeight: "700"
+    });
+  }
+
+  const textEl = overlay.querySelector(".calc-auth-text");
+  if (textEl) {
+    Object.assign(textEl.style, {
+      margin: "0 0 8px",
+      fontSize: "13px",
+      lineHeight: "1.5",
+      color: "var(--text-muted)"
     });
   }
 
   const statusEl = overlay.querySelector("[data-calc-auth-status]");
+  if (statusEl) {
+    Object.assign(statusEl.style, {
+      marginTop: "6px",
+      fontSize: "12px",
+      minHeight: "16px",
+      color: "var(--text-muted)"
+    });
+  }
+
   const form = overlay.querySelector("[data-calc-auth-form]");
+  const passwordInput = overlay.querySelector('input[name="password"]');
+
+  if (form) {
+    Object.assign(form.style, {
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      marginTop: "4px"
+    });
+  }
+
+  const btn = overlay.querySelector(".btn.btn--primary");
+  if (btn) {
+    btn.style.padding = "7px 16px";
+    btn.style.fontSize = "13px";
+    btn.style.alignSelf = "flex-end";
+  }
+
+  if (passwordInput) {
+    setTimeout(() => {
+      passwordInput.focus();
+    }, 40);
+  }
 
   if (form) {
     form.addEventListener("submit", async (event) => {
@@ -88,41 +166,67 @@ function setupCalculatorsAuthGate(container) {
       const password = String(formData.get("password") || "").trim();
 
       if (!password) {
-        if (statusEl) statusEl.textContent = "Введите пароль.";
+        if (statusEl) {
+          statusEl.textContent = "Введите пароль.";
+          statusEl.style.color = "var(--red)";
+        }
+        if (passwordInput) passwordInput.focus();
         return;
       }
 
       const submitBtn = form.querySelector("button[type='submit']");
       if (submitBtn) submitBtn.disabled = true;
-      if (statusEl) statusEl.textContent = "Проверяем пароль...";
+      if (statusEl) {
+        statusEl.textContent = "Проверяем пароль...";
+        statusEl.style.color = "var(--text-muted)";
+      }
+
+      if (dialog) {
+        dialog.classList.remove("shake");
+        dialog.offsetWidth;
+      }
 
       try {
-        // Используем общий slug для раздела калькуляторов
         const result = await authCalc("calculators", password);
 
         if (!result.allowed) {
           if (statusEl) {
-            statusEl.textContent = result.reason || "Доступ запрещён. Неверный пароль.";
+            statusEl.textContent =
+              result.reason || "Доступ запрещён. Неверный пароль.";
+            statusEl.style.color = "var(--red)";
           }
           if (submitBtn) submitBtn.disabled = false;
+          if (passwordInput) {
+            passwordInput.focus();
+            passwordInput.select();
+          }
+          if (dialog) {
+            dialog.classList.add("shake");
+          }
           return;
         }
 
-        if (statusEl) statusEl.textContent = "Доступ разрешён.";
+        if (statusEl) {
+          statusEl.textContent = "Доступ разрешён.";
+          statusEl.style.color = "var(--text-muted)";
+        }
 
         if (hasSessionStorage) {
           try {
             window.sessionStorage.setItem(globalKey, "1");
-          } catch (e) {
-            // ignore
-          }
+          } catch (e) {}
         }
 
-        // Снимаем оверлей — доступ открыт
         overlay.remove();
       } catch (err) {
-        if (statusEl) statusEl.textContent = "Ошибка при проверке пароля: " + err.message;
+        if (statusEl) {
+          statusEl.textContent = "Ошибка при проверке пароля: " + err.message;
+          statusEl.style.color = "var(--red)";
+        }
         if (submitBtn) submitBtn.disabled = false;
+        if (dialog) {
+          dialog.classList.add("shake");
+        }
       }
     });
   }
@@ -144,103 +248,121 @@ const CalculatorsPage = {
           </p>
         </header>
 
-        <div class="card-grid calculators-grid">
-          <article class="card card--clickable" data-calc-open="l1">
-            <div class="card-title">L1 · Инженер поддержки</div>
-            <p class="small">
-              Оклад + премии за закрытие и создание с учётом пропущенных обращений и просрочек SLA.
-            </p>
+        <div class="calc-grid">
+          <article class="calc-card" data-calc-type="l1">
+            <h3>L1 · Инженер поддержки</h3>
+            <p>Оклад + премия за закрытие и создание с учётом пропущенных обращений и просрочек SLA.</p>
+            <button class="btn btn--secondary" data-calc-open="l1">Открыть калькулятор</button>
           </article>
 
-          <article class="card card--clickable" data-calc-open="l2">
-            <div class="card-title">L2 · Инженер выездной / проектный</div>
-            <p class="small">
-              Оклад, город, закрытые тикеты, выезды, терминалы, доп. работы и командные показатели.
-            </p>
+          <article class="calc-card" data-calc-type="l2">
+            <h3>L2 · Инженер выездной / проектный</h3>
+            <p>Оклад, город, закрытые тикеты, выезды, терминалы, доп. работы и командные показатели.</p>
+            <button class="btn btn--secondary" data-calc-open="l2">Открыть калькулятор</button>
           </article>
 
-          <article class="card card--clickable" data-calc-open="impl">
-            <div class="card-title">Инженер внедрения</div>
-            <p class="small">
-              Оклад + факт нормо-часов × ставка × личный коэффициент × командный коэффициент.
-            </p>
+          <article class="calc-card" data-calc-type="impl">
+            <h3>Инженер внедрения</h3>
+            <p>Оклад + факт нормо-часов × ставка × личный коэффициент × командный коэффициент.</p>
+            <button class="btn btn--secondary" data-calc-open="impl">Открыть калькулятор</button>
           </article>
 
-          <article class="card card--clickable" data-calc-open="sales-h">
-            <div class="card-title">Хантер (отдел продаж)</div>
-            <p class="small">
-              Оклад, маржа, клауд и коэффициенты (ЛК, КК, КСБ). Расчет ZP хантера.
-            </p>
+          <article class="calc-card" data-calc-type="sales-hunter">
+            <h3>Хантер (отдел продаж)</h3>
+            <p>Оклад, маржа, клауд и коэффициенты KPI (новые клиенты, апсейл, удержание).</p>
+            <button class="btn btn--secondary" data-calc-open="sales-hunter">Открыть калькулятор</button>
           </article>
 
-          <article class="card card--clickable" data-calc-open="sales-c">
-            <div class="card-title">Клиентский отдел</div>
-            <p class="small">
-              Оклад, портфель, клауд и коэффициенты для аккаунт-менеджера.
-            </p>
+          <article class="calc-card" data-calc-type="sales-client">
+            <h3>Клиентский отдел</h3>
+            <p>Оклад, портфель, клауд и коэффициенты для аккаунт-менеджера.</p>
+            <button class="btn btn--secondary" data-calc-open="sales-client">Открыть калькулятор</button>
           </article>
+        </div>
+
+        <div class="calc-modal-backdrop" data-calc-backdrop hidden>
+          <div class="calc-modal" data-calc-modal>
+            <header class="calc-modal__header">
+              <h3 data-calc-modal-title>Калькулятор</h3>
+              <button class="icon-button" data-calc-close>&times;</button>
+            </header>
+            <section class="calc-modal__body" data-calc-body></section>
+          </div>
         </div>
       </section>
-
-      <div class="calc-backdrop" data-calc-backdrop hidden>
-        <div class="calc-dialog">
-          <button class="calc-close" type="button" data-calc-close aria-label="Закрыть калькулятор">×</button>
-          <div class="calc-dialog-body" data-calc-body></div>
-        </div>
-      </div>
     `;
 
     setupCalculatorsAuthGate(container);
-
 
     const backdrop = container.querySelector("[data-calc-backdrop]");
     const bodyEl = container.querySelector("[data-calc-body]");
     const closeBtn = container.querySelector("[data-calc-close]");
 
-    if (!backdrop || !bodyEl || !closeBtn) return;
+    const modalTitleEl = container.querySelector("[data-calc-modal-title]");
+    const modalEl = container.querySelector("[data-calc-modal]");
 
     const open = (type) => {
-      let tpl = "";
-      bodyEl.innerHTML = "";
+      if (!backdrop || !bodyEl || !modalEl) return;
+      let template = "";
+      let title = "Калькулятор";
 
       switch (type) {
         case "l1":
-          tpl = L1_CALC_TEMPLATE;
-          bodyEl.innerHTML = tpl;
-          initL1Calculator(bodyEl);
+          template = L1_CALC_TEMPLATE;
+          title = "L1 · Инженер поддержки";
           break;
         case "l2":
-          tpl = L2_CALC_TEMPLATE;
-          bodyEl.innerHTML = tpl;
-          initL2Calculator(bodyEl);
+          template = L2_CALC_TEMPLATE;
+          title = "L2 · Инженер выездной / проектный";
           break;
         case "impl":
-          tpl = IMPL_CALC_TEMPLATE;
-          bodyEl.innerHTML = tpl;
-          initImplementationCalculator(bodyEl);
+          template = IMPL_CALC_TEMPLATE;
+          title = "Инженер внедрения";
           break;
-        case "sales-h":
-          tpl = SALES_H_CALC_TEMPLATE;
-          bodyEl.innerHTML = tpl;
-          initSalesHunterCalculator(bodyEl);
+        case "sales-hunter":
+          template = SALES_HUNTER_CALC_TEMPLATE;
+          title = "Хантер (отдел продаж)";
           break;
-        case "sales-c":
-          tpl = SALES_C_CALC_TEMPLATE;
-          bodyEl.innerHTML = tpl;
-          initSalesClientCalculator(bodyEl);
+        case "sales-client":
+          template = SALES_CLIENT_CALC_TEMPLATE;
+          title = "Клиентский отдел";
           break;
         default:
-          return;
+          template = "";
+      }
+
+      bodyEl.innerHTML = template;
+      if (modalTitleEl) {
+        modalTitleEl.textContent = title;
       }
 
       backdrop.hidden = false;
       requestAnimationFrame(() => {
-        backdrop.classList.add("is-open");
+        modalEl.classList.add("calc-modal--open");
       });
+
+      switch (type) {
+        case "l1":
+          initL1Calculator(bodyEl);
+          break;
+        case "l2":
+          initL2Calculator(bodyEl);
+          break;
+        case "impl":
+          initImplementationCalculator(bodyEl);
+          break;
+        case "sales-hunter":
+          initSalesHunterCalculator(bodyEl);
+          break;
+        case "sales-client":
+          initSalesClientCalculator(bodyEl);
+          break;
+      }
     };
 
     const close = () => {
-      backdrop.classList.remove("is-open");
+      if (!backdrop || !bodyEl || !modalEl) return;
+      modalEl.classList.remove("calc-modal--open");
       setTimeout(() => {
         backdrop.hidden = true;
         bodyEl.innerHTML = "";
@@ -248,9 +370,9 @@ const CalculatorsPage = {
     };
 
     container.addEventListener("click", (event) => {
-      const card = event.target.closest("[data-calc-open]");
-      if (card) {
-        const type = card.getAttribute("data-calc-open");
+      const btn = event.target.closest("[data-calc-open]");
+      if (btn) {
+        const type = btn.getAttribute("data-calc-open");
         open(type);
         return;
       }
