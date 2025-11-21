@@ -11,6 +11,7 @@ Router.register("operations", () => import("/sm/js/modules/operations/main.js"))
 Router.register("implementation", () => import("/sm/js/modules/implementation/main.js"));
 Router.register("results", () => import("/sm/js/modules/results/main.js"));
 Router.register("quiz", () => import("/sm/js/modules/quiz/main.js"));
+Router.register("filters", () => import("/sm/js/modules/filters/main.js"));
 Router.register("calculators", () => import("/sm/js/modules/calculators/main.js"));
 Router.register("constructor", () => import("/sm/js/modules/constructor/main.js"));
 Router.register("page", () => import("/sm/js/modules/page/main.js"));

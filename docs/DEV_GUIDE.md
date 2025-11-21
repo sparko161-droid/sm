@@ -476,3 +476,60 @@ Router.register("<name>", () => import(`/sm/js/modules/${name}/main.js`));
 - `deletePage(pagePath, options)` — удалить страницу из репозитория.
 
 Вся логика записи в GitHub реализована внутри n8n.
+
+## 8. Редактор filters.json (Шаг 6.1)
+
+Маршрут (рекомендуемый): 
+
+```text
+#filters
+```
+
+Модуль: `js/modules/filters/main.js`.
+
+Возможности на этом шаге:
+
+- загрузка `content/filters.json` через `ContentService.loadFilters()` (GitHub backend);
+- локальная копия `filters` в памяти;
+- редактирование:
+  - `lines[]` — id/label/order;
+  - `caseTypes[]` — id/label/order;
+  - `categories[]` — id/label/order;
+- управление связями «тип кейса ↔ линия» через поле `caseType.lines: string[]`:
+  - визуально — таблица с чекбоксами;
+  - при изменении чекбоксов обновляется `lines[]` у соответствующего `caseType`.
+
+На шаге 6.1 **нет сохранения** в GitHub — это чистый UI и локальная модель.
+Интеграция с n8n (`/constructor/save-filters`) будет добавлена на шаге 6.2.
+
+### 8.1. Сохранение filters.json через n8n (Шаг 6.2)
+
+Редактор фильтров (`js/modules/filters/main.js`) использует API-клиент `js/api/filtersApi.js`:
+
+- URL webhook-а по умолчанию: `https://jolikcisout.beget.app/webhook/sm/constructor/save-filters`
+- при необходимости его можно переопределить через `window.SM_N8N_SAVE_FILTERS_URL`.
+
+Вызов сохранения:
+
+```js
+import { saveFilters } from "/sm/js/api/filtersApi.js";
+
+await saveFilters(filtersJson, {
+  sha: null,
+  commitMessage: "Update filters.json via filters-editor",
+  author: { source: "filters-editor-ui" }
+});
+```
+
+Контракт ответа n8n:
+
+```json
+{
+  "ok": true,
+  "mode": "upsert-filters",
+  "sha": "newsha123",
+  "committedAt": "2025-01-01T12:00:00.000Z"
+}
+```
+
+В случае ошибки `ok = false` и присутствует поле `error`.

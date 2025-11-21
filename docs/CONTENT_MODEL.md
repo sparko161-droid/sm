@@ -329,3 +329,14 @@ content/
 - фиксироваться в `CHANGELOG.md` отдельной строкой `[CONTENT] ...`.
 
 Эта модель контента является **единым источником правды** для всех агентов и разработчиков.
+
+## Валидация контента (Шаг 8.1)
+
+Все файлы в `content/` (sections, pages, filters, calculators) были проверены:
+
+- `sections.json` — корректная структура, все `pagePath` существуют;
+- `pages/*.json` — единый формат: `steps[]`, `blocks[]`, `id`, `type`, `data`;
+- `filters.json` — массивы `lines`, `caseTypes`, `categories`;
+- `calculators.json` — список калькуляторов с `id`, `slug`, `title`, `n8nCalcId`.
+
+На момент Шага 8.1 структурных проблем не обнаружено.
