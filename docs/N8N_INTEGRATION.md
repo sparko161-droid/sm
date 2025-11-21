@@ -558,3 +558,48 @@ n8n-workflow:
   - IP allowlist для webhook;
   - дополнительный `X-API-Key` в заголовках запроса от SPA;
   - логирование автора (`author.id`, `author.source`).
+
+### 4.x. Webhook `/calc-auth` (для калькуляторов)
+
+URL (пример): `https://jolikcisout.beget.app/webhook-test/sm/calc-auth`  
+Метод: `POST`.
+
+Ожидаемый payload от SPA:
+
+```json
+{
+  "op": "calc-auth",
+  "slug": "l2-salary",
+  "password": "секретный-пароль"
+}
+```
+
+Ответ n8n:
+
+```json
+{
+  "ok": true,
+  "allowed": true,
+  "slug": "l2-salary"
+}
+```
+
+При отказе:
+
+```json
+{
+  "ok": true,
+  "allowed": false,
+  "slug": "l2-salary",
+  "reason": "Неверный пароль"
+}
+```
+
+При ошибке самого workflow:
+
+```json
+{
+  "ok": false,
+  "error": "Calc-auth internal error"
+}
+```
