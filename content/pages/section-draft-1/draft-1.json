@@ -1,0 +1,72 @@
+{
+  "id": "section-draft-1-draft-1",
+  "sectionId": "section-draft-1",
+  "slug": "section-draft-1-draft-1",
+  "title": "Новая страница 1",
+  "description": "",
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "Новый шаг 1",
+      "description": "",
+      "blocks": [
+        {
+          "id": "block-1",
+          "type": "text",
+          "data": {
+            "title": "Новый блок 1",
+            "text": ""
+          }
+        },
+        {
+          "id": "block-2",
+          "type": "text",
+          "data": {
+            "title": "Новый блок 2",
+            "text": ""
+          }
+        },
+        {
+          "id": "block-3",
+          "type": "text",
+          "data": {
+            "title": "Новый блок 3",
+            "text": ""
+          }
+        },
+        {
+          "id": "block-4",
+          "type": "text",
+          "data": {
+            "title": "Новый блок 4",
+            "text": ""
+          }
+        },
+        {
+          "id": "block-5",
+          "type": "text",
+          "data": {
+            "title": "Новый блок 5",
+            "text": ""
+          }
+        },
+        {
+          "id": "block-6",
+          "type": "text",
+          "data": {
+            "title": "Новый блок 6",
+            "text": ""
+          }
+        },
+        {
+          "id": "block-7",
+          "type": "text",
+          "data": {
+            "title": "Новый блок 7",
+            "text": ""
+          }
+        }
+      ]
+    }
+  ]
+}
