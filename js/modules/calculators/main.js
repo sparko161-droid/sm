@@ -3,7 +3,7 @@ import { initL1Calculator } from "/sm/js/calculators/l1.js";
 import { initL2Calculator } from "/sm/js/calculators/l2.js";
 import { initImplementationCalculator } from "/sm/js/calculators/implementation.js";
 import { initSalesHunterCalculator, initSalesClientCalculator } from "/sm/js/calculators/sales.js";
-import { L1_CALC_TEMPLATE, L2_CALC_TEMPLATE, IMPL_CALC_TEMPLATE,..._CALC_TEMPLATE } from "/sm/js/modules/calculators/templates.js";
+import { L1_CALC_TEMPLATE, L2_CALC_TEMPLATE, IMPL_CALC_TEMPLATE, SALES_HUNTER_CALC_TEMPLATE, SALES_CLIENT_CALC_TEMPLATE } from "/sm/js/modules/calculators/templates.js";
 
 function ensureCalcAuthShakeStyles() {
   if (document.querySelector("style[data-calc-auth-shake]")) {
