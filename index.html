@@ -1,60 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <title>SM Codex Portal (SPA)</title>
-
-  <!-- ВАЖНО: для GitHub Pages /sm/ -->
-  <base href="https://sparko161-droid.github.io/sm/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  
-  <link rel="stylesheet" href="/sm/css/base.css">
-  <link rel="stylesheet" href="/sm/css/layout.css">
-  <link rel="stylesheet" href="/sm/css/themes.css">
-  <link rel="stylesheet" href="/sm/css/components/buttons.css">
-  <link rel="stylesheet" href="/sm/css/components/cards.css">
-  <link rel="stylesheet" href="/sm/css/components/calc.css">
-  <link rel="stylesheet" href="/sm/css/components/quiz.css">
-  <link rel="stylesheet" href="/sm/css/sections/support.css">
+  <meta charset="UTF-8" />
+  <title>График смен L1/L2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="header">
-    <div class="header-inner">
-      <div class="logo-text">
-        <h1>SM Codex Portal</h1>
-        <p>Отдел поддержки · L1–L3</p>
+  <div id="app">
+    <!-- Экран логина -->
+    <div id="login-screen" class="card">
+      <h1>График смен L1/L2</h1>
+      <p class="muted">Вход по логину и паролю (через n8n <code>/graph</code>).</p>
+
+      <form id="login-form">
+        <div class="field">
+          <span>Логин</span>
+          <input id="login-input" autocomplete="username" />
+        </div>
+
+        <div class="field">
+          <span>Пароль</span>
+          <input
+            id="password-input"
+            type="password"
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button type="submit" class="btn primary" id="login-button">Войти</button>
+        <div id="login-error" class="error"></div>
+      </form>
+    </div>
+
+    <!-- Основной экран -->
+    <div id="main-screen" class="hidden">
+      <div class="top-bar">
+        <div>
+          <h2>График смен L1/L2</h2>
+          <div id="current-user-label" class="muted"></div>
+        </div>
+
+        <div class="top-bar-right">
+          <button type="button" class="btn toggle" id="btn-line-l1">L1</button>
+          <button type="button" class="btn toggle" id="btn-line-l2">L2</button>
+
+          <div class="month-switcher">
+            <button type="button" class="btn toggle" id="btn-prev-month">
+              &#8249;
+            </button>
+            <span id="current-month-label">Месяц</span>
+            <button type="button" class="btn toggle" id="btn-next-month">
+              &#8250;
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="header-actions">
-        <nav class="main-nav">
-          <a href="#dashboard" class="nav-link">Дашборд</a>
-          <a href="#support" class="nav-link">Support</a>
-          <a href="#sales" class="nav-link">Sales</a>
-          <a href="#operations" class="nav-link">Operations</a>
-          <a href="#implementation" class="nav-link">Implementation</a>
-          <a href="#calculators" class="nav-link">Калькуляторы</a>
-          <a href="#results" class="nav-link">Результаты</a>
-        </nav>
+      <div class="schedule-container">
+        <div class="schedule-scroll">
+          <div id="schedule-root"></div>
+        </div>
 
-        <button id="themeToggle" class="btn btn-ghost">🌓</button>
+        <div style="padding: 8px 12px; font-size: 12px; color: var(--text-muted);">
+          Режим: редактирование доступно только при правах <b>edit</b> (сейчас
+          реализован локальный кэш, без отправки в Pyrus).
+        </div>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main class="content">
-    <div class="content-inner" id="app">
-      <section id="content">
-        <h1>Загрузка...</h1>
-      </section>
-    </div>
-  </main>
-
-  <footer class="app-footer">
-    <small>SM Codex Portal · SPA (Support v2)</small>
-  </footer>
-
-  <script type="module" src="/sm/js/main.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
